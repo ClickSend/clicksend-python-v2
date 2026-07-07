@@ -18,35 +18,7 @@ __version__ = "1.0.0"
 
 # Define package exports
 __all__ = [
-    "AddressesOtherApi",
-    "AlphaTagsOtherApi",
-    "ContactsOtherApi",
-    "DefaultSendersOtherApi",
-    "EmailOtherApi",
-    "EmailToSmsOtherApi",
-    "FaxOtherApi",
-    "InternationalMessagingOtherApi",
-    "LettersOtherApi",
-    "ListsOtherApi",
-    "ManagementOtherApi",
-    "MessageDeliveryOtherApi",
-    "MmsCampaignsOtherApi",
-    "MmsOtherApi",
-    "NumbersOtherApi",
-    "OwnNumbersOtherApi",
-    "PostcardsOtherApi",
-    "ReferralsOtherApi",
-    "ResellerOtherApi",
-    "SmsCampaignsOtherApi",
-    "SmsOtherApi",
-    "StatisticsOtherApi",
-    "SubaccountsOtherApi",
-    "TransactionsOtherApi",
-    "UploadsOtherApi",
-    "UrlShorteningOtherApi",
-    "VerificationOtherApi",
-    "VoiceMessagingOtherApi",
-    "VoiceOtherApi",
+    "DefaultApi",
     "ApiResponse",
     "ApiClient",
     "Configuration",
@@ -490,35 +462,7 @@ __all__ = [
 ]
 
 # import apis into sdk package
-from clicksend.api.addresses_other_api import AddressesOtherApi as AddressesOtherApi
-from clicksend.api.alpha_tags_other_api import AlphaTagsOtherApi as AlphaTagsOtherApi
-from clicksend.api.contacts_other_api import ContactsOtherApi as ContactsOtherApi
-from clicksend.api.default_senders_other_api import DefaultSendersOtherApi as DefaultSendersOtherApi
-from clicksend.api.email_other_api import EmailOtherApi as EmailOtherApi
-from clicksend.api.email_to_sms_other_api import EmailToSmsOtherApi as EmailToSmsOtherApi
-from clicksend.api.fax_other_api import FaxOtherApi as FaxOtherApi
-from clicksend.api.international_messaging_other_api import InternationalMessagingOtherApi as InternationalMessagingOtherApi
-from clicksend.api.letters_other_api import LettersOtherApi as LettersOtherApi
-from clicksend.api.lists_other_api import ListsOtherApi as ListsOtherApi
-from clicksend.api.management_other_api import ManagementOtherApi as ManagementOtherApi
-from clicksend.api.message_delivery_other_api import MessageDeliveryOtherApi as MessageDeliveryOtherApi
-from clicksend.api.mms_campaigns_other_api import MmsCampaignsOtherApi as MmsCampaignsOtherApi
-from clicksend.api.mms_other_api import MmsOtherApi as MmsOtherApi
-from clicksend.api.numbers_other_api import NumbersOtherApi as NumbersOtherApi
-from clicksend.api.own_numbers_other_api import OwnNumbersOtherApi as OwnNumbersOtherApi
-from clicksend.api.postcards_other_api import PostcardsOtherApi as PostcardsOtherApi
-from clicksend.api.referrals_other_api import ReferralsOtherApi as ReferralsOtherApi
-from clicksend.api.reseller_other_api import ResellerOtherApi as ResellerOtherApi
-from clicksend.api.sms_campaigns_other_api import SmsCampaignsOtherApi as SmsCampaignsOtherApi
-from clicksend.api.sms_other_api import SmsOtherApi as SmsOtherApi
-from clicksend.api.statistics_other_api import StatisticsOtherApi as StatisticsOtherApi
-from clicksend.api.subaccounts_other_api import SubaccountsOtherApi as SubaccountsOtherApi
-from clicksend.api.transactions_other_api import TransactionsOtherApi as TransactionsOtherApi
-from clicksend.api.uploads_other_api import UploadsOtherApi as UploadsOtherApi
-from clicksend.api.url_shortening_other_api import UrlShorteningOtherApi as UrlShorteningOtherApi
-from clicksend.api.verification_other_api import VerificationOtherApi as VerificationOtherApi
-from clicksend.api.voice_messaging_other_api import VoiceMessagingOtherApi as VoiceMessagingOtherApi
-from clicksend.api.voice_other_api import VoiceOtherApi as VoiceOtherApi
+from clicksend.api.default_api import DefaultApi as DefaultApi
 
 # import ApiClient
 from clicksend.api_response import ApiResponse as ApiResponse
