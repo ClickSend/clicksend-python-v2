@@ -82,17 +82,17 @@ configuration = clicksend.Configuration(
 # Enter a context with an instance of the API client
 with clicksend.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = clicksend.DefaultApi(api_client)
+    api_instance = clicksend.AddressesApi(api_client)
     content_type = 'application/json' # str |  (optional)
-    add_allowed_email_request = clicksend.AddAllowedEmailRequest() # AddAllowedEmailRequest |  (optional)
+    create_return_address_request = clicksend.CreateReturnAddressRequest() # CreateReturnAddressRequest |  (optional)
 
     try:
-        # Add Allowed Email
-        api_response = api_instance.add_allowed_email(content_type=content_type, add_allowed_email_request=add_allowed_email_request)
-        print("The response of DefaultApi->add_allowed_email:\n")
+        # Create Return Address
+        api_response = api_instance.create_return_address(content_type=content_type, create_return_address_request=create_return_address_request)
+        print("The response of AddressesApi->create_return_address:\n")
         pprint(api_response)
     except ApiException as e:
-        print("Exception when calling DefaultApi->add_allowed_email: %s\n" % e)
+        print("Exception when calling AddressesApi->create_return_address: %s\n" % e)
 
 ```
 
@@ -102,207 +102,207 @@ All URIs are relative to *https://rest.clicksend.com*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
-*DefaultApi* | [**add_allowed_email**](docs/DefaultApi.md#add_allowed_email) | **POST** /v3/sms/email-sms | Add Allowed Email
-*DefaultApi* | [**agree_to_rules_and_regulation**](docs/DefaultApi.md#agree_to_rules_and_regulation) | **POST** /v3/user-countries/agree | Agree to rules and regulation
-*DefaultApi* | [**calculate_email_campaign_price**](docs/DefaultApi.md#calculate_email_campaign_price) | **POST** /v3/email-campaigns/price | Calculate Email Campaign Price
-*DefaultApi* | [**calculate_email_price**](docs/DefaultApi.md#calculate_email_price) | **POST** /v3/email/price | Calculate Email Price
-*DefaultApi* | [**calculate_fax_price**](docs/DefaultApi.md#calculate_fax_price) | **POST** /v3/fax/price | Calculate Fax Price
-*DefaultApi* | [**calculate_letter_price**](docs/DefaultApi.md#calculate_letter_price) | **POST** /v3/post/letters/price | Calculate Letter Price
-*DefaultApi* | [**calculate_mms_campaign_price**](docs/DefaultApi.md#calculate_mms_campaign_price) | **POST** /v3/mms-campaigns/price | Calculate MMS Campaign Price
-*DefaultApi* | [**calculate_mms_price**](docs/DefaultApi.md#calculate_mms_price) | **POST** /v3/mms/price | Calculate MMS Price
-*DefaultApi* | [**calculate_postcard_price**](docs/DefaultApi.md#calculate_postcard_price) | **POST** /v3/post/postcards/price | Calculate Postcard Price
-*DefaultApi* | [**calculate_sms_campaign_price**](docs/DefaultApi.md#calculate_sms_campaign_price) | **POST** /v3/sms-campaigns/price | Calculate SMS Campaign Price
-*DefaultApi* | [**calculate_sms_price**](docs/DefaultApi.md#calculate_sms_price) | **POST** /v3/sms/price | Calculate SMS Price
-*DefaultApi* | [**calculate_voice_price**](docs/DefaultApi.md#calculate_voice_price) | **POST** /v3/voice/price | Calculate Voice Price
-*DefaultApi* | [**cancel_all_sms**](docs/DefaultApi.md#cancel_all_sms) | **PUT** /v3/sms/cancel-all | Cancel All SMS
-*DefaultApi* | [**cancel_all_voice_messages**](docs/DefaultApi.md#cancel_all_voice_messages) | **PUT** /v3/voice/cancel-all | Cancel All Voice Messages
-*DefaultApi* | [**cancel_email_campaign**](docs/DefaultApi.md#cancel_email_campaign) | **PUT** /v3/email-campaigns/{email_campaign_id}/cancel | Cancel Email Campaign
-*DefaultApi* | [**cancel_mms_campaign**](docs/DefaultApi.md#cancel_mms_campaign) | **PUT** /v3/mms-campaigns/{mms_campaign_id}/cancel | Cancel MMS Campaign
-*DefaultApi* | [**cancel_scheduled_letter**](docs/DefaultApi.md#cancel_scheduled_letter) | **PUT** /v3/post/letters/{message_id}/cancel | Cancel Scheduled Letter
-*DefaultApi* | [**cancel_scheduled_postcard**](docs/DefaultApi.md#cancel_scheduled_postcard) | **PUT** /v3/post/postcards/{message_id}/cancel | Cancel Scheduled Postcard
-*DefaultApi* | [**cancel_sms**](docs/DefaultApi.md#cancel_sms) | **PUT** /v3/sms/{message_id}/cancel | Cancel SMS
-*DefaultApi* | [**cancel_sms_campaign**](docs/DefaultApi.md#cancel_sms_campaign) | **PUT** /v3/sms-campaigns/{sms_campaign_id}/cancel | Cancel SMS Campaign
-*DefaultApi* | [**cancel_voice_message**](docs/DefaultApi.md#cancel_voice_message) | **PUT** /v3/voice/{message_id}/cancel | Cancel Voice Message
-*DefaultApi* | [**copy_contact_to_list**](docs/DefaultApi.md#copy_contact_to_list) | **PUT** /v3/lists/{from_list_id}/contacts/{contact_id}/copy/{to_list_id} | Copy Contact to List
-*DefaultApi* | [**create_allowed_email_address**](docs/DefaultApi.md#create_allowed_email_address) | **POST** /v3/email/addresses | Create Allowed Email Address
-*DefaultApi* | [**create_default_sender**](docs/DefaultApi.md#create_default_sender) | **POST** /v3/senders/default-senders | Create Default Sender
-*DefaultApi* | [**create_delivery_issue**](docs/DefaultApi.md#create_delivery_issue) | **POST** /v3/delivery-issues | Create Delivery Issues
-*DefaultApi* | [**create_email_delivery_receipt_rule**](docs/DefaultApi.md#create_email_delivery_receipt_rule) | **POST** /v3/automations/email/receipts | Create Email Delivery Receipt Rule
-*DefaultApi* | [**create_email_template**](docs/DefaultApi.md#create_email_template) | **POST** /v3/email/templates | Create Email Template
-*DefaultApi* | [**create_fax_delivery_receipt_rule**](docs/DefaultApi.md#create_fax_delivery_receipt_rule) | **POST** /v3/automations/fax/receipts | Create FAX Delivery Receipt Rule
-*DefaultApi* | [**create_fax_inbound_rule**](docs/DefaultApi.md#create_fax_inbound_rule) | **POST** /v3/automations/fax/inbound | Create Fax Inbound Rule
-*DefaultApi* | [**create_list**](docs/DefaultApi.md#create_list) | **POST** /v3/lists | Create List
-*DefaultApi* | [**create_new_contact**](docs/DefaultApi.md#create_new_contact) | **POST** /v3/lists/{list_id}/contacts | Create New Contact
-*DefaultApi* | [**create_reseller_account**](docs/DefaultApi.md#create_reseller_account) | **POST** /v3/reseller/accounts | Create Reseller Account
-*DefaultApi* | [**create_return_address**](docs/DefaultApi.md#create_return_address) | **POST** /v3/post/return-addresses | Create Return Address
-*DefaultApi* | [**create_sms_delivery_receipt_rule**](docs/DefaultApi.md#create_sms_delivery_receipt_rule) | **POST** /v3/automations/sms/receipts | Create SMS Delivery Receipt Rule
-*DefaultApi* | [**create_sms_inbound_automation**](docs/DefaultApi.md#create_sms_inbound_automation) | **POST** /v3/automations/sms/inbound | Create SMS Inbound Automation
-*DefaultApi* | [**create_sms_template**](docs/DefaultApi.md#create_sms_template) | **POST** /v3/sms/templates | Create SMS Template
-*DefaultApi* | [**create_stripped_string_rule**](docs/DefaultApi.md#create_stripped_string_rule) | **POST** /v3/sms/email-sms-stripped-strings | Create Stripped String Rule
-*DefaultApi* | [**create_subaccount**](docs/DefaultApi.md#create_subaccount) | **POST** /v3/subaccounts | Create Subaccount
-*DefaultApi* | [**create_test_inbound_sms**](docs/DefaultApi.md#create_test_inbound_sms) | **POST** /v3/sms/inbound | Create Test Inbound SMS
-*DefaultApi* | [**create_test_sms_receipt**](docs/DefaultApi.md#create_test_sms_receipt) | **POST** /v3/sms/receipts | Create Test SMS Receipt
-*DefaultApi* | [**create_voice_delivery_receipt_rule**](docs/DefaultApi.md#create_voice_delivery_receipt_rule) | **POST** /v3/automations/voice/receipts | Create Voice Delivery Receipt Rule
-*DefaultApi* | [**current_payment_info**](docs/DefaultApi.md#current_payment_info) | **GET** /v3/recharge/credit-card | Current Payment Info
-*DefaultApi* | [**delete_allowed_email_address**](docs/DefaultApi.md#delete_allowed_email_address) | **DELETE** /v3/email/addresses/{email_address_id} | Delete Allowed Email Address
-*DefaultApi* | [**delete_alpha_tag**](docs/DefaultApi.md#delete_alpha_tag) | **DELETE** /v3/alpha-tags/{alpha_tag_id} | Delete Alpha Tag
-*DefaultApi* | [**delete_contact**](docs/DefaultApi.md#delete_contact) | **DELETE** /v3/lists/{list_id}/contacts/{contact_id} | Delete Contact
-*DefaultApi* | [**delete_default_sender**](docs/DefaultApi.md#delete_default_sender) | **DELETE** /v3/senders/default-senders/{default_sender_id} | Delete Default Sender
-*DefaultApi* | [**delete_email_delivery_receipt_rule**](docs/DefaultApi.md#delete_email_delivery_receipt_rule) | **DELETE** /v3/automations/email/receipts/{receipt_rule_id} | Delete Email Delivery Receipt Rule
-*DefaultApi* | [**delete_email_template**](docs/DefaultApi.md#delete_email_template) | **DELETE** /v3/email/templates/{template_id} | Delete Email Template
-*DefaultApi* | [**delete_fax_delivery_receipt_rule**](docs/DefaultApi.md#delete_fax_delivery_receipt_rule) | **DELETE** /v3/automations/fax/receipts/{receipt_rule_id} | Delete FAX Delivery Receipt Rule
-*DefaultApi* | [**delete_fax_inbound_rule**](docs/DefaultApi.md#delete_fax_inbound_rule) | **DELETE** /v3/automations/fax/inbound/{inbound_rule_id} | Delete Fax Inbound Rule
-*DefaultApi* | [**delete_list**](docs/DefaultApi.md#delete_list) | **DELETE** /v3/lists/{list_id} | Delete List
-*DefaultApi* | [**delete_own_number**](docs/DefaultApi.md#delete_own_number) | **DELETE** /v3/own-numbers/{own_number_id} | Delete Own Number
-*DefaultApi* | [**delete_return_address**](docs/DefaultApi.md#delete_return_address) | **DELETE** /v3/post/return-addresses/{return_address_id} | Delete Return Address
-*DefaultApi* | [**delete_sms_delivery_receipt_rule**](docs/DefaultApi.md#delete_sms_delivery_receipt_rule) | **DELETE** /v3/automations/sms/receipts/{receipt_rule_id} | Delete SMS Delivery Receipt Rule
-*DefaultApi* | [**delete_sms_inbound_automation**](docs/DefaultApi.md#delete_sms_inbound_automation) | **DELETE** /v3/automations/sms/inbound/{inbound_rule_id} | Delete SMS Inbound Automation
-*DefaultApi* | [**delete_sms_template**](docs/DefaultApi.md#delete_sms_template) | **DELETE** /v3/sms/templates/{template_id} | Delete SMS Template
-*DefaultApi* | [**delete_stripped_string_rule**](docs/DefaultApi.md#delete_stripped_string_rule) | **DELETE** /v3/sms/email-sms-stripped-strings/{rule_id} | Delete Stripped String Rule
-*DefaultApi* | [**delete_subaccount**](docs/DefaultApi.md#delete_subaccount) | **DELETE** /v3/subaccounts/{subaccount_id} | Delete Subaccount
-*DefaultApi* | [**delete_voice_delivery_receipt_rule**](docs/DefaultApi.md#delete_voice_delivery_receipt_rule) | **DELETE** /v3/automations/voice/receipts/{receipt_rule_id} | Delete Voice Delivery Receipt Rule
-*DefaultApi* | [**detect_address**](docs/DefaultApi.md#detect_address) | **POST** /v3/post/letters/detect-address | Detect Address
-*DefaultApi* | [**export_email_campaign_history**](docs/DefaultApi.md#export_email_campaign_history) | **GET** /v3/email-campaigns/{email_campaign_id}/history/export | Export Email Campaign History
-*DefaultApi* | [**export_email_history**](docs/DefaultApi.md#export_email_history) | **GET** /v3/email/history/export | Export Email History
-*DefaultApi* | [**export_letter_history**](docs/DefaultApi.md#export_letter_history) | **GET** /v3/post/letters/history/export | Export Letter History
-*DefaultApi* | [**export_mms_history**](docs/DefaultApi.md#export_mms_history) | **GET** /v3/mms/history/export | Export MMS History
-*DefaultApi* | [**export_postcard_history**](docs/DefaultApi.md#export_postcard_history) | **GET** /v3/post/postcards/history/export | Export Postcard History
-*DefaultApi* | [**export_sms_history**](docs/DefaultApi.md#export_sms_history) | **GET** /v3/sms/history/export | Export SMS History
-*DefaultApi* | [**export_voice_history**](docs/DefaultApi.md#export_voice_history) | **GET** /v3/voice/history/export | Export Voice History
-*DefaultApi* | [**forgot_password**](docs/DefaultApi.md#forgot_password) | **PUT** /v3/forgot-password | Forgot Password
-*DefaultApi* | [**forgot_username**](docs/DefaultApi.md#forgot_username) | **PUT** /v3/forgot-username | Forgot Username
-*DefaultApi* | [**generate_new_api_key**](docs/DefaultApi.md#generate_new_api_key) | **PUT** /v3/subaccounts/{subaccount_id}/regen-api-key | Generate New API Key
-*DefaultApi* | [**get_all_delivery_issues**](docs/DefaultApi.md#get_all_delivery_issues) | **GET** /v3/delivery-issues | Get All Delivery Issues
-*DefaultApi* | [**get_alpha_tag**](docs/DefaultApi.md#get_alpha_tag) | **GET** /v3/alpha-tags/{alpha_tag_id} | Get Alpha Tag
-*DefaultApi* | [**get_countries_for_global_sending**](docs/DefaultApi.md#get_countries_for_global_sending) | **GET** /v3/user-countries | Get Countries for Global Sending
-*DefaultApi* | [**get_default_sender_details**](docs/DefaultApi.md#get_default_sender_details) | **GET** /v3/senders/default-senders/{default_sender_id} | Get Default Sender Details
-*DefaultApi* | [**get_default_senders_list**](docs/DefaultApi.md#get_default_senders_list) | **GET** /v3/senders/default-senders | Get List of Default Senders
-*DefaultApi* | [**get_own_number_detail**](docs/DefaultApi.md#get_own_number_detail) | **GET** /v3/own-numbers/{own_number_id} | Get Own Number Detail
-*DefaultApi* | [**get_specific_contact**](docs/DefaultApi.md#get_specific_contact) | **GET** /v3/lists/{list_id}/contacts/{contact_id} | Get Specific Contact
-*DefaultApi* | [**get_voice_history**](docs/DefaultApi.md#get_voice_history) | **GET** /v3/voice/history | Get Voice History
-*DefaultApi* | [**import_contacts**](docs/DefaultApi.md#import_contacts) | **POST** /v3/lists/{list_id}/import | Import Contacts
-*DefaultApi* | [**list_alpha_tags**](docs/DefaultApi.md#list_alpha_tags) | **GET** /v3/alpha-tags | List Alpha Tags
-*DefaultApi* | [**list_compliant_sender_types**](docs/DefaultApi.md#list_compliant_sender_types) | **GET** /v3/senders/compliant-sender-types | List Compliant Sender Types
-*DefaultApi* | [**list_countries**](docs/DefaultApi.md#list_countries) | **GET** /v3/country-list | International Messaging
-*DefaultApi* | [**list_own_numbers**](docs/DefaultApi.md#list_own_numbers) | **GET** /v3/own-numbers | List Own Numbers
-*DefaultApi* | [**mark_inbound_sms_as_read**](docs/DefaultApi.md#mark_inbound_sms_as_read) | **PUT** /v3/sms/inbound-read | Mark Inbound SMS as Read
-*DefaultApi* | [**mark_sms_receipt_as_read**](docs/DefaultApi.md#mark_sms_receipt_as_read) | **PUT** /v3/sms/receipts-read | Mark SMS Receipt As Read
-*DefaultApi* | [**mark_specific_inbound_sms_message_as_read**](docs/DefaultApi.md#mark_specific_inbound_sms_message_as_read) | **PUT** /v3/sms/inbound-read/{message_id} | Mark Specific Inbound SMS Message As Read
-*DefaultApi* | [**purchase_dedicated_number**](docs/DefaultApi.md#purchase_dedicated_number) | **POST** /v3/numbers/buy/{dedicated_number} | Purchase Dedicated Number
-*DefaultApi* | [**purchase_recharge_package**](docs/DefaultApi.md#purchase_recharge_package) | **PUT** /v3/recharge/purchase/{package_id} | Purchase Recharge Package
-*DefaultApi* | [**register_numbers**](docs/DefaultApi.md#register_numbers) | **POST** /v3/numbers/registrations/number-types/{number_type}/country/{country_code} | Register Numbers
-*DefaultApi* | [**remove_duplicate_contacts**](docs/DefaultApi.md#remove_duplicate_contacts) | **PUT** /v3/lists/{list_id}/remove-duplicates/ | Remove Duplicate Contacts
-*DefaultApi* | [**remove_opted_out_contacts**](docs/DefaultApi.md#remove_opted_out_contacts) | **PUT** /v3/lists/{list_id}/remove-opted-out-contacts/{opt_out_list_id} | Remove Opted Out Contacts
-*DefaultApi* | [**request_alpha_tag**](docs/DefaultApi.md#request_alpha_tag) | **POST** /v3/alpha-tags | Request Alpha Tag
-*DefaultApi* | [**request_own_number_verification_otp**](docs/DefaultApi.md#request_own_number_verification_otp) | **POST** /v3/own-numbers/verifications | Request Own Number Verification OTP
-*DefaultApi* | [**reseller_transfer_credit**](docs/DefaultApi.md#reseller_transfer_credit) | **PUT** /v3/reseller/transfer-credit | Reseller Transfer Credit
-*DefaultApi* | [**select_countries_for_global_sending**](docs/DefaultApi.md#select_countries_for_global_sending) | **POST** /v3/user-countries | Select Countries for Global Sending
-*DefaultApi* | [**send_email**](docs/DefaultApi.md#send_email) | **POST** /v3/email/send | Send Email
-*DefaultApi* | [**send_email_campaign**](docs/DefaultApi.md#send_email_campaign) | **POST** /v3/email-campaigns/send | Send Email Campaign
-*DefaultApi* | [**send_email_verification_token**](docs/DefaultApi.md#send_email_verification_token) | **PUT** /v3/email/address-verify/{email_address_id}/send | Send Email Verification Token
-*DefaultApi* | [**send_fax**](docs/DefaultApi.md#send_fax) | **POST** /v3/fax/send | Send Fax
-*DefaultApi* | [**send_letter**](docs/DefaultApi.md#send_letter) | **POST** /v3/post/letters/send | Send Letter
-*DefaultApi* | [**send_mms**](docs/DefaultApi.md#send_mms) | **POST** /v3/mms/send | Send MMS
-*DefaultApi* | [**send_mms_campaign**](docs/DefaultApi.md#send_mms_campaign) | **POST** /v3/mms-campaigns/send | Send MMS Campaign
-*DefaultApi* | [**send_postcard**](docs/DefaultApi.md#send_postcard) | **POST** /v3/post/postcards/send | Send Postcard
-*DefaultApi* | [**send_sms**](docs/DefaultApi.md#send_sms) | **POST** /v3/sms/send | Send SMS
-*DefaultApi* | [**send_sms_campaign**](docs/DefaultApi.md#send_sms_campaign) | **POST** /v3/sms-campaigns/send | Send SMS Campaign
-*DefaultApi* | [**send_voice_message**](docs/DefaultApi.md#send_voice_message) | **POST** /v3/voice/send | Send Voice Message
-*DefaultApi* | [**short_url_get_statistics**](docs/DefaultApi.md#short_url_get_statistics) | **GET** /v3/short-url/statistics/{source}/{source_id} | Get Statistics
-*DefaultApi* | [**short_url_get_tracking**](docs/DefaultApi.md#short_url_get_tracking) | **GET** /v3/short-url/tracking/{long_url_id} | Get Tracking
-*DefaultApi* | [**timezones**](docs/DefaultApi.md#timezones) | **GET** /v3/timezones | Timezones
-*DefaultApi* | [**transfer_contact_to_list**](docs/DefaultApi.md#transfer_contact_to_list) | **PUT** /v3/lists/{from_list_id}/contacts/{contact_id}/transfer/{to_list_id} | Transfer Contact to List
-*DefaultApi* | [**update_client_account**](docs/DefaultApi.md#update_client_account) | **PUT** /v3/reseller/accounts/{client_user_id} | Update Client Account
-*DefaultApi* | [**update_contact**](docs/DefaultApi.md#update_contact) | **PUT** /v3/lists/{list_id}/contacts/{contact_id} | Update Contact
-*DefaultApi* | [**update_default_sender**](docs/DefaultApi.md#update_default_sender) | **PATCH** /v3/senders/default-senders/{default_sender_id} | Update Default Sender
-*DefaultApi* | [**update_email_campaign**](docs/DefaultApi.md#update_email_campaign) | **PUT** /v3/email-campaigns/{email_campaign_id} | Update Email Campaign
-*DefaultApi* | [**update_email_delivery_receipt_rule**](docs/DefaultApi.md#update_email_delivery_receipt_rule) | **PUT** /v3/automations/email/receipts/{receipt_rule_id} | Update Email Delivery Receipt Rule
-*DefaultApi* | [**update_email_template**](docs/DefaultApi.md#update_email_template) | **PUT** /v3/email/templates/{template_id} | Update Email Template
-*DefaultApi* | [**update_fax_delivery_receipt_rule**](docs/DefaultApi.md#update_fax_delivery_receipt_rule) | **PUT** /v3/automations/fax/receipts/{receipt_rule_id} | Update FAX Delivery Receipt Rule
-*DefaultApi* | [**update_fax_inbound_rule**](docs/DefaultApi.md#update_fax_inbound_rule) | **PUT** /v3/automations/fax/inbound/{inbound_rule_id} | Update Fax Inbound Rule
-*DefaultApi* | [**update_list**](docs/DefaultApi.md#update_list) | **PUT** /v3/lists/{list_id} | Update List
-*DefaultApi* | [**update_mms_campaign**](docs/DefaultApi.md#update_mms_campaign) | **PUT** /v3/mms-campaigns/{mms_campaign_id} | Update MMS Campaign
-*DefaultApi* | [**update_own_number**](docs/DefaultApi.md#update_own_number) | **PATCH** /v3/own-numbers/{own_number_id} | Update Own Number
-*DefaultApi* | [**update_payment_info**](docs/DefaultApi.md#update_payment_info) | **PUT** /v3/recharge/credit-card | Update Payment Info
-*DefaultApi* | [**update_return_address**](docs/DefaultApi.md#update_return_address) | **PUT** /v3/post/return-addresses/{return_address_id} | Update Return Address
-*DefaultApi* | [**update_sms_campaign**](docs/DefaultApi.md#update_sms_campaign) | **PUT** /v3/sms-campaigns/{sms_campaign_id} | Update SMS Campaign
-*DefaultApi* | [**update_sms_delivery_receipt_rule**](docs/DefaultApi.md#update_sms_delivery_receipt_rule) | **PUT** /v3/automations/sms/receipts/{receipt_rule_id} | Update SMS Delivery Receipt Rule
-*DefaultApi* | [**update_sms_inbound_automation**](docs/DefaultApi.md#update_sms_inbound_automation) | **PUT** /v3/automations/sms/inbound/{inbound_rule_id} | Update SMS Inbound Automation
-*DefaultApi* | [**update_sms_template**](docs/DefaultApi.md#update_sms_template) | **PUT** /v3/sms/templates/{template_id} | Update SMS Template
-*DefaultApi* | [**update_stripped_string_rule**](docs/DefaultApi.md#update_stripped_string_rule) | **PUT** /v3/sms/email-sms-stripped-strings/{rule_id} | Update Stripped String Rule
-*DefaultApi* | [**update_subaccount**](docs/DefaultApi.md#update_subaccount) | **PUT** /v3/subaccounts/{subaccount_id} | Update Subaccount
-*DefaultApi* | [**update_voice_delivery_receipt_rule**](docs/DefaultApi.md#update_voice_delivery_receipt_rule) | **PUT** /v3/automations/voice/receipts/{receipt_rule_id} | Update Voice Delivery Receipt Rule
-*DefaultApi* | [**upload_a_media_file**](docs/DefaultApi.md#upload_a_media_file) | **POST** /v3/uploads | Upload Media File
-*DefaultApi* | [**verify_allowed_email_address**](docs/DefaultApi.md#verify_allowed_email_address) | **PUT** /v3/email/address-verify/{email_address_id}/verify/{activation_token} | Verify Allowed Email Address
-*DefaultApi* | [**verify_own_number_otp**](docs/DefaultApi.md#verify_own_number_otp) | **POST** /v3/own-numbers/verifications/{verification_id}/verify | Verify Own Number OTP
-*DefaultApi* | [**view_a_specific_inbound_sms_message**](docs/DefaultApi.md#view_a_specific_inbound_sms_message) | **GET** /v3/sms/inbound/{original_message_id} | View a specific inbound SMS message
-*DefaultApi* | [**view_a_specific_sms_template**](docs/DefaultApi.md#view_a_specific_sms_template) | **GET** /v3/sms/templates/{template_id} | View a Specific SMS Template
-*DefaultApi* | [**view_account_details**](docs/DefaultApi.md#view_account_details) | **GET** /v3/account | View Account Details
-*DefaultApi* | [**view_account_usage**](docs/DefaultApi.md#view_account_usage) | **GET** /v3/account/usage/{year}/{month}/subaccount | View Account Usage
-*DefaultApi* | [**view_all_email_campaigns**](docs/DefaultApi.md#view_all_email_campaigns) | **GET** /v3/email-campaigns | View All Email Campaigns
-*DefaultApi* | [**view_all_mms_campaigns**](docs/DefaultApi.md#view_all_mms_campaigns) | **GET** /v3/mms-campaigns | View All MMS Campaigns
-*DefaultApi* | [**view_all_transactions**](docs/DefaultApi.md#view_all_transactions) | **GET** /v3/recharge/transactions | View All Transactions
-*DefaultApi* | [**view_allowed_email_address**](docs/DefaultApi.md#view_allowed_email_address) | **GET** /v3/email/addresses/{email_address_id} | View Allowed Email Address
-*DefaultApi* | [**view_allowed_email_addresses**](docs/DefaultApi.md#view_allowed_email_addresses) | **GET** /v3/email/addresses | View Allowed Email Addresses
-*DefaultApi* | [**view_allowed_emails**](docs/DefaultApi.md#view_allowed_emails) | **GET** /v3/sms/email-sms | View Allowed Emails
-*DefaultApi* | [**view_available_numbers**](docs/DefaultApi.md#view_available_numbers) | **GET** /v3/numbers/search/{country} | View Available Numbers
-*DefaultApi* | [**view_client_accounts**](docs/DefaultApi.md#view_client_accounts) | **GET** /v3/reseller/accounts | View Client Accounts
-*DefaultApi* | [**view_contact_lists**](docs/DefaultApi.md#view_contact_lists) | **GET** /v3/search/contacts-lists | View Contact Lists
-*DefaultApi* | [**view_countries**](docs/DefaultApi.md#view_countries) | **GET** /v3/countries | View Countries
-*DefaultApi* | [**view_email_campaign**](docs/DefaultApi.md#view_email_campaign) | **GET** /v3/email-campaigns/{email_campaign_id} | View Email Campaign
-*DefaultApi* | [**view_email_campaign_history**](docs/DefaultApi.md#view_email_campaign_history) | **GET** /v3/email-campaigns/{email_campaign_id}/history | View Email Campaign History
-*DefaultApi* | [**view_email_delivery_receipt_rule**](docs/DefaultApi.md#view_email_delivery_receipt_rule) | **GET** /v3/automations/email/receipts/{receipt_rule_id} | View Email Delivery Receipt Rule
-*DefaultApi* | [**view_email_delivery_receipt_rules**](docs/DefaultApi.md#view_email_delivery_receipt_rules) | **GET** /v3/automations/email/receipts | View Email Delivery Receipt Rules
-*DefaultApi* | [**view_email_history**](docs/DefaultApi.md#view_email_history) | **GET** /v3/email/history | View Email History
-*DefaultApi* | [**view_email_template**](docs/DefaultApi.md#view_email_template) | **GET** /v3/email/templates/{template_id} | View Email Template
-*DefaultApi* | [**view_email_templates**](docs/DefaultApi.md#view_email_templates) | **GET** /v3/email/templates | View Email Templates
-*DefaultApi* | [**view_fax_delivery_receipt_rule**](docs/DefaultApi.md#view_fax_delivery_receipt_rule) | **GET** /v3/automations/fax/receipts/{receipt_rule_id} | View FAX Delivery Receipt Rule
-*DefaultApi* | [**view_fax_delivery_receipt_rules**](docs/DefaultApi.md#view_fax_delivery_receipt_rules) | **GET** /v3/automations/fax/receipts | View FAX Delivery Receipt Rules
-*DefaultApi* | [**view_fax_history**](docs/DefaultApi.md#view_fax_history) | **GET** /v3/fax/history | View Fax History
-*DefaultApi* | [**view_fax_inbound_rule**](docs/DefaultApi.md#view_fax_inbound_rule) | **GET** /v3/automations/fax/inbound/{inbound_rule_id} | View Fax Inbound Rule
-*DefaultApi* | [**view_fax_inbound_rules**](docs/DefaultApi.md#view_fax_inbound_rules) | **GET** /v3/automations/fax/inbound | View Fax Inbound Rules
-*DefaultApi* | [**view_fax_receipts**](docs/DefaultApi.md#view_fax_receipts) | **GET** /v3/fax/receipts | View Fax Receipts
-*DefaultApi* | [**view_inbound_sms**](docs/DefaultApi.md#view_inbound_sms) | **GET** /v3/sms/inbound | View Inbound SMS
-*DefaultApi* | [**view_letter_history**](docs/DefaultApi.md#view_letter_history) | **GET** /v3/post/letters/history | View Letter History
-*DefaultApi* | [**view_list_contacts**](docs/DefaultApi.md#view_list_contacts) | **GET** /v3/lists/{list_id}/contacts | View List Contacts
-*DefaultApi* | [**view_lists**](docs/DefaultApi.md#view_lists) | **GET** /v3/lists | View Lists
-*DefaultApi* | [**view_master_email_template**](docs/DefaultApi.md#view_master_email_template) | **GET** /v3/email/master-templates/{template_id} | View Master Email Template
-*DefaultApi* | [**view_master_email_templates**](docs/DefaultApi.md#view_master_email_templates) | **GET** /v3/email/master-templates | View Master Email Templates
-*DefaultApi* | [**view_mms_campaign**](docs/DefaultApi.md#view_mms_campaign) | **GET** /v3/mms-campaigns/{mms_campaign_id} | View MMS Campaign
-*DefaultApi* | [**view_mms_history**](docs/DefaultApi.md#view_mms_history) | **GET** /v3/mms/history | View MMS History
-*DefaultApi* | [**view_postcard_history**](docs/DefaultApi.md#view_postcard_history) | **GET** /v3/post/postcards/history | View Postcard History
-*DefaultApi* | [**view_recharge_packages**](docs/DefaultApi.md#view_recharge_packages) | **GET** /v3/recharge/packages | View Recharge Packages
-*DefaultApi* | [**view_referral_accounts**](docs/DefaultApi.md#view_referral_accounts) | **GET** /v3/referral/accounts/ | View Referral Accounts
-*DefaultApi* | [**view_sms_campaigns**](docs/DefaultApi.md#view_sms_campaigns) | **GET** /v3/sms-campaigns | View SMS Campaigns
-*DefaultApi* | [**view_sms_delivery_receipt_rule**](docs/DefaultApi.md#view_sms_delivery_receipt_rule) | **GET** /v3/automations/sms/receipts/{receipt_rule_id} | View SMS Delivery Receipt Rule
-*DefaultApi* | [**view_sms_delivery_receipt_rules**](docs/DefaultApi.md#view_sms_delivery_receipt_rules) | **GET** /v3/automations/sms/receipts | View SMS Delivery Receipt Rules
-*DefaultApi* | [**view_sms_history**](docs/DefaultApi.md#view_sms_history) | **GET** /v3/sms/history | View SMS History
-*DefaultApi* | [**view_sms_inbound_automation**](docs/DefaultApi.md#view_sms_inbound_automation) | **GET** /v3/automations/sms/inbound/{inbound_rule_id} | View SMS Inbound Automation
-*DefaultApi* | [**view_sms_inbound_automations**](docs/DefaultApi.md#view_sms_inbound_automations) | **GET** /v3/automations/sms/inbound | View SMS Inbound Automations
-*DefaultApi* | [**view_sms_receipts**](docs/DefaultApi.md#view_sms_receipts) | **GET** /v3/sms/receipts | View SMS Receipts
-*DefaultApi* | [**view_sms_statistics**](docs/DefaultApi.md#view_sms_statistics) | **GET** /v3/statistics/sms | View SMS Statistics
-*DefaultApi* | [**view_sms_templates**](docs/DefaultApi.md#view_sms_templates) | **GET** /v3/sms/templates | View SMS Templates
-*DefaultApi* | [**view_specific_client_account**](docs/DefaultApi.md#view_specific_client_account) | **GET** /v3/reseller/accounts/{client_user_id} | View Specific Client Account
-*DefaultApi* | [**view_specific_fax_receipt**](docs/DefaultApi.md#view_specific_fax_receipt) | **GET** /v3/fax/receipts/{message_id} | View Specific Fax Receipt
-*DefaultApi* | [**view_specific_list**](docs/DefaultApi.md#view_specific_list) | **GET** /v3/lists/{list_id} | View Specific List
-*DefaultApi* | [**view_specific_return_address**](docs/DefaultApi.md#view_specific_return_address) | **GET** /v3/post/return-addresses/{return_address_id} | View Specific Return Address
-*DefaultApi* | [**view_specific_sms_campaign**](docs/DefaultApi.md#view_specific_sms_campaign) | **GET** /v3/sms-campaigns/{sms_campaign_id} | View Specific SMS Campaign
-*DefaultApi* | [**view_specific_sms_receipt**](docs/DefaultApi.md#view_specific_sms_receipt) | **GET** /v3/sms/receipts/{message_id} | View Specific SMS Receipt
-*DefaultApi* | [**view_specific_subaccount**](docs/DefaultApi.md#view_specific_subaccount) | **GET** /v3/subaccounts/{subaccount_id} | View Specific Subaccount
-*DefaultApi* | [**view_specific_transaction**](docs/DefaultApi.md#view_specific_transaction) | **GET** /v3/recharge/transactions/{transaction_id} | View Specific Transaction
-*DefaultApi* | [**view_stripped_string_rule**](docs/DefaultApi.md#view_stripped_string_rule) | **GET** /v3/sms/email-sms-stripped-strings/{rule_id} | View Stripped String Rule
-*DefaultApi* | [**view_stripped_string_rules**](docs/DefaultApi.md#view_stripped_string_rules) | **GET** /v3/sms/email-sms-stripped-strings | View Stripped String Rules
-*DefaultApi* | [**view_subaccounts**](docs/DefaultApi.md#view_subaccounts) | **GET** /v3/subaccounts | View Subaccounts
-*DefaultApi* | [**view_template_categories**](docs/DefaultApi.md#view_template_categories) | **GET** /v3/email/master-templates-categories | View Template Categories
-*DefaultApi* | [**view_template_category**](docs/DefaultApi.md#view_template_category) | **GET** /v3/email/master-templates-categories/{category_id} | View Template Category
-*DefaultApi* | [**view_templates_in_category**](docs/DefaultApi.md#view_templates_in_category) | **GET** /v3/email/master-templates-categories/{category_id}/master-templates | View Templates in Category
-*DefaultApi* | [**view_voice_delivery_receipt_rule**](docs/DefaultApi.md#view_voice_delivery_receipt_rule) | **GET** /v3/automations/voice/receipts/{receipt_rule_id} | View Voice Delivery Receipt Rule
-*DefaultApi* | [**view_voice_delivery_receipt_rules**](docs/DefaultApi.md#view_voice_delivery_receipt_rules) | **GET** /v3/automations/voice/receipts | View Voice Delivery Receipt Rules
-*DefaultApi* | [**view_voice_languages**](docs/DefaultApi.md#view_voice_languages) | **GET** /v3/voice/lang | View Voice Languages
-*DefaultApi* | [**view_voice_receipts**](docs/DefaultApi.md#view_voice_receipts) | **GET** /v3/voice/receipts | View Voice Receipts
-*DefaultApi* | [**view_voice_statistics**](docs/DefaultApi.md#view_voice_statistics) | **GET** /v3/statistics/voice | View Voice Statistics
-*DefaultApi* | [**view_your_numbers**](docs/DefaultApi.md#view_your_numbers) | **GET** /v3/numbers | View Your Numbers
-*DefaultApi* | [**view_your_return_addresses**](docs/DefaultApi.md#view_your_return_addresses) | **GET** /v3/post/return-addresses | View Your Return Addresses
+*AddressesApi* | [**create_return_address**](docs/AddressesApi.md#create_return_address) | **POST** /v3/post/return-addresses | Create Return Address
+*AddressesApi* | [**delete_return_address**](docs/AddressesApi.md#delete_return_address) | **DELETE** /v3/post/return-addresses/{return_address_id} | Delete Return Address
+*AddressesApi* | [**update_return_address**](docs/AddressesApi.md#update_return_address) | **PUT** /v3/post/return-addresses/{return_address_id} | Update Return Address
+*AddressesApi* | [**view_specific_return_address**](docs/AddressesApi.md#view_specific_return_address) | **GET** /v3/post/return-addresses/{return_address_id} | View Specific Return Address
+*AddressesApi* | [**view_your_return_addresses**](docs/AddressesApi.md#view_your_return_addresses) | **GET** /v3/post/return-addresses | View Your Return Addresses
+*AlphaTagsApi* | [**delete_alpha_tag**](docs/AlphaTagsApi.md#delete_alpha_tag) | **DELETE** /v3/alpha-tags/{alpha_tag_id} | Delete Alpha Tag
+*AlphaTagsApi* | [**get_alpha_tag**](docs/AlphaTagsApi.md#get_alpha_tag) | **GET** /v3/alpha-tags/{alpha_tag_id} | Get Alpha Tag
+*AlphaTagsApi* | [**list_alpha_tags**](docs/AlphaTagsApi.md#list_alpha_tags) | **GET** /v3/alpha-tags | List Alpha Tags
+*AlphaTagsApi* | [**request_alpha_tag**](docs/AlphaTagsApi.md#request_alpha_tag) | **POST** /v3/alpha-tags | Request Alpha Tag
+*ContactsApi* | [**delete_contact**](docs/ContactsApi.md#delete_contact) | **DELETE** /v3/lists/{list_id}/contacts/{contact_id} | Delete Contact
+*ContactsApi* | [**get_specific_contact**](docs/ContactsApi.md#get_specific_contact) | **GET** /v3/lists/{list_id}/contacts/{contact_id} | Get Specific Contact
+*ContactsApi* | [**update_contact**](docs/ContactsApi.md#update_contact) | **PUT** /v3/lists/{list_id}/contacts/{contact_id} | Update Contact
+*DefaultSendersApi* | [**create_default_sender**](docs/DefaultSendersApi.md#create_default_sender) | **POST** /v3/senders/default-senders | Create Default Sender
+*DefaultSendersApi* | [**delete_default_sender**](docs/DefaultSendersApi.md#delete_default_sender) | **DELETE** /v3/senders/default-senders/{default_sender_id} | Delete Default Sender
+*DefaultSendersApi* | [**get_default_sender_details**](docs/DefaultSendersApi.md#get_default_sender_details) | **GET** /v3/senders/default-senders/{default_sender_id} | Get Default Sender Details
+*DefaultSendersApi* | [**get_default_senders_list**](docs/DefaultSendersApi.md#get_default_senders_list) | **GET** /v3/senders/default-senders | Get List of Default Senders
+*DefaultSendersApi* | [**list_compliant_sender_types**](docs/DefaultSendersApi.md#list_compliant_sender_types) | **GET** /v3/senders/compliant-sender-types | List Compliant Sender Types
+*DefaultSendersApi* | [**update_default_sender**](docs/DefaultSendersApi.md#update_default_sender) | **PATCH** /v3/senders/default-senders/{default_sender_id} | Update Default Sender
+*EmailApi* | [**calculate_email_campaign_price**](docs/EmailApi.md#calculate_email_campaign_price) | **POST** /v3/email-campaigns/price | Calculate Email Campaign Price
+*EmailApi* | [**calculate_email_price**](docs/EmailApi.md#calculate_email_price) | **POST** /v3/email/price | Calculate Email Price
+*EmailApi* | [**cancel_email_campaign**](docs/EmailApi.md#cancel_email_campaign) | **PUT** /v3/email-campaigns/{email_campaign_id}/cancel | Cancel Email Campaign
+*EmailApi* | [**create_allowed_email_address**](docs/EmailApi.md#create_allowed_email_address) | **POST** /v3/email/addresses | Create Allowed Email Address
+*EmailApi* | [**create_email_delivery_receipt_rule**](docs/EmailApi.md#create_email_delivery_receipt_rule) | **POST** /v3/automations/email/receipts | Create Email Delivery Receipt Rule
+*EmailApi* | [**create_email_template**](docs/EmailApi.md#create_email_template) | **POST** /v3/email/templates | Create Email Template
+*EmailApi* | [**delete_allowed_email_address**](docs/EmailApi.md#delete_allowed_email_address) | **DELETE** /v3/email/addresses/{email_address_id} | Delete Allowed Email Address
+*EmailApi* | [**delete_email_delivery_receipt_rule**](docs/EmailApi.md#delete_email_delivery_receipt_rule) | **DELETE** /v3/automations/email/receipts/{receipt_rule_id} | Delete Email Delivery Receipt Rule
+*EmailApi* | [**delete_email_template**](docs/EmailApi.md#delete_email_template) | **DELETE** /v3/email/templates/{template_id} | Delete Email Template
+*EmailApi* | [**export_email_campaign_history**](docs/EmailApi.md#export_email_campaign_history) | **GET** /v3/email-campaigns/{email_campaign_id}/history/export | Export Email Campaign History
+*EmailApi* | [**export_email_history**](docs/EmailApi.md#export_email_history) | **GET** /v3/email/history/export | Export Email History
+*EmailApi* | [**send_email**](docs/EmailApi.md#send_email) | **POST** /v3/email/send | Send Email
+*EmailApi* | [**send_email_campaign**](docs/EmailApi.md#send_email_campaign) | **POST** /v3/email-campaigns/send | Send Email Campaign
+*EmailApi* | [**send_email_verification_token**](docs/EmailApi.md#send_email_verification_token) | **PUT** /v3/email/address-verify/{email_address_id}/send | Send Email Verification Token
+*EmailApi* | [**update_email_campaign**](docs/EmailApi.md#update_email_campaign) | **PUT** /v3/email-campaigns/{email_campaign_id} | Update Email Campaign
+*EmailApi* | [**update_email_delivery_receipt_rule**](docs/EmailApi.md#update_email_delivery_receipt_rule) | **PUT** /v3/automations/email/receipts/{receipt_rule_id} | Update Email Delivery Receipt Rule
+*EmailApi* | [**update_email_template**](docs/EmailApi.md#update_email_template) | **PUT** /v3/email/templates/{template_id} | Update Email Template
+*EmailApi* | [**verify_allowed_email_address**](docs/EmailApi.md#verify_allowed_email_address) | **PUT** /v3/email/address-verify/{email_address_id}/verify/{activation_token} | Verify Allowed Email Address
+*EmailApi* | [**view_all_email_campaigns**](docs/EmailApi.md#view_all_email_campaigns) | **GET** /v3/email-campaigns | View All Email Campaigns
+*EmailApi* | [**view_allowed_email_address**](docs/EmailApi.md#view_allowed_email_address) | **GET** /v3/email/addresses/{email_address_id} | View Allowed Email Address
+*EmailApi* | [**view_allowed_email_addresses**](docs/EmailApi.md#view_allowed_email_addresses) | **GET** /v3/email/addresses | View Allowed Email Addresses
+*EmailApi* | [**view_email_campaign**](docs/EmailApi.md#view_email_campaign) | **GET** /v3/email-campaigns/{email_campaign_id} | View Email Campaign
+*EmailApi* | [**view_email_campaign_history**](docs/EmailApi.md#view_email_campaign_history) | **GET** /v3/email-campaigns/{email_campaign_id}/history | View Email Campaign History
+*EmailApi* | [**view_email_delivery_receipt_rule**](docs/EmailApi.md#view_email_delivery_receipt_rule) | **GET** /v3/automations/email/receipts/{receipt_rule_id} | View Email Delivery Receipt Rule
+*EmailApi* | [**view_email_delivery_receipt_rules**](docs/EmailApi.md#view_email_delivery_receipt_rules) | **GET** /v3/automations/email/receipts | View Email Delivery Receipt Rules
+*EmailApi* | [**view_email_history**](docs/EmailApi.md#view_email_history) | **GET** /v3/email/history | View Email History
+*EmailApi* | [**view_email_template**](docs/EmailApi.md#view_email_template) | **GET** /v3/email/templates/{template_id} | View Email Template
+*EmailApi* | [**view_email_templates**](docs/EmailApi.md#view_email_templates) | **GET** /v3/email/templates | View Email Templates
+*EmailApi* | [**view_master_email_template**](docs/EmailApi.md#view_master_email_template) | **GET** /v3/email/master-templates/{template_id} | View Master Email Template
+*EmailApi* | [**view_master_email_templates**](docs/EmailApi.md#view_master_email_templates) | **GET** /v3/email/master-templates | View Master Email Templates
+*EmailApi* | [**view_template_categories**](docs/EmailApi.md#view_template_categories) | **GET** /v3/email/master-templates-categories | View Template Categories
+*EmailApi* | [**view_template_category**](docs/EmailApi.md#view_template_category) | **GET** /v3/email/master-templates-categories/{category_id} | View Template Category
+*EmailApi* | [**view_templates_in_category**](docs/EmailApi.md#view_templates_in_category) | **GET** /v3/email/master-templates-categories/{category_id}/master-templates | View Templates in Category
+*EmailToSmsApi* | [**add_allowed_email**](docs/EmailToSmsApi.md#add_allowed_email) | **POST** /v3/sms/email-sms | Add Allowed Email
+*EmailToSmsApi* | [**create_stripped_string_rule**](docs/EmailToSmsApi.md#create_stripped_string_rule) | **POST** /v3/sms/email-sms-stripped-strings | Create Stripped String Rule
+*EmailToSmsApi* | [**delete_stripped_string_rule**](docs/EmailToSmsApi.md#delete_stripped_string_rule) | **DELETE** /v3/sms/email-sms-stripped-strings/{rule_id} | Delete Stripped String Rule
+*EmailToSmsApi* | [**update_stripped_string_rule**](docs/EmailToSmsApi.md#update_stripped_string_rule) | **PUT** /v3/sms/email-sms-stripped-strings/{rule_id} | Update Stripped String Rule
+*EmailToSmsApi* | [**view_allowed_emails**](docs/EmailToSmsApi.md#view_allowed_emails) | **GET** /v3/sms/email-sms | View Allowed Emails
+*EmailToSmsApi* | [**view_stripped_string_rule**](docs/EmailToSmsApi.md#view_stripped_string_rule) | **GET** /v3/sms/email-sms-stripped-strings/{rule_id} | View Stripped String Rule
+*EmailToSmsApi* | [**view_stripped_string_rules**](docs/EmailToSmsApi.md#view_stripped_string_rules) | **GET** /v3/sms/email-sms-stripped-strings | View Stripped String Rules
+*FaxApi* | [**calculate_fax_price**](docs/FaxApi.md#calculate_fax_price) | **POST** /v3/fax/price | Calculate Fax Price
+*FaxApi* | [**create_fax_delivery_receipt_rule**](docs/FaxApi.md#create_fax_delivery_receipt_rule) | **POST** /v3/automations/fax/receipts | Create FAX Delivery Receipt Rule
+*FaxApi* | [**create_fax_inbound_rule**](docs/FaxApi.md#create_fax_inbound_rule) | **POST** /v3/automations/fax/inbound | Create Fax Inbound Rule
+*FaxApi* | [**delete_fax_delivery_receipt_rule**](docs/FaxApi.md#delete_fax_delivery_receipt_rule) | **DELETE** /v3/automations/fax/receipts/{receipt_rule_id} | Delete FAX Delivery Receipt Rule
+*FaxApi* | [**delete_fax_inbound_rule**](docs/FaxApi.md#delete_fax_inbound_rule) | **DELETE** /v3/automations/fax/inbound/{inbound_rule_id} | Delete Fax Inbound Rule
+*FaxApi* | [**send_fax**](docs/FaxApi.md#send_fax) | **POST** /v3/fax/send | Send Fax
+*FaxApi* | [**update_fax_delivery_receipt_rule**](docs/FaxApi.md#update_fax_delivery_receipt_rule) | **PUT** /v3/automations/fax/receipts/{receipt_rule_id} | Update FAX Delivery Receipt Rule
+*FaxApi* | [**update_fax_inbound_rule**](docs/FaxApi.md#update_fax_inbound_rule) | **PUT** /v3/automations/fax/inbound/{inbound_rule_id} | Update Fax Inbound Rule
+*FaxApi* | [**view_fax_delivery_receipt_rule**](docs/FaxApi.md#view_fax_delivery_receipt_rule) | **GET** /v3/automations/fax/receipts/{receipt_rule_id} | View FAX Delivery Receipt Rule
+*FaxApi* | [**view_fax_delivery_receipt_rules**](docs/FaxApi.md#view_fax_delivery_receipt_rules) | **GET** /v3/automations/fax/receipts | View FAX Delivery Receipt Rules
+*FaxApi* | [**view_fax_history**](docs/FaxApi.md#view_fax_history) | **GET** /v3/fax/history | View Fax History
+*FaxApi* | [**view_fax_inbound_rule**](docs/FaxApi.md#view_fax_inbound_rule) | **GET** /v3/automations/fax/inbound/{inbound_rule_id} | View Fax Inbound Rule
+*FaxApi* | [**view_fax_inbound_rules**](docs/FaxApi.md#view_fax_inbound_rules) | **GET** /v3/automations/fax/inbound | View Fax Inbound Rules
+*FaxApi* | [**view_fax_receipts**](docs/FaxApi.md#view_fax_receipts) | **GET** /v3/fax/receipts | View Fax Receipts
+*FaxApi* | [**view_specific_fax_receipt**](docs/FaxApi.md#view_specific_fax_receipt) | **GET** /v3/fax/receipts/{message_id} | View Specific Fax Receipt
+*InternationalMessagingApi* | [**agree_to_rules_and_regulation**](docs/InternationalMessagingApi.md#agree_to_rules_and_regulation) | **POST** /v3/user-countries/agree | Agree to rules and regulation
+*InternationalMessagingApi* | [**get_countries_for_global_sending**](docs/InternationalMessagingApi.md#get_countries_for_global_sending) | **GET** /v3/user-countries | Get Countries for Global Sending
+*InternationalMessagingApi* | [**list_countries**](docs/InternationalMessagingApi.md#list_countries) | **GET** /v3/country-list | International Messaging
+*InternationalMessagingApi* | [**select_countries_for_global_sending**](docs/InternationalMessagingApi.md#select_countries_for_global_sending) | **POST** /v3/user-countries | Select Countries for Global Sending
+*InternationalMessagingApi* | [**timezones**](docs/InternationalMessagingApi.md#timezones) | **GET** /v3/timezones | Timezones
+*InternationalMessagingApi* | [**view_countries**](docs/InternationalMessagingApi.md#view_countries) | **GET** /v3/countries | View Countries
+*LettersApi* | [**calculate_letter_price**](docs/LettersApi.md#calculate_letter_price) | **POST** /v3/post/letters/price | Calculate Letter Price
+*LettersApi* | [**cancel_scheduled_letter**](docs/LettersApi.md#cancel_scheduled_letter) | **PUT** /v3/post/letters/{message_id}/cancel | Cancel Scheduled Letter
+*LettersApi* | [**detect_address**](docs/LettersApi.md#detect_address) | **POST** /v3/post/letters/detect-address | Detect Address
+*LettersApi* | [**export_letter_history**](docs/LettersApi.md#export_letter_history) | **GET** /v3/post/letters/history/export | Export Letter History
+*LettersApi* | [**send_letter**](docs/LettersApi.md#send_letter) | **POST** /v3/post/letters/send | Send Letter
+*LettersApi* | [**view_letter_history**](docs/LettersApi.md#view_letter_history) | **GET** /v3/post/letters/history | View Letter History
+*ListsApi* | [**copy_contact_to_list**](docs/ListsApi.md#copy_contact_to_list) | **PUT** /v3/lists/{from_list_id}/contacts/{contact_id}/copy/{to_list_id} | Copy Contact to List
+*ListsApi* | [**create_list**](docs/ListsApi.md#create_list) | **POST** /v3/lists | Create List
+*ListsApi* | [**create_new_contact**](docs/ListsApi.md#create_new_contact) | **POST** /v3/lists/{list_id}/contacts | Create New Contact
+*ListsApi* | [**delete_list**](docs/ListsApi.md#delete_list) | **DELETE** /v3/lists/{list_id} | Delete List
+*ListsApi* | [**import_contacts**](docs/ListsApi.md#import_contacts) | **POST** /v3/lists/{list_id}/import | Import Contacts
+*ListsApi* | [**remove_duplicate_contacts**](docs/ListsApi.md#remove_duplicate_contacts) | **PUT** /v3/lists/{list_id}/remove-duplicates/ | Remove Duplicate Contacts
+*ListsApi* | [**remove_opted_out_contacts**](docs/ListsApi.md#remove_opted_out_contacts) | **PUT** /v3/lists/{list_id}/remove-opted-out-contacts/{opt_out_list_id} | Remove Opted Out Contacts
+*ListsApi* | [**transfer_contact_to_list**](docs/ListsApi.md#transfer_contact_to_list) | **PUT** /v3/lists/{from_list_id}/contacts/{contact_id}/transfer/{to_list_id} | Transfer Contact to List
+*ListsApi* | [**update_list**](docs/ListsApi.md#update_list) | **PUT** /v3/lists/{list_id} | Update List
+*ListsApi* | [**view_contact_lists**](docs/ListsApi.md#view_contact_lists) | **GET** /v3/search/contacts-lists | View Contact Lists
+*ListsApi* | [**view_list_contacts**](docs/ListsApi.md#view_list_contacts) | **GET** /v3/lists/{list_id}/contacts | View List Contacts
+*ListsApi* | [**view_lists**](docs/ListsApi.md#view_lists) | **GET** /v3/lists | View Lists
+*ListsApi* | [**view_specific_list**](docs/ListsApi.md#view_specific_list) | **GET** /v3/lists/{list_id} | View Specific List
+*ManagementApi* | [**view_account_details**](docs/ManagementApi.md#view_account_details) | **GET** /v3/account | View Account Details
+*ManagementApi* | [**view_account_usage**](docs/ManagementApi.md#view_account_usage) | **GET** /v3/account/usage/{year}/{month}/subaccount | View Account Usage
+*MessageDeliveryApi* | [**create_delivery_issue**](docs/MessageDeliveryApi.md#create_delivery_issue) | **POST** /v3/delivery-issues | Create Delivery Issues
+*MessageDeliveryApi* | [**get_all_delivery_issues**](docs/MessageDeliveryApi.md#get_all_delivery_issues) | **GET** /v3/delivery-issues | Get All Delivery Issues
+*MmsApi* | [**calculate_mms_price**](docs/MmsApi.md#calculate_mms_price) | **POST** /v3/mms/price | Calculate MMS Price
+*MmsApi* | [**export_mms_history**](docs/MmsApi.md#export_mms_history) | **GET** /v3/mms/history/export | Export MMS History
+*MmsApi* | [**send_mms**](docs/MmsApi.md#send_mms) | **POST** /v3/mms/send | Send MMS
+*MmsApi* | [**view_mms_history**](docs/MmsApi.md#view_mms_history) | **GET** /v3/mms/history | View MMS History
+*MmsCampaignsApi* | [**calculate_mms_campaign_price**](docs/MmsCampaignsApi.md#calculate_mms_campaign_price) | **POST** /v3/mms-campaigns/price | Calculate MMS Campaign Price
+*MmsCampaignsApi* | [**cancel_mms_campaign**](docs/MmsCampaignsApi.md#cancel_mms_campaign) | **PUT** /v3/mms-campaigns/{mms_campaign_id}/cancel | Cancel MMS Campaign
+*MmsCampaignsApi* | [**send_mms_campaign**](docs/MmsCampaignsApi.md#send_mms_campaign) | **POST** /v3/mms-campaigns/send | Send MMS Campaign
+*MmsCampaignsApi* | [**update_mms_campaign**](docs/MmsCampaignsApi.md#update_mms_campaign) | **PUT** /v3/mms-campaigns/{mms_campaign_id} | Update MMS Campaign
+*MmsCampaignsApi* | [**view_all_mms_campaigns**](docs/MmsCampaignsApi.md#view_all_mms_campaigns) | **GET** /v3/mms-campaigns | View All MMS Campaigns
+*MmsCampaignsApi* | [**view_mms_campaign**](docs/MmsCampaignsApi.md#view_mms_campaign) | **GET** /v3/mms-campaigns/{mms_campaign_id} | View MMS Campaign
+*NumbersApi* | [**purchase_dedicated_number**](docs/NumbersApi.md#purchase_dedicated_number) | **POST** /v3/numbers/buy/{dedicated_number} | Purchase Dedicated Number
+*NumbersApi* | [**register_numbers**](docs/NumbersApi.md#register_numbers) | **POST** /v3/numbers/registrations/number-types/{number_type}/country/{country_code} | Register Numbers
+*NumbersApi* | [**view_available_numbers**](docs/NumbersApi.md#view_available_numbers) | **GET** /v3/numbers/search/{country} | View Available Numbers
+*NumbersApi* | [**view_your_numbers**](docs/NumbersApi.md#view_your_numbers) | **GET** /v3/numbers | View Your Numbers
+*OwnNumbersApi* | [**delete_own_number**](docs/OwnNumbersApi.md#delete_own_number) | **DELETE** /v3/own-numbers/{own_number_id} | Delete Own Number
+*OwnNumbersApi* | [**get_own_number_detail**](docs/OwnNumbersApi.md#get_own_number_detail) | **GET** /v3/own-numbers/{own_number_id} | Get Own Number Detail
+*OwnNumbersApi* | [**list_own_numbers**](docs/OwnNumbersApi.md#list_own_numbers) | **GET** /v3/own-numbers | List Own Numbers
+*OwnNumbersApi* | [**request_own_number_verification_otp**](docs/OwnNumbersApi.md#request_own_number_verification_otp) | **POST** /v3/own-numbers/verifications | Request Own Number Verification OTP
+*OwnNumbersApi* | [**update_own_number**](docs/OwnNumbersApi.md#update_own_number) | **PATCH** /v3/own-numbers/{own_number_id} | Update Own Number
+*OwnNumbersApi* | [**verify_own_number_otp**](docs/OwnNumbersApi.md#verify_own_number_otp) | **POST** /v3/own-numbers/verifications/{verification_id}/verify | Verify Own Number OTP
+*PostcardsApi* | [**calculate_postcard_price**](docs/PostcardsApi.md#calculate_postcard_price) | **POST** /v3/post/postcards/price | Calculate Postcard Price
+*PostcardsApi* | [**cancel_scheduled_postcard**](docs/PostcardsApi.md#cancel_scheduled_postcard) | **PUT** /v3/post/postcards/{message_id}/cancel | Cancel Scheduled Postcard
+*PostcardsApi* | [**export_postcard_history**](docs/PostcardsApi.md#export_postcard_history) | **GET** /v3/post/postcards/history/export | Export Postcard History
+*PostcardsApi* | [**send_postcard**](docs/PostcardsApi.md#send_postcard) | **POST** /v3/post/postcards/send | Send Postcard
+*PostcardsApi* | [**view_postcard_history**](docs/PostcardsApi.md#view_postcard_history) | **GET** /v3/post/postcards/history | View Postcard History
+*ReferralsApi* | [**view_referral_accounts**](docs/ReferralsApi.md#view_referral_accounts) | **GET** /v3/referral/accounts/ | View Referral Accounts
+*ResellerApi* | [**create_reseller_account**](docs/ResellerApi.md#create_reseller_account) | **POST** /v3/reseller/accounts | Create Reseller Account
+*ResellerApi* | [**reseller_transfer_credit**](docs/ResellerApi.md#reseller_transfer_credit) | **PUT** /v3/reseller/transfer-credit | Reseller Transfer Credit
+*ResellerApi* | [**update_client_account**](docs/ResellerApi.md#update_client_account) | **PUT** /v3/reseller/accounts/{client_user_id} | Update Client Account
+*ResellerApi* | [**view_client_accounts**](docs/ResellerApi.md#view_client_accounts) | **GET** /v3/reseller/accounts | View Client Accounts
+*ResellerApi* | [**view_specific_client_account**](docs/ResellerApi.md#view_specific_client_account) | **GET** /v3/reseller/accounts/{client_user_id} | View Specific Client Account
+*SmsApi* | [**calculate_sms_price**](docs/SmsApi.md#calculate_sms_price) | **POST** /v3/sms/price | Calculate SMS Price
+*SmsApi* | [**cancel_all_sms**](docs/SmsApi.md#cancel_all_sms) | **PUT** /v3/sms/cancel-all | Cancel All SMS
+*SmsApi* | [**cancel_sms**](docs/SmsApi.md#cancel_sms) | **PUT** /v3/sms/{message_id}/cancel | Cancel SMS
+*SmsApi* | [**create_sms_delivery_receipt_rule**](docs/SmsApi.md#create_sms_delivery_receipt_rule) | **POST** /v3/automations/sms/receipts | Create SMS Delivery Receipt Rule
+*SmsApi* | [**create_sms_inbound_automation**](docs/SmsApi.md#create_sms_inbound_automation) | **POST** /v3/automations/sms/inbound | Create SMS Inbound Automation
+*SmsApi* | [**create_sms_template**](docs/SmsApi.md#create_sms_template) | **POST** /v3/sms/templates | Create SMS Template
+*SmsApi* | [**create_test_inbound_sms**](docs/SmsApi.md#create_test_inbound_sms) | **POST** /v3/sms/inbound | Create Test Inbound SMS
+*SmsApi* | [**create_test_sms_receipt**](docs/SmsApi.md#create_test_sms_receipt) | **POST** /v3/sms/receipts | Create Test SMS Receipt
+*SmsApi* | [**delete_sms_delivery_receipt_rule**](docs/SmsApi.md#delete_sms_delivery_receipt_rule) | **DELETE** /v3/automations/sms/receipts/{receipt_rule_id} | Delete SMS Delivery Receipt Rule
+*SmsApi* | [**delete_sms_inbound_automation**](docs/SmsApi.md#delete_sms_inbound_automation) | **DELETE** /v3/automations/sms/inbound/{inbound_rule_id} | Delete SMS Inbound Automation
+*SmsApi* | [**delete_sms_template**](docs/SmsApi.md#delete_sms_template) | **DELETE** /v3/sms/templates/{template_id} | Delete SMS Template
+*SmsApi* | [**export_sms_history**](docs/SmsApi.md#export_sms_history) | **GET** /v3/sms/history/export | Export SMS History
+*SmsApi* | [**mark_inbound_sms_as_read**](docs/SmsApi.md#mark_inbound_sms_as_read) | **PUT** /v3/sms/inbound-read | Mark Inbound SMS as Read
+*SmsApi* | [**mark_sms_receipt_as_read**](docs/SmsApi.md#mark_sms_receipt_as_read) | **PUT** /v3/sms/receipts-read | Mark SMS Receipt As Read
+*SmsApi* | [**mark_specific_inbound_sms_message_as_read**](docs/SmsApi.md#mark_specific_inbound_sms_message_as_read) | **PUT** /v3/sms/inbound-read/{message_id} | Mark Specific Inbound SMS Message As Read
+*SmsApi* | [**send_sms**](docs/SmsApi.md#send_sms) | **POST** /v3/sms/send | Send SMS
+*SmsApi* | [**update_sms_delivery_receipt_rule**](docs/SmsApi.md#update_sms_delivery_receipt_rule) | **PUT** /v3/automations/sms/receipts/{receipt_rule_id} | Update SMS Delivery Receipt Rule
+*SmsApi* | [**update_sms_inbound_automation**](docs/SmsApi.md#update_sms_inbound_automation) | **PUT** /v3/automations/sms/inbound/{inbound_rule_id} | Update SMS Inbound Automation
+*SmsApi* | [**update_sms_template**](docs/SmsApi.md#update_sms_template) | **PUT** /v3/sms/templates/{template_id} | Update SMS Template
+*SmsApi* | [**view_a_specific_inbound_sms_message**](docs/SmsApi.md#view_a_specific_inbound_sms_message) | **GET** /v3/sms/inbound/{original_message_id} | View a specific inbound SMS message
+*SmsApi* | [**view_a_specific_sms_template**](docs/SmsApi.md#view_a_specific_sms_template) | **GET** /v3/sms/templates/{template_id} | View a Specific SMS Template
+*SmsApi* | [**view_inbound_sms**](docs/SmsApi.md#view_inbound_sms) | **GET** /v3/sms/inbound | View Inbound SMS
+*SmsApi* | [**view_sms_delivery_receipt_rule**](docs/SmsApi.md#view_sms_delivery_receipt_rule) | **GET** /v3/automations/sms/receipts/{receipt_rule_id} | View SMS Delivery Receipt Rule
+*SmsApi* | [**view_sms_delivery_receipt_rules**](docs/SmsApi.md#view_sms_delivery_receipt_rules) | **GET** /v3/automations/sms/receipts | View SMS Delivery Receipt Rules
+*SmsApi* | [**view_sms_history**](docs/SmsApi.md#view_sms_history) | **GET** /v3/sms/history | View SMS History
+*SmsApi* | [**view_sms_inbound_automation**](docs/SmsApi.md#view_sms_inbound_automation) | **GET** /v3/automations/sms/inbound/{inbound_rule_id} | View SMS Inbound Automation
+*SmsApi* | [**view_sms_inbound_automations**](docs/SmsApi.md#view_sms_inbound_automations) | **GET** /v3/automations/sms/inbound | View SMS Inbound Automations
+*SmsApi* | [**view_sms_receipts**](docs/SmsApi.md#view_sms_receipts) | **GET** /v3/sms/receipts | View SMS Receipts
+*SmsApi* | [**view_sms_templates**](docs/SmsApi.md#view_sms_templates) | **GET** /v3/sms/templates | View SMS Templates
+*SmsApi* | [**view_specific_sms_receipt**](docs/SmsApi.md#view_specific_sms_receipt) | **GET** /v3/sms/receipts/{message_id} | View Specific SMS Receipt
+*SmsCampaignsApi* | [**calculate_sms_campaign_price**](docs/SmsCampaignsApi.md#calculate_sms_campaign_price) | **POST** /v3/sms-campaigns/price | Calculate SMS Campaign Price
+*SmsCampaignsApi* | [**cancel_sms_campaign**](docs/SmsCampaignsApi.md#cancel_sms_campaign) | **PUT** /v3/sms-campaigns/{sms_campaign_id}/cancel | Cancel SMS Campaign
+*SmsCampaignsApi* | [**send_sms_campaign**](docs/SmsCampaignsApi.md#send_sms_campaign) | **POST** /v3/sms-campaigns/send | Send SMS Campaign
+*SmsCampaignsApi* | [**update_sms_campaign**](docs/SmsCampaignsApi.md#update_sms_campaign) | **PUT** /v3/sms-campaigns/{sms_campaign_id} | Update SMS Campaign
+*SmsCampaignsApi* | [**view_sms_campaigns**](docs/SmsCampaignsApi.md#view_sms_campaigns) | **GET** /v3/sms-campaigns | View SMS Campaigns
+*SmsCampaignsApi* | [**view_specific_sms_campaign**](docs/SmsCampaignsApi.md#view_specific_sms_campaign) | **GET** /v3/sms-campaigns/{sms_campaign_id} | View Specific SMS Campaign
+*StatisticsApi* | [**view_sms_statistics**](docs/StatisticsApi.md#view_sms_statistics) | **GET** /v3/statistics/sms | View SMS Statistics
+*StatisticsApi* | [**view_voice_statistics**](docs/StatisticsApi.md#view_voice_statistics) | **GET** /v3/statistics/voice | View Voice Statistics
+*SubaccountsApi* | [**create_subaccount**](docs/SubaccountsApi.md#create_subaccount) | **POST** /v3/subaccounts | Create Subaccount
+*SubaccountsApi* | [**delete_subaccount**](docs/SubaccountsApi.md#delete_subaccount) | **DELETE** /v3/subaccounts/{subaccount_id} | Delete Subaccount
+*SubaccountsApi* | [**generate_new_api_key**](docs/SubaccountsApi.md#generate_new_api_key) | **PUT** /v3/subaccounts/{subaccount_id}/regen-api-key | Generate New API Key
+*SubaccountsApi* | [**update_subaccount**](docs/SubaccountsApi.md#update_subaccount) | **PUT** /v3/subaccounts/{subaccount_id} | Update Subaccount
+*SubaccountsApi* | [**view_specific_subaccount**](docs/SubaccountsApi.md#view_specific_subaccount) | **GET** /v3/subaccounts/{subaccount_id} | View Specific Subaccount
+*SubaccountsApi* | [**view_subaccounts**](docs/SubaccountsApi.md#view_subaccounts) | **GET** /v3/subaccounts | View Subaccounts
+*TransactionsApi* | [**current_payment_info**](docs/TransactionsApi.md#current_payment_info) | **GET** /v3/recharge/credit-card | Current Payment Info
+*TransactionsApi* | [**purchase_recharge_package**](docs/TransactionsApi.md#purchase_recharge_package) | **PUT** /v3/recharge/purchase/{package_id} | Purchase Recharge Package
+*TransactionsApi* | [**update_payment_info**](docs/TransactionsApi.md#update_payment_info) | **PUT** /v3/recharge/credit-card | Update Payment Info
+*TransactionsApi* | [**view_all_transactions**](docs/TransactionsApi.md#view_all_transactions) | **GET** /v3/recharge/transactions | View All Transactions
+*TransactionsApi* | [**view_recharge_packages**](docs/TransactionsApi.md#view_recharge_packages) | **GET** /v3/recharge/packages | View Recharge Packages
+*TransactionsApi* | [**view_specific_transaction**](docs/TransactionsApi.md#view_specific_transaction) | **GET** /v3/recharge/transactions/{transaction_id} | View Specific Transaction
+*UploadsApi* | [**upload_a_media_file**](docs/UploadsApi.md#upload_a_media_file) | **POST** /v3/uploads | Upload Media File
+*UrlShorteningApi* | [**short_url_get_statistics**](docs/UrlShorteningApi.md#short_url_get_statistics) | **GET** /v3/short-url/statistics/{source}/{source_id} | Get Statistics
+*UrlShorteningApi* | [**short_url_get_tracking**](docs/UrlShorteningApi.md#short_url_get_tracking) | **GET** /v3/short-url/tracking/{long_url_id} | Get Tracking
+*VerificationApi* | [**forgot_password**](docs/VerificationApi.md#forgot_password) | **PUT** /v3/forgot-password | Forgot Password
+*VerificationApi* | [**forgot_username**](docs/VerificationApi.md#forgot_username) | **PUT** /v3/forgot-username | Forgot Username
+*VoiceApi* | [**create_voice_delivery_receipt_rule**](docs/VoiceApi.md#create_voice_delivery_receipt_rule) | **POST** /v3/automations/voice/receipts | Create Voice Delivery Receipt Rule
+*VoiceApi* | [**delete_voice_delivery_receipt_rule**](docs/VoiceApi.md#delete_voice_delivery_receipt_rule) | **DELETE** /v3/automations/voice/receipts/{receipt_rule_id} | Delete Voice Delivery Receipt Rule
+*VoiceApi* | [**update_voice_delivery_receipt_rule**](docs/VoiceApi.md#update_voice_delivery_receipt_rule) | **PUT** /v3/automations/voice/receipts/{receipt_rule_id} | Update Voice Delivery Receipt Rule
+*VoiceApi* | [**view_voice_delivery_receipt_rule**](docs/VoiceApi.md#view_voice_delivery_receipt_rule) | **GET** /v3/automations/voice/receipts/{receipt_rule_id} | View Voice Delivery Receipt Rule
+*VoiceApi* | [**view_voice_delivery_receipt_rules**](docs/VoiceApi.md#view_voice_delivery_receipt_rules) | **GET** /v3/automations/voice/receipts | View Voice Delivery Receipt Rules
+*VoiceMessagingApi* | [**calculate_voice_price**](docs/VoiceMessagingApi.md#calculate_voice_price) | **POST** /v3/voice/price | Calculate Voice Price
+*VoiceMessagingApi* | [**cancel_all_voice_messages**](docs/VoiceMessagingApi.md#cancel_all_voice_messages) | **PUT** /v3/voice/cancel-all | Cancel All Voice Messages
+*VoiceMessagingApi* | [**cancel_voice_message**](docs/VoiceMessagingApi.md#cancel_voice_message) | **PUT** /v3/voice/{message_id}/cancel | Cancel Voice Message
+*VoiceMessagingApi* | [**export_voice_history**](docs/VoiceMessagingApi.md#export_voice_history) | **GET** /v3/voice/history/export | Export Voice History
+*VoiceMessagingApi* | [**get_voice_history**](docs/VoiceMessagingApi.md#get_voice_history) | **GET** /v3/voice/history | Get Voice History
+*VoiceMessagingApi* | [**send_voice_message**](docs/VoiceMessagingApi.md#send_voice_message) | **POST** /v3/voice/send | Send Voice Message
+*VoiceMessagingApi* | [**view_voice_languages**](docs/VoiceMessagingApi.md#view_voice_languages) | **GET** /v3/voice/lang | View Voice Languages
+*VoiceMessagingApi* | [**view_voice_receipts**](docs/VoiceMessagingApi.md#view_voice_receipts) | **GET** /v3/voice/receipts | View Voice Receipts
 
 
 ## Documentation For Models
