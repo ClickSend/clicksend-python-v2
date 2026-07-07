@@ -1,6 +1,6 @@
 [project]
 name = "clicksend"
-version = "1.0.0"
+version = "6.0.0"
 description = "SMS"
 authors = [
   {name = "OpenAPI Generator Community",email = "team@openapitools.org"},
