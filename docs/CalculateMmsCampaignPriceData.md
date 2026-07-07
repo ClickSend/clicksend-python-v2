@@ -1,0 +1,32 @@
+# CalculateMmsCampaignPriceData
+
+
+## Properties
+
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**total_count** | **str** | The total number of records. | [optional] 
+**total_price** | **str** | The total price of the MMS campaign. | [optional] 
+**data** | [**CalculateMmsCampaignPriceDataData**](CalculateMmsCampaignPriceDataData.md) |  | [optional] 
+**currency** | [**Currency**](Currency.md) |  | [optional] 
+
+## Example
+
+```python
+from clicksend.models.calculate_mms_campaign_price_data import CalculateMmsCampaignPriceData
+
+# TODO update the JSON string below
+json = "{}"
+# create an instance of CalculateMmsCampaignPriceData from a JSON string
+calculate_mms_campaign_price_data_instance = CalculateMmsCampaignPriceData.from_json(json)
+# print the JSON string representation of the object
+print(CalculateMmsCampaignPriceData.to_json())
+
+# convert the object into a dict
+calculate_mms_campaign_price_data_dict = calculate_mms_campaign_price_data_instance.to_dict()
+# create an instance of CalculateMmsCampaignPriceData from a dict
+calculate_mms_campaign_price_data_from_dict = CalculateMmsCampaignPriceData.from_dict(calculate_mms_campaign_price_data_dict)
+```
+[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+

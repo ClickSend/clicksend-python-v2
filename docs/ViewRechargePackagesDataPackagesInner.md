@@ -1,0 +1,53 @@
+# ViewRechargePackagesDataPackagesInner
+
+
+## Properties
+
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**package_id** | **float** | The ID of the package. | [optional] 
+**package_price** | **float** | The price of the package. | [optional] 
+**price_rate** | **int** | The pricing tier used to determine the cost per message. | [optional] 
+**sms_price** | **float** | The price of the SMS. | [optional] 
+**sms_quantity** | **float** | The quantity of the SMS. | [optional] 
+**voice_mobile_price** | **float** | The price of the voice mobile. | [optional] 
+**voice_mobile_quantity** | **float** | The quantity of the voice mobile. | [optional] 
+**voice_landline_price** | **float** | The price of the voice landline. | [optional] 
+**voice_landline_quantity** | **float** | The quantity of the voice landline. | [optional] 
+**fax_price** | **float** | The price of the fax. | [optional] 
+**fax_quantity** | **float** | The quantity of the fax. | [optional] 
+**email_price** | **float** | The price of the email. | [optional] 
+**email_quantity** | **float** | The quantity of the email. | [optional] 
+**post_letter_black_price** | **float** | The price of the post letter black. | [optional] 
+**post_letter_colour_price** | **float** | The price of the post letter colour. | [optional] 
+**post_page_black_price** | **float** | The price of the post page black. | [optional] 
+**post_page_colour_price** | **float** | The price of the post page colour. | [optional] 
+**post_letter_black_quantity** | **float** | The quantity of the post letter black. | [optional] 
+**post_letter_colour_quantity** | **float** | The quantity of the post letter colour. | [optional] 
+**post_direct_mail_dl_price** | **float** | The price of the post direct mail dl. | [optional] 
+**post_direct_mail_a5_price** | **float** | The price of the post direct mail a5. | [optional] 
+**post_direct_mail_min_quantity** | **float** | The quantity of the post direct mail min. | [optional] 
+**postcard_price** | **float** | The price of the postcard. | [optional] 
+**postcard_quantity** | **float** | The quantity of the postcard. | [optional] 
+**automation_price** | **float** | The price of the automation. | [optional] 
+
+## Example
+
+```python
+from clicksend.models.view_recharge_packages_data_packages_inner import ViewRechargePackagesDataPackagesInner
+
+# TODO update the JSON string below
+json = "{}"
+# create an instance of ViewRechargePackagesDataPackagesInner from a JSON string
+view_recharge_packages_data_packages_inner_instance = ViewRechargePackagesDataPackagesInner.from_json(json)
+# print the JSON string representation of the object
+print(ViewRechargePackagesDataPackagesInner.to_json())
+
+# convert the object into a dict
+view_recharge_packages_data_packages_inner_dict = view_recharge_packages_data_packages_inner_instance.to_dict()
+# create an instance of ViewRechargePackagesDataPackagesInner from a dict
+view_recharge_packages_data_packages_inner_from_dict = ViewRechargePackagesDataPackagesInner.from_dict(view_recharge_packages_data_packages_inner_dict)
+```
+[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+

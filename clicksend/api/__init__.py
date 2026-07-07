@@ -1,0 +1,33 @@
+# flake8: noqa
+
+# import apis into api package
+from clicksend.api.addresses_other_api import AddressesOtherApi
+from clicksend.api.alpha_tags_other_api import AlphaTagsOtherApi
+from clicksend.api.contacts_other_api import ContactsOtherApi
+from clicksend.api.default_senders_other_api import DefaultSendersOtherApi
+from clicksend.api.email_other_api import EmailOtherApi
+from clicksend.api.email_to_sms_other_api import EmailToSmsOtherApi
+from clicksend.api.fax_other_api import FaxOtherApi
+from clicksend.api.international_messaging_other_api import InternationalMessagingOtherApi
+from clicksend.api.letters_other_api import LettersOtherApi
+from clicksend.api.lists_other_api import ListsOtherApi
+from clicksend.api.management_other_api import ManagementOtherApi
+from clicksend.api.message_delivery_other_api import MessageDeliveryOtherApi
+from clicksend.api.mms_campaigns_other_api import MmsCampaignsOtherApi
+from clicksend.api.mms_other_api import MmsOtherApi
+from clicksend.api.numbers_other_api import NumbersOtherApi
+from clicksend.api.own_numbers_other_api import OwnNumbersOtherApi
+from clicksend.api.postcards_other_api import PostcardsOtherApi
+from clicksend.api.referrals_other_api import ReferralsOtherApi
+from clicksend.api.reseller_other_api import ResellerOtherApi
+from clicksend.api.sms_campaigns_other_api import SmsCampaignsOtherApi
+from clicksend.api.sms_other_api import SmsOtherApi
+from clicksend.api.statistics_other_api import StatisticsOtherApi
+from clicksend.api.subaccounts_other_api import SubaccountsOtherApi
+from clicksend.api.transactions_other_api import TransactionsOtherApi
+from clicksend.api.uploads_other_api import UploadsOtherApi
+from clicksend.api.url_shortening_other_api import UrlShorteningOtherApi
+from clicksend.api.verification_other_api import VerificationOtherApi
+from clicksend.api.voice_messaging_other_api import VoiceMessagingOtherApi
+from clicksend.api.voice_other_api import VoiceOtherApi
+
