@@ -38,7 +38,7 @@ class TestViewAccountUsageDataSmsInner(unittest.TestCase):
                 subaccount_id = 56,
                 username = '',
                 total_count = '',
-                total_price = ''
+                total_price = 1.337
             )
         else:
             return ViewAccountUsageDataSmsInner(

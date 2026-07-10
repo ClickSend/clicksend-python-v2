@@ -38,7 +38,7 @@ class TestViewAvailableNumbers(unittest.TestCase):
                 http_code = 200,
                 response_code = 'SUCCESS',
                 response_msg = 'Here are some numbers.',
-                data = [{"country":"AU","country_name":"Australia","dedicated_number":"+61280662298","price_setup":"0.0000","price_monthly":"20.7100","price_total":"20.7100","address_requirement":"local"},{"country":"AU","country_name":"Australia","dedicated_number":"+61280662299","price_setup":"0.0000","price_monthly":"20.7100","price_total":"20.7100","address_requirement":"local"}],
+                data = None,
                 currency = clicksend.models.currency.currency(
                     currency_name_short = 'AUD', 
                     currency_prefix_d = '$', 

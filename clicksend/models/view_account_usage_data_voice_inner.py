@@ -17,19 +17,21 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, StrictFloat, StrictInt
-from typing import Any, ClassVar, Dict, List, Optional, Union
+from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr
+from typing import Any, ClassVar, Dict, List, Optional
 from typing import Optional, Set
 from typing_extensions import Self
 from pydantic_core import to_jsonable_python
 
-class ViewVoiceStatisticsDataStatsInnerOutbound(BaseModel):
+class ViewAccountUsageDataVoiceInner(BaseModel):
     """
-    ViewVoiceStatisticsDataStatsInnerOutbound
+    ViewAccountUsageDataVoiceInner
     """ # noqa: E501
-    count: Optional[StrictInt] = Field(default=None, description="The count of outbound calls.", json_schema_extra={"examples": [0]})
-    price: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, description="The price of outbound calls.", json_schema_extra={"examples": [0]})
-    __properties: ClassVar[List[str]] = ["count", "price"]
+    subaccount_id: Optional[StrictInt] = Field(default=None, description="The subaccount identifier.")
+    username: Optional[StrictStr] = Field(default=None, description="The username associated with the subaccount.")
+    total_count: Optional[StrictStr] = Field(default=None, description="The total count of voice calls.")
+    total_price: Optional[StrictStr] = Field(default=None, description="The total price of voice calls.")
+    __properties: ClassVar[List[str]] = ["subaccount_id", "username", "total_count", "total_price"]
 
     model_config = ConfigDict(
         validate_by_name=True,
@@ -49,7 +51,7 @@ class ViewVoiceStatisticsDataStatsInnerOutbound(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of ViewVoiceStatisticsDataStatsInnerOutbound from a JSON string"""
+        """Create an instance of ViewAccountUsageDataVoiceInner from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -74,7 +76,7 @@ class ViewVoiceStatisticsDataStatsInnerOutbound(BaseModel):
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of ViewVoiceStatisticsDataStatsInnerOutbound from a dict"""
+        """Create an instance of ViewAccountUsageDataVoiceInner from a dict"""
         if obj is None:
             return None
 
@@ -82,8 +84,10 @@ class ViewVoiceStatisticsDataStatsInnerOutbound(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "count": obj.get("count"),
-            "price": obj.get("price")
+            "subaccount_id": obj.get("subaccount_id"),
+            "username": obj.get("username"),
+            "total_count": obj.get("total_count"),
+            "total_price": obj.get("total_price")
         })
         return _obj
 

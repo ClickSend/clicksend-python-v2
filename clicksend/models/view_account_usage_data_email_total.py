@@ -19,20 +19,17 @@ import json
 
 from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
-from clicksend.models.view_voice_languages_data_inner import ViewVoiceLanguagesDataInner
 from typing import Optional, Set
 from typing_extensions import Self
 from pydantic_core import to_jsonable_python
 
-class ViewVoiceLanguages(BaseModel):
+class ViewAccountUsageDataEmailTotal(BaseModel):
     """
-    ViewVoiceLanguages
+    ViewAccountUsageDataEmailTotal
     """ # noqa: E501
-    http_code: Optional[StrictInt] = Field(default=None, description="The HTTP status code of the response.", json_schema_extra={"examples": [200]})
-    response_code: Optional[StrictStr] = Field(default=None, description="The response code indicating the status of the operation.", json_schema_extra={"examples": ["SUCCESS"]})
-    response_msg: Optional[StrictStr] = Field(default=None, description="A message describing the outcome of the operation.", json_schema_extra={"examples": ["Here are the possible languages."]})
-    data: Optional[List[ViewVoiceLanguagesDataInner]] = Field(default=None, json_schema_extra={"examples": [[{"code": "en-us", "country": "English, US", "gender": "male"}, {"code": "en-au", "country": "English, Australia", "gender": "female"}]]})
-    __properties: ClassVar[List[str]] = ["http_code", "response_code", "response_msg", "data"]
+    count: Optional[StrictInt] = Field(default=None, description="The total count of emails.")
+    price: Optional[StrictStr] = Field(default=None, description="The total price of emails.")
+    __properties: ClassVar[List[str]] = ["count", "price"]
 
     model_config = ConfigDict(
         validate_by_name=True,
@@ -52,7 +49,7 @@ class ViewVoiceLanguages(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of ViewVoiceLanguages from a JSON string"""
+        """Create an instance of ViewAccountUsageDataEmailTotal from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -73,18 +70,11 @@ class ViewVoiceLanguages(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # override the default output from pydantic by calling `to_dict()` of each item in data (list)
-        _items = []
-        if self.data:
-            for _item_data in self.data:
-                if _item_data:
-                    _items.append(_item_data.to_dict())
-            _dict['data'] = _items
         return _dict
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of ViewVoiceLanguages from a dict"""
+        """Create an instance of ViewAccountUsageDataEmailTotal from a dict"""
         if obj is None:
             return None
 
@@ -92,10 +82,8 @@ class ViewVoiceLanguages(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "http_code": obj.get("http_code"),
-            "response_code": obj.get("response_code"),
-            "response_msg": obj.get("response_msg"),
-            "data": [ViewVoiceLanguagesDataInner.from_dict(_item) for _item in obj["data"]] if obj.get("data") is not None else None
+            "count": obj.get("count"),
+            "price": obj.get("price")
         })
         return _obj
 

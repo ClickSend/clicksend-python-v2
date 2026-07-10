@@ -14,10 +14,10 @@
 
 import unittest
 
-from clicksend.models.view_voice_statistics_data_stats_inner_outbound import ViewVoiceStatisticsDataStatsInnerOutbound
+from clicksend.models.view_available_numbers_data_all_of_data_inner import ViewAvailableNumbersDataAllOfDataInner
 
-class TestViewVoiceStatisticsDataStatsInnerOutbound(unittest.TestCase):
-    """ViewVoiceStatisticsDataStatsInnerOutbound unit test stubs"""
+class TestViewAvailableNumbersDataAllOfDataInner(unittest.TestCase):
+    """ViewAvailableNumbersDataAllOfDataInner unit test stubs"""
 
     def setUp(self):
         pass
@@ -25,26 +25,31 @@ class TestViewVoiceStatisticsDataStatsInnerOutbound(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(self, include_optional) -> ViewVoiceStatisticsDataStatsInnerOutbound:
-        """Test ViewVoiceStatisticsDataStatsInnerOutbound
+    def make_instance(self, include_optional) -> ViewAvailableNumbersDataAllOfDataInner:
+        """Test ViewAvailableNumbersDataAllOfDataInner
             include_optional is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
-        # uncomment below to create an instance of `ViewVoiceStatisticsDataStatsInnerOutbound`
+        # uncomment below to create an instance of `ViewAvailableNumbersDataAllOfDataInner`
         """
-        model = ViewVoiceStatisticsDataStatsInnerOutbound()
+        model = ViewAvailableNumbersDataAllOfDataInner()
         if include_optional:
-            return ViewVoiceStatisticsDataStatsInnerOutbound(
-                count = 0,
-                price = 0
+            return ViewAvailableNumbersDataAllOfDataInner(
+                country = '',
+                country_name = '',
+                dedicated_number = '',
+                price_setup = '',
+                price_monthly = '',
+                price_total = '',
+                address_requirement = ''
             )
         else:
-            return ViewVoiceStatisticsDataStatsInnerOutbound(
+            return ViewAvailableNumbersDataAllOfDataInner(
         )
         """
 
-    def testViewVoiceStatisticsDataStatsInnerOutbound(self):
-        """Test ViewVoiceStatisticsDataStatsInnerOutbound"""
+    def testViewAvailableNumbersDataAllOfDataInner(self):
+        """Test ViewAvailableNumbersDataAllOfDataInner"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
 

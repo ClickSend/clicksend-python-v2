@@ -17,7 +17,7 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, StrictFloat, StrictInt
+from pydantic import BaseModel, ConfigDict, Field, StrictFloat, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional, Union
 from typing import Optional, Set
 from typing_extensions import Self
@@ -28,7 +28,7 @@ class ViewRechargePackagesDataPackagesInner(BaseModel):
     ViewRechargePackagesDataPackagesInner
     """ # noqa: E501
     package_id: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, description="The ID of the package.", json_schema_extra={"examples": [1]})
-    package_price: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, description="The price of the package.", json_schema_extra={"examples": [20]})
+    package_price: Optional[StrictStr] = Field(default=None, description="The price of the package.", json_schema_extra={"examples": ["20"]})
     price_rate: Optional[StrictInt] = Field(default=None, description="The pricing tier used to determine the cost per message.", json_schema_extra={"examples": [0]})
     sms_price: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, description="The price of the SMS.", json_schema_extra={"examples": [0.099]})
     sms_quantity: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, description="The quantity of the SMS.", json_schema_extra={"examples": [202]})

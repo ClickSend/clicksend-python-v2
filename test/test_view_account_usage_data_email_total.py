@@ -14,10 +14,10 @@
 
 import unittest
 
-from clicksend.models.view_voice_statistics_data_stats_inner import ViewVoiceStatisticsDataStatsInner
+from clicksend.models.view_account_usage_data_email_total import ViewAccountUsageDataEmailTotal
 
-class TestViewVoiceStatisticsDataStatsInner(unittest.TestCase):
-    """ViewVoiceStatisticsDataStatsInner unit test stubs"""
+class TestViewAccountUsageDataEmailTotal(unittest.TestCase):
+    """ViewAccountUsageDataEmailTotal unit test stubs"""
 
     def setUp(self):
         pass
@@ -25,30 +25,26 @@ class TestViewVoiceStatisticsDataStatsInner(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(self, include_optional) -> ViewVoiceStatisticsDataStatsInner:
-        """Test ViewVoiceStatisticsDataStatsInner
+    def make_instance(self, include_optional) -> ViewAccountUsageDataEmailTotal:
+        """Test ViewAccountUsageDataEmailTotal
             include_optional is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
-        # uncomment below to create an instance of `ViewVoiceStatisticsDataStatsInner`
+        # uncomment below to create an instance of `ViewAccountUsageDataEmailTotal`
         """
-        model = ViewVoiceStatisticsDataStatsInner()
+        model = ViewAccountUsageDataEmailTotal()
         if include_optional:
-            return ViewVoiceStatisticsDataStatsInner(
-                var_date = 1441065600,
-                outbound = clicksend.models.view_voice_statistics_data_total_outbound.view_voice_statistics_data_total_outbound(
-                    count = 1, 
-                    price = 0, ),
-                bounced = clicksend.models.cancel_all_sms_data.cancel_all_sms_data(
-                    count = 2, )
+            return ViewAccountUsageDataEmailTotal(
+                count = 56,
+                price = ''
             )
         else:
-            return ViewVoiceStatisticsDataStatsInner(
+            return ViewAccountUsageDataEmailTotal(
         )
         """
 
-    def testViewVoiceStatisticsDataStatsInner(self):
-        """Test ViewVoiceStatisticsDataStatsInner"""
+    def testViewAccountUsageDataEmailTotal(self):
+        """Test ViewAccountUsageDataEmailTotal"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
 

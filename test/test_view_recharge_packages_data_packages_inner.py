@@ -36,7 +36,7 @@ class TestViewRechargePackagesDataPackagesInner(unittest.TestCase):
         if include_optional:
             return ViewRechargePackagesDataPackagesInner(
                 package_id = 1,
-                package_price = 20,
+                package_price = '20',
                 price_rate = 0,
                 sms_price = 0.099,
                 sms_quantity = 202,

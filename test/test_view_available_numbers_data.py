@@ -14,10 +14,10 @@
 
 import unittest
 
-from clicksend.models.view_available_numbers_data_inner import ViewAvailableNumbersDataInner
+from clicksend.models.view_available_numbers_data import ViewAvailableNumbersData
 
-class TestViewAvailableNumbersDataInner(unittest.TestCase):
-    """ViewAvailableNumbersDataInner unit test stubs"""
+class TestViewAvailableNumbersData(unittest.TestCase):
+    """ViewAvailableNumbersData unit test stubs"""
 
     def setUp(self):
         pass
@@ -25,31 +25,33 @@ class TestViewAvailableNumbersDataInner(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(self, include_optional) -> ViewAvailableNumbersDataInner:
-        """Test ViewAvailableNumbersDataInner
+    def make_instance(self, include_optional) -> ViewAvailableNumbersData:
+        """Test ViewAvailableNumbersData
             include_optional is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
-        # uncomment below to create an instance of `ViewAvailableNumbersDataInner`
+        # uncomment below to create an instance of `ViewAvailableNumbersData`
         """
-        model = ViewAvailableNumbersDataInner()
+        model = ViewAvailableNumbersData()
         if include_optional:
-            return ViewAvailableNumbersDataInner(
-                country = '',
-                country_name = '',
-                dedicated_number = '',
-                price_setup = '',
-                price_monthly = '',
-                price_total = '',
-                address_requirement = ''
+            return ViewAvailableNumbersData(
+                total = 2,
+                per_page = 15,
+                current_page = 1,
+                last_page = 1,
+                next_page_url = '',
+                prev_page_url = '',
+                var_from = 1,
+                to = 2,
+                data = [{"country":"AU","country_name":"Australia","dedicated_number":"+61280662298","price_setup":"0.0000","price_monthly":"20.7100","price_total":"20.7100","address_requirement":"local"},{"country":"AU","country_name":"Australia","dedicated_number":"+61280662299","price_setup":"0.0000","price_monthly":"20.7100","price_total":"20.7100","address_requirement":"local"}]
             )
         else:
-            return ViewAvailableNumbersDataInner(
+            return ViewAvailableNumbersData(
         )
         """
 
-    def testViewAvailableNumbersDataInner(self):
-        """Test ViewAvailableNumbersDataInner"""
+    def testViewAvailableNumbersData(self):
+        """Test ViewAvailableNumbersData"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
 

@@ -40,8 +40,8 @@ class TestViewSmsStatistics(unittest.TestCase):
                 response_msg = 'Here are your data.',
                 data = clicksend.models.view_sms_statistics_data.view_sms_statistics_data(
                     total = clicksend.models.view_sms_statistics_data_total.view_sms_statistics_data_total(
-                        outbound = clicksend.models.view_voice_statistics_data_stats_inner_outbound.view_voice_statistics_data_stats_inner_outbound(
-                            count = 0, 
+                        outbound = clicksend.models.view_voice_statistics_data_total_outbound.view_voice_statistics_data_total_outbound(
+                            count = 1, 
                             price = 0, ), 
                         inbound = clicksend.models.cancel_all_sms_data.cancel_all_sms_data(
                             count = 2, ), 

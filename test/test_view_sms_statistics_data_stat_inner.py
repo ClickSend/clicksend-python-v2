@@ -36,8 +36,8 @@ class TestViewSmsStatisticsDataStatInner(unittest.TestCase):
         if include_optional:
             return ViewSmsStatisticsDataStatInner(
                 var_date = 1436918400,
-                outbound = clicksend.models.view_voice_statistics_data_stats_inner_outbound.view_voice_statistics_data_stats_inner_outbound(
-                    count = 0, 
+                outbound = clicksend.models.view_voice_statistics_data_total_outbound.view_voice_statistics_data_total_outbound(
+                    count = 1, 
                     price = 0, ),
                 inbound = clicksend.models.cancel_all_sms_data.cancel_all_sms_data(
                     count = 2, ),

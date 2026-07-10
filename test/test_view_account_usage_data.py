@@ -44,9 +44,7 @@ class TestViewAccountUsageData(unittest.TestCase):
                 voice_total = {"count":33,"price":"2.4417"},
                 fax_total = {"count":33,"price":"2.4417"},
                 post_total = {"count":33,"price":"2.4417"},
-                email_total = clicksend.models.view_voice_statistics_data_total_outbound.view_voice_statistics_data_total_outbound(
-                    count = 1, 
-                    price = '0', )
+                email_total = {"count":4990,"price":"9.0020"}
             )
         else:
             return ViewAccountUsageData(

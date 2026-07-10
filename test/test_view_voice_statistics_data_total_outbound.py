@@ -36,7 +36,7 @@ class TestViewVoiceStatisticsDataTotalOutbound(unittest.TestCase):
         if include_optional:
             return ViewVoiceStatisticsDataTotalOutbound(
                 count = 1,
-                price = '0'
+                price = 0
             )
         else:
             return ViewVoiceStatisticsDataTotalOutbound(

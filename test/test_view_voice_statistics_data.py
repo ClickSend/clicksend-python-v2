@@ -38,14 +38,14 @@ class TestViewVoiceStatisticsData(unittest.TestCase):
                 total = clicksend.models.view_voice_statistics_data_total.view_voice_statistics_data_total(
                     outbound = clicksend.models.view_voice_statistics_data_total_outbound.view_voice_statistics_data_total_outbound(
                         count = 1, 
-                        price = '0', ), 
+                        price = 0, ), 
                     bounced = clicksend.models.cancel_all_sms_data.cancel_all_sms_data(
                         count = 2, ), ),
                 stats = [
                     clicksend.models.view_voice_statistics_data_stats_inner.view_voice_statistics_data_stats_inner(
                         date = 1441065600, 
-                        outbound = clicksend.models.view_voice_statistics_data_stats_inner_outbound.view_voice_statistics_data_stats_inner_outbound(
-                            count = 0, 
+                        outbound = clicksend.models.view_voice_statistics_data_total_outbound.view_voice_statistics_data_total_outbound(
+                            count = 1, 
                             price = 0, ), 
                         bounced = clicksend.models.cancel_all_sms_data.cancel_all_sms_data(
                             count = 2, ), )

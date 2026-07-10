@@ -38,7 +38,7 @@ class TestViewRechargePackagesData(unittest.TestCase):
                 packages = [
                     clicksend.models.view_recharge_packages_data_packages_inner.view_recharge_packages_data_packages_inner(
                         package_id = 1, 
-                        package_price = 20, 
+                        package_price = '20', 
                         price_rate = 0, 
                         sms_price = 0.099, 
                         sms_quantity = 202, 

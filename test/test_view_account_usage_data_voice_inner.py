@@ -14,10 +14,10 @@
 
 import unittest
 
-from clicksend.models.view_voice_statistics_data_stats_inner import ViewVoiceStatisticsDataStatsInner
+from clicksend.models.view_account_usage_data_voice_inner import ViewAccountUsageDataVoiceInner
 
-class TestViewVoiceStatisticsDataStatsInner(unittest.TestCase):
-    """ViewVoiceStatisticsDataStatsInner unit test stubs"""
+class TestViewAccountUsageDataVoiceInner(unittest.TestCase):
+    """ViewAccountUsageDataVoiceInner unit test stubs"""
 
     def setUp(self):
         pass
@@ -25,30 +25,28 @@ class TestViewVoiceStatisticsDataStatsInner(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(self, include_optional) -> ViewVoiceStatisticsDataStatsInner:
-        """Test ViewVoiceStatisticsDataStatsInner
+    def make_instance(self, include_optional) -> ViewAccountUsageDataVoiceInner:
+        """Test ViewAccountUsageDataVoiceInner
             include_optional is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
-        # uncomment below to create an instance of `ViewVoiceStatisticsDataStatsInner`
+        # uncomment below to create an instance of `ViewAccountUsageDataVoiceInner`
         """
-        model = ViewVoiceStatisticsDataStatsInner()
+        model = ViewAccountUsageDataVoiceInner()
         if include_optional:
-            return ViewVoiceStatisticsDataStatsInner(
-                var_date = 1441065600,
-                outbound = clicksend.models.view_voice_statistics_data_total_outbound.view_voice_statistics_data_total_outbound(
-                    count = 1, 
-                    price = 0, ),
-                bounced = clicksend.models.cancel_all_sms_data.cancel_all_sms_data(
-                    count = 2, )
+            return ViewAccountUsageDataVoiceInner(
+                subaccount_id = 56,
+                username = '',
+                total_count = '',
+                total_price = ''
             )
         else:
-            return ViewVoiceStatisticsDataStatsInner(
+            return ViewAccountUsageDataVoiceInner(
         )
         """
 
-    def testViewVoiceStatisticsDataStatsInner(self):
-        """Test ViewVoiceStatisticsDataStatsInner"""
+    def testViewAccountUsageDataVoiceInner(self):
+        """Test ViewAccountUsageDataVoiceInner"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
 

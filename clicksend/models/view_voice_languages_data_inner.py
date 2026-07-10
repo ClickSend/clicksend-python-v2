@@ -29,7 +29,7 @@ class ViewVoiceLanguagesDataInner(BaseModel):
     """ # noqa: E501
     code: Optional[StrictStr] = Field(default=None, description="The code of the language.", json_schema_extra={"examples": ["en-us"]})
     country: Optional[StrictStr] = Field(default=None, description="The country of the language.", json_schema_extra={"examples": ["English, US"]})
-    gender: Optional[List[StrictStr]] = Field(default=None, json_schema_extra={"examples": [["male", "female"]]})
+    gender: Optional[StrictStr] = Field(default=None, description="The gender of the language.", json_schema_extra={"examples": ["male"]})
     __properties: ClassVar[List[str]] = ["code", "country", "gender"]
 
     model_config = ConfigDict(

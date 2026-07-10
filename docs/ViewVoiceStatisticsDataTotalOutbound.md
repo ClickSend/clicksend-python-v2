@@ -6,7 +6,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **count** | **int** | The total count of outbound calls. | [optional] 
-**price** | **str** | The total price of outbound calls. | [optional] 
+**price** | **float** | The total price of outbound calls. | [optional] 
 
 ## Example
 

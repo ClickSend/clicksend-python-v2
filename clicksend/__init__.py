@@ -366,8 +366,10 @@ __all__ = [
     "ViewAccountUsage",
     "ViewAccountUsageData",
     "ViewAccountUsageDataEmailInner",
+    "ViewAccountUsageDataEmailTotal",
     "ViewAccountUsageDataSmsInner",
     "ViewAccountUsageDataSmsTotal",
+    "ViewAccountUsageDataVoiceInner",
     "ViewAllEmailCampaigns",
     "ViewAllEmailCampaignsData",
     "ViewAllMmsCampaigns",
@@ -381,7 +383,8 @@ __all__ = [
     "ViewAllowedEmails",
     "ViewAllowedEmailsDataInner",
     "ViewAvailableNumbers",
-    "ViewAvailableNumbersDataInner",
+    "ViewAvailableNumbersData",
+    "ViewAvailableNumbersDataAllOfDataInner",
     "ViewClientAccounts",
     "ViewClientAccountsData",
     "ViewCountries",
@@ -411,6 +414,7 @@ __all__ = [
     "ViewLetterHistory",
     "ViewLetterHistoryData",
     "ViewListContacts",
+    "ViewListContactsData",
     "ViewLists",
     "ViewListsData",
     "ViewMasterEmailTemplate",
@@ -460,6 +464,7 @@ __all__ = [
     "ViewStrippedStringRulesData",
     "ViewStrippedStringRulesDataDataInner",
     "ViewSubaccounts",
+    "ViewSubaccountsData",
     "ViewTemplateCategories",
     "ViewTemplateCategoriesDataInner",
     "ViewTemplateCategory",
@@ -475,7 +480,6 @@ __all__ = [
     "ViewVoiceStatistics",
     "ViewVoiceStatisticsData",
     "ViewVoiceStatisticsDataStatsInner",
-    "ViewVoiceStatisticsDataStatsInnerOutbound",
     "ViewVoiceStatisticsDataTotal",
     "ViewVoiceStatisticsDataTotalOutbound",
     "ViewYourNumbers",
@@ -842,8 +846,10 @@ from clicksend.models.view_account_details import ViewAccountDetails as ViewAcco
 from clicksend.models.view_account_usage import ViewAccountUsage as ViewAccountUsage
 from clicksend.models.view_account_usage_data import ViewAccountUsageData as ViewAccountUsageData
 from clicksend.models.view_account_usage_data_email_inner import ViewAccountUsageDataEmailInner as ViewAccountUsageDataEmailInner
+from clicksend.models.view_account_usage_data_email_total import ViewAccountUsageDataEmailTotal as ViewAccountUsageDataEmailTotal
 from clicksend.models.view_account_usage_data_sms_inner import ViewAccountUsageDataSmsInner as ViewAccountUsageDataSmsInner
 from clicksend.models.view_account_usage_data_sms_total import ViewAccountUsageDataSmsTotal as ViewAccountUsageDataSmsTotal
+from clicksend.models.view_account_usage_data_voice_inner import ViewAccountUsageDataVoiceInner as ViewAccountUsageDataVoiceInner
 from clicksend.models.view_all_email_campaigns import ViewAllEmailCampaigns as ViewAllEmailCampaigns
 from clicksend.models.view_all_email_campaigns_data import ViewAllEmailCampaignsData as ViewAllEmailCampaignsData
 from clicksend.models.view_all_mms_campaigns import ViewAllMmsCampaigns as ViewAllMmsCampaigns
@@ -857,7 +863,8 @@ from clicksend.models.view_allowed_email_addresses_data import ViewAllowedEmailA
 from clicksend.models.view_allowed_emails import ViewAllowedEmails as ViewAllowedEmails
 from clicksend.models.view_allowed_emails_data_inner import ViewAllowedEmailsDataInner as ViewAllowedEmailsDataInner
 from clicksend.models.view_available_numbers import ViewAvailableNumbers as ViewAvailableNumbers
-from clicksend.models.view_available_numbers_data_inner import ViewAvailableNumbersDataInner as ViewAvailableNumbersDataInner
+from clicksend.models.view_available_numbers_data import ViewAvailableNumbersData as ViewAvailableNumbersData
+from clicksend.models.view_available_numbers_data_all_of_data_inner import ViewAvailableNumbersDataAllOfDataInner as ViewAvailableNumbersDataAllOfDataInner
 from clicksend.models.view_client_accounts import ViewClientAccounts as ViewClientAccounts
 from clicksend.models.view_client_accounts_data import ViewClientAccountsData as ViewClientAccountsData
 from clicksend.models.view_countries import ViewCountries as ViewCountries
@@ -887,6 +894,7 @@ from clicksend.models.view_inbound_sms_data import ViewInboundSmsData as ViewInb
 from clicksend.models.view_letter_history import ViewLetterHistory as ViewLetterHistory
 from clicksend.models.view_letter_history_data import ViewLetterHistoryData as ViewLetterHistoryData
 from clicksend.models.view_list_contacts import ViewListContacts as ViewListContacts
+from clicksend.models.view_list_contacts_data import ViewListContactsData as ViewListContactsData
 from clicksend.models.view_lists import ViewLists as ViewLists
 from clicksend.models.view_lists_data import ViewListsData as ViewListsData
 from clicksend.models.view_master_email_template import ViewMasterEmailTemplate as ViewMasterEmailTemplate
@@ -936,6 +944,7 @@ from clicksend.models.view_stripped_string_rules import ViewStrippedStringRules 
 from clicksend.models.view_stripped_string_rules_data import ViewStrippedStringRulesData as ViewStrippedStringRulesData
 from clicksend.models.view_stripped_string_rules_data_data_inner import ViewStrippedStringRulesDataDataInner as ViewStrippedStringRulesDataDataInner
 from clicksend.models.view_subaccounts import ViewSubaccounts as ViewSubaccounts
+from clicksend.models.view_subaccounts_data import ViewSubaccountsData as ViewSubaccountsData
 from clicksend.models.view_template_categories import ViewTemplateCategories as ViewTemplateCategories
 from clicksend.models.view_template_categories_data_inner import ViewTemplateCategoriesDataInner as ViewTemplateCategoriesDataInner
 from clicksend.models.view_template_category import ViewTemplateCategory as ViewTemplateCategory
@@ -951,7 +960,6 @@ from clicksend.models.view_voice_receipts_data import ViewVoiceReceiptsData as V
 from clicksend.models.view_voice_statistics import ViewVoiceStatistics as ViewVoiceStatistics
 from clicksend.models.view_voice_statistics_data import ViewVoiceStatisticsData as ViewVoiceStatisticsData
 from clicksend.models.view_voice_statistics_data_stats_inner import ViewVoiceStatisticsDataStatsInner as ViewVoiceStatisticsDataStatsInner
-from clicksend.models.view_voice_statistics_data_stats_inner_outbound import ViewVoiceStatisticsDataStatsInnerOutbound as ViewVoiceStatisticsDataStatsInnerOutbound
 from clicksend.models.view_voice_statistics_data_total import ViewVoiceStatisticsDataTotal as ViewVoiceStatisticsDataTotal
 from clicksend.models.view_voice_statistics_data_total_outbound import ViewVoiceStatisticsDataTotalOutbound as ViewVoiceStatisticsDataTotalOutbound
 from clicksend.models.view_your_numbers import ViewYourNumbers as ViewYourNumbers

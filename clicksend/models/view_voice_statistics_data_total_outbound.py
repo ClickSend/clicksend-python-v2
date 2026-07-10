@@ -17,8 +17,8 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr
-from typing import Any, ClassVar, Dict, List, Optional
+from pydantic import BaseModel, ConfigDict, Field, StrictFloat, StrictInt
+from typing import Any, ClassVar, Dict, List, Optional, Union
 from typing import Optional, Set
 from typing_extensions import Self
 from pydantic_core import to_jsonable_python
@@ -28,7 +28,7 @@ class ViewVoiceStatisticsDataTotalOutbound(BaseModel):
     ViewVoiceStatisticsDataTotalOutbound
     """ # noqa: E501
     count: Optional[StrictInt] = Field(default=None, description="The total count of outbound calls.", json_schema_extra={"examples": [1]})
-    price: Optional[StrictStr] = Field(default=None, description="The total price of outbound calls.", json_schema_extra={"examples": ["0"]})
+    price: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, description="The total price of outbound calls.", json_schema_extra={"examples": [0]})
     __properties: ClassVar[List[str]] = ["count", "price"]
 
     model_config = ConfigDict(

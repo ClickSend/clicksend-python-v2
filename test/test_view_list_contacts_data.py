@@ -14,10 +14,10 @@
 
 import unittest
 
-from clicksend.models.view_sms_history_data import ViewSmsHistoryData
+from clicksend.models.view_list_contacts_data import ViewListContactsData
 
-class TestViewSmsHistoryData(unittest.TestCase):
-    """ViewSmsHistoryData unit test stubs"""
+class TestViewListContactsData(unittest.TestCase):
+    """ViewListContactsData unit test stubs"""
 
     def setUp(self):
         pass
@@ -25,16 +25,16 @@ class TestViewSmsHistoryData(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(self, include_optional) -> ViewSmsHistoryData:
-        """Test ViewSmsHistoryData
+    def make_instance(self, include_optional) -> ViewListContactsData:
+        """Test ViewListContactsData
             include_optional is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
-        # uncomment below to create an instance of `ViewSmsHistoryData`
+        # uncomment below to create an instance of `ViewListContactsData`
         """
-        model = ViewSmsHistoryData()
+        model = ViewListContactsData()
         if include_optional:
-            return ViewSmsHistoryData(
+            return ViewListContactsData(
                 total = 2,
                 per_page = 15,
                 current_page = 1,
@@ -44,41 +44,37 @@ class TestViewSmsHistoryData(unittest.TestCase):
                 var_from = 1,
                 to = 2,
                 data = [
-                    clicksend.models.view_sms_history_data_all_of_data_inner.view_sms_history_data_allOf_data_inner(
-                        direction = 'out', 
-                        date = 1436932432, 
-                        to = '+16783270696', 
-                        body = 'Chocolate bar icing icing oat cake carrot cake jelly cotton 1iQByXxdLN.', 
-                        status = 'Completed', 
-                        from = 'sendlist', 
-                        schedule = '1436879372', 
-                        status_code = '', 
-                        status_text = '', 
-                        error_code = '', 
-                        error_text = '', 
-                        message_id = '4E90F4C3-43A3-489D-9AB8-DA1F4332A0C3', 
-                        message_parts = '1.00', 
-                        message_price = '0.070000', 
-                        from_email = '', 
-                        list_id = '', 
-                        custom_string = 'this is a test', 
-                        contact_id = '1', 
-                        user_id = 1, 
-                        subaccount_id = 1, 
-                        country = 'US', 
-                        carrier = '', 
+                    clicksend.models.contact.contact(
+                        contact_id = 552786, 
+                        list_id = 428, 
+                        phone_number = '+16783270696', 
                         first_name = 'John', 
                         last_name = 'Doe', 
-                        _api_username = 'johndoe', )
+                        custom_1 = 'Custom 1', 
+                        custom_2 = 'Custom 2', 
+                        custom_3 = 'Custom 3', 
+                        custom_4 = 'Custom 4', 
+                        date_added = '2015-07-05T14:51:26Z', 
+                        date_updated = '2015-07-05T14:51:26Z', 
+                        fax_number = '+61477141888', 
+                        organization_name = 'Awesome Company', 
+                        email = 'john@doe.com', 
+                        address_line_1 = '1554 Buffalo Creek Road', 
+                        address_line_2 = '', 
+                        address_city = 'Nashville', 
+                        address_state = 'TN', 
+                        address_postal_code = '37214', 
+                        address_country = 'US', 
+                        _list_name = 'List6eaG4lGIc9', )
                     ]
             )
         else:
-            return ViewSmsHistoryData(
+            return ViewListContactsData(
         )
         """
 
-    def testViewSmsHistoryData(self):
-        """Test ViewSmsHistoryData"""
+    def testViewListContactsData(self):
+        """Test ViewListContactsData"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
 

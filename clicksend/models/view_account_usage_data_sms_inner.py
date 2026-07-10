@@ -17,8 +17,8 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr
-from typing import Any, ClassVar, Dict, List, Optional
+from pydantic import BaseModel, ConfigDict, Field, StrictFloat, StrictInt, StrictStr
+from typing import Any, ClassVar, Dict, List, Optional, Union
 from typing import Optional, Set
 from typing_extensions import Self
 from pydantic_core import to_jsonable_python
@@ -30,7 +30,7 @@ class ViewAccountUsageDataSmsInner(BaseModel):
     subaccount_id: Optional[StrictInt] = Field(default=None, description="The subaccount identifier.")
     username: Optional[StrictStr] = Field(default=None, description="The username associated with the subaccount.")
     total_count: Optional[StrictStr] = Field(default=None, description="The total count of SMS.")
-    total_price: Optional[StrictStr] = Field(default=None, description="The total price of SMS.")
+    total_price: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, description="The total price of SMS.")
     __properties: ClassVar[List[str]] = ["subaccount_id", "username", "total_count", "total_price"]
 
     model_config = ConfigDict(

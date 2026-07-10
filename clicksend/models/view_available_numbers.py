@@ -20,7 +20,7 @@ import json
 from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from clicksend.models.currency import Currency
-from clicksend.models.view_available_numbers_data_inner import ViewAvailableNumbersDataInner
+from clicksend.models.view_available_numbers_data import ViewAvailableNumbersData
 from typing import Optional, Set
 from typing_extensions import Self
 from pydantic_core import to_jsonable_python
@@ -32,7 +32,7 @@ class ViewAvailableNumbers(BaseModel):
     http_code: Optional[StrictInt] = Field(default=None, description="The HTTP status code of the response.", json_schema_extra={"examples": [200]})
     response_code: Optional[StrictStr] = Field(default=None, description="The response code indicating the status of the operation.", json_schema_extra={"examples": ["SUCCESS"]})
     response_msg: Optional[StrictStr] = Field(default=None, description="A message describing the outcome of the operation.", json_schema_extra={"examples": ["Here are some numbers."]})
-    data: Optional[List[ViewAvailableNumbersDataInner]] = Field(default=None, json_schema_extra={"examples": [[{"country": "AU", "country_name": "Australia", "dedicated_number": "+61280662298", "price_setup": "0.0000", "price_monthly": "20.7100", "price_total": "20.7100", "address_requirement": "local"}, {"country": "AU", "country_name": "Australia", "dedicated_number": "+61280662299", "price_setup": "0.0000", "price_monthly": "20.7100", "price_total": "20.7100", "address_requirement": "local"}]]})
+    data: Optional[ViewAvailableNumbersData] = None
     currency: Optional[Currency] = Field(default=None, alias="_currency")
     __properties: ClassVar[List[str]] = ["http_code", "response_code", "response_msg", "data", "_currency"]
 
@@ -75,13 +75,9 @@ class ViewAvailableNumbers(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # override the default output from pydantic by calling `to_dict()` of each item in data (list)
-        _items = []
+        # override the default output from pydantic by calling `to_dict()` of data
         if self.data:
-            for _item_data in self.data:
-                if _item_data:
-                    _items.append(_item_data.to_dict())
-            _dict['data'] = _items
+            _dict['data'] = self.data.to_dict()
         # override the default output from pydantic by calling `to_dict()` of currency
         if self.currency:
             _dict['_currency'] = self.currency.to_dict()
@@ -100,7 +96,7 @@ class ViewAvailableNumbers(BaseModel):
             "http_code": obj.get("http_code"),
             "response_code": obj.get("response_code"),
             "response_msg": obj.get("response_msg"),
-            "data": [ViewAvailableNumbersDataInner.from_dict(_item) for _item in obj["data"]] if obj.get("data") is not None else None,
+            "data": ViewAvailableNumbersData.from_dict(obj["data"]) if obj.get("data") is not None else None,
             "_currency": Currency.from_dict(obj["_currency"]) if obj.get("_currency") is not None else None
         })
         return _obj

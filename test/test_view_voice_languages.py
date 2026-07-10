@@ -38,7 +38,7 @@ class TestViewVoiceLanguages(unittest.TestCase):
                 http_code = 200,
                 response_code = 'SUCCESS',
                 response_msg = 'Here are the possible languages.',
-                data = [{"code":"en-us","country":"English, US","gender":["male","female"]},{"code":"en-au","country":"English, Australia","gender":["male","female"]}]
+                data = [{"code":"en-us","country":"English, US","gender":"male"},{"code":"en-au","country":"English, Australia","gender":"female"}]
             )
         else:
             return ViewVoiceLanguages(

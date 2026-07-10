@@ -38,7 +38,7 @@ class TestViewListContacts(unittest.TestCase):
                 http_code = 200,
                 response_code = 'SUCCESS',
                 response_msg = 'Here's your list of contacts.',
-                data = [{"contact_id":552786,"list_id":428,"phone_number":"+16783270696","first_name":"Ellen","last_name":"Diaz","custom_1":"","custom_2":"","custom_3":"","custom_4":"","date_added":"1436157486","date_updated":"1436157486","fax_number":null,"organization_name":null,"email":null,"address_line_1":null,"address_line_2":null,"address_city":null,"address_state":null,"address_postal_code":null,"address_country":null,"_list_name":"List6eaG4lGIc9"},{"contact_id":552787,"list_id":428,"phone_number":"+16783270697","first_name":"Ellen","last_name":"Diaz","custom_1":"","custom_2":"","custom_3":"","custom_4":"","date_added":"1436157925","date_updated":"1436157925","fax_number":null,"organization_name":null,"email":null,"address_line_1":null,"address_line_2":null,"address_city":null,"address_state":null,"address_postal_code":null,"address_country":null,"_list_name":"List6eaG4lGIc9"}]
+                data = None
             )
         else:
             return ViewListContacts(

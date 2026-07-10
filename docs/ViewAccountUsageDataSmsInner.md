@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **subaccount_id** | **int** | The subaccount identifier. | [optional] 
 **username** | **str** | The username associated with the subaccount. | [optional] 
 **total_count** | **str** | The total count of SMS. | [optional] 
-**total_price** | **str** | The total price of SMS. | [optional] 
+**total_price** | **float** | The total price of SMS. | [optional] 
 
 ## Example
 

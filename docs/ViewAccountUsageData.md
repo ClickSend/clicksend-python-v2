@@ -6,15 +6,15 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **sms** | [**List[ViewAccountUsageDataSmsInner]**](ViewAccountUsageDataSmsInner.md) |  | [optional] 
-**voice** | [**List[ViewAccountUsageDataSmsInner]**](ViewAccountUsageDataSmsInner.md) |  | [optional] 
-**fax** | [**List[ViewAccountUsageDataSmsInner]**](ViewAccountUsageDataSmsInner.md) |  | [optional] 
-**post** | [**List[ViewAccountUsageDataSmsInner]**](ViewAccountUsageDataSmsInner.md) |  | [optional] 
+**voice** | [**List[ViewAccountUsageDataVoiceInner]**](ViewAccountUsageDataVoiceInner.md) |  | [optional] 
+**fax** | [**List[ViewAccountUsageDataVoiceInner]**](ViewAccountUsageDataVoiceInner.md) |  | [optional] 
+**post** | [**List[ViewAccountUsageDataVoiceInner]**](ViewAccountUsageDataVoiceInner.md) |  | [optional] 
 **email** | [**List[ViewAccountUsageDataEmailInner]**](ViewAccountUsageDataEmailInner.md) |  | [optional] 
 **sms_total** | [**ViewAccountUsageDataSmsTotal**](ViewAccountUsageDataSmsTotal.md) |  | [optional] 
 **voice_total** | [**ViewAccountUsageDataSmsTotal**](ViewAccountUsageDataSmsTotal.md) |  | [optional] 
 **fax_total** | [**ViewAccountUsageDataSmsTotal**](ViewAccountUsageDataSmsTotal.md) |  | [optional] 
 **post_total** | [**ViewAccountUsageDataSmsTotal**](ViewAccountUsageDataSmsTotal.md) |  | [optional] 
-**email_total** | [**ViewVoiceStatisticsDataTotalOutbound**](ViewVoiceStatisticsDataTotalOutbound.md) |  | [optional] 
+**email_total** | [**ViewAccountUsageDataEmailTotal**](ViewAccountUsageDataEmailTotal.md) |  | [optional] 
 
 ## Example
 

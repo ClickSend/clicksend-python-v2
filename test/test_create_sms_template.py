@@ -35,7 +35,7 @@ class TestCreateSmsTemplate(unittest.TestCase):
         model = CreateSmsTemplate()
         if include_optional:
             return CreateSmsTemplate(
-                http_code = '200',
+                http_code = 200,
                 response_code = 'SUCCESS',
                 response_msg = 'New template has been saved.',
                 data = clicksend.models.sms_template.sms_template(

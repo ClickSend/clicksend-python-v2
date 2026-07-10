@@ -42,7 +42,7 @@ class TestViewVoiceStatistics(unittest.TestCase):
                     total = clicksend.models.view_voice_statistics_data_total.view_voice_statistics_data_total(
                         outbound = clicksend.models.view_voice_statistics_data_total_outbound.view_voice_statistics_data_total_outbound(
                             count = 1, 
-                            price = '0', ), 
+                            price = 0, ), 
                         bounced = clicksend.models.cancel_all_sms_data.cancel_all_sms_data(
                             count = 2, ), ), 
                     stats = [

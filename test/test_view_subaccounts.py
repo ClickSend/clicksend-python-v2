@@ -38,30 +38,7 @@ class TestViewSubaccounts(unittest.TestCase):
                 http_code = 200,
                 response_code = 'SUCCESS',
                 response_msg = 'SUCCESS',
-                data = [
-                    clicksend.models.subaccount.subaccount(
-                        subaccount_id = 126, 
-                        api_username = 'johndoe1', 
-                        email = 'johndoe1@awesome.com', 
-                        phone_number = '+15184811001', 
-                        first_name = 'John', 
-                        last_name = 'Doe', 
-                        api_key = 'F3702045-EB2C-0091-C211-7728048DCAE2', 
-                        access_users = 1, 
-                        access_billing = 1, 
-                        access_reporting = 1, 
-                        access_contacts = 1, 
-                        access_settings = 1, 
-                        access_sms = 1, 
-                        access_email = 1, 
-                        access_voice = 1, 
-                        access_fax = 1, 
-                        access_post = 1, 
-                        access_reseller = 1, 
-                        access_mms = 1, 
-                        share_campaigns = 0, 
-                        notes = '', )
-                    ]
+                data = None
             )
         else:
             return ViewSubaccounts(

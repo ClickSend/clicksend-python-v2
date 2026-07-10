@@ -14,10 +14,10 @@
 
 import unittest
 
-from clicksend.models.view_voice_statistics_data_stats_inner import ViewVoiceStatisticsDataStatsInner
+from clicksend.models.view_subaccounts_data import ViewSubaccountsData
 
-class TestViewVoiceStatisticsDataStatsInner(unittest.TestCase):
-    """ViewVoiceStatisticsDataStatsInner unit test stubs"""
+class TestViewSubaccountsData(unittest.TestCase):
+    """ViewSubaccountsData unit test stubs"""
 
     def setUp(self):
         pass
@@ -25,30 +25,56 @@ class TestViewVoiceStatisticsDataStatsInner(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(self, include_optional) -> ViewVoiceStatisticsDataStatsInner:
-        """Test ViewVoiceStatisticsDataStatsInner
+    def make_instance(self, include_optional) -> ViewSubaccountsData:
+        """Test ViewSubaccountsData
             include_optional is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
-        # uncomment below to create an instance of `ViewVoiceStatisticsDataStatsInner`
+        # uncomment below to create an instance of `ViewSubaccountsData`
         """
-        model = ViewVoiceStatisticsDataStatsInner()
+        model = ViewSubaccountsData()
         if include_optional:
-            return ViewVoiceStatisticsDataStatsInner(
-                var_date = 1441065600,
-                outbound = clicksend.models.view_voice_statistics_data_total_outbound.view_voice_statistics_data_total_outbound(
-                    count = 1, 
-                    price = 0, ),
-                bounced = clicksend.models.cancel_all_sms_data.cancel_all_sms_data(
-                    count = 2, )
+            return ViewSubaccountsData(
+                total = 2,
+                per_page = 15,
+                current_page = 1,
+                last_page = 1,
+                next_page_url = '',
+                prev_page_url = '',
+                var_from = 1,
+                to = 2,
+                data = [
+                    clicksend.models.subaccount.subaccount(
+                        subaccount_id = 126, 
+                        api_username = 'johndoe1', 
+                        email = 'johndoe1@awesome.com', 
+                        phone_number = '+15184811001', 
+                        first_name = 'John', 
+                        last_name = 'Doe', 
+                        api_key = 'F3702045-EB2C-0091-C211-7728048DCAE2', 
+                        access_users = 1, 
+                        access_billing = 1, 
+                        access_reporting = 1, 
+                        access_contacts = 1, 
+                        access_settings = 1, 
+                        access_sms = 1, 
+                        access_email = 1, 
+                        access_voice = 1, 
+                        access_fax = 1, 
+                        access_post = 1, 
+                        access_reseller = 1, 
+                        access_mms = 1, 
+                        share_campaigns = 0, 
+                        notes = '', )
+                    ]
             )
         else:
-            return ViewVoiceStatisticsDataStatsInner(
+            return ViewSubaccountsData(
         )
         """
 
-    def testViewVoiceStatisticsDataStatsInner(self):
-        """Test ViewVoiceStatisticsDataStatsInner"""
+    def testViewSubaccountsData(self):
+        """Test ViewSubaccountsData"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
 

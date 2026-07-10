@@ -17,8 +17,8 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictFloat, StrictInt, StrictStr
-from typing import Any, ClassVar, Dict, List, Optional, Union
+from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictInt, StrictStr
+from typing import Any, ClassVar, Dict, List, Optional
 from typing import Optional, Set
 from typing_extensions import Self
 from pydantic_core import to_jsonable_python
@@ -31,10 +31,10 @@ class Sms(BaseModel):
     to: Optional[StrictStr] = Field(default=None, description="The phone number of the recipient. It should be in <a href=\"https://en.wikipedia.org/wiki/E.164\" target=\"_blank\">E.164 format</a>.", json_schema_extra={"examples": ["+61411111111"]})
     body: Optional[StrictStr] = Field(default=None, description="The message sent. The price of sending a message depends on the number of characters and the type of message. There are two types:  - Standard message - Contains only characters in the <a href=\"https://en.wikipedia.org/wiki/GSM_03.38\" target=\"_blank\">GSM</a> set, with a maximum of 160 characters.      - Unicode message - Contains characters outside the <a href=\"https://en.wikipedia.org/wiki/GSM_03.38\" target=\"_blank\">GSM</a> set, with a maximum of 70 characters.       Longer messages will be sent as multiple messages (parts), but the recipient will receive them as a single long message. Visit <a href=\"https://help.clicksend.com/article/h474eseq3a-how-many-characters-can-i-send-in-an-sms\" target=\"_blank\">this page</a> to learn more about the number of characters per message, and <a href=\"http://smscharactercount.com/\" target=\"_blank\">this page</a> to count the number of characters.", json_schema_extra={"examples": ["Jelly liquorice marshmallow candy carrot cake 4Eyffjs1vL."]})
     var_from: Optional[StrictStr] = Field(default=None, description="The sender of the message. This is also referred to as the **Sender ID**. If your **Sender ID** has a different country code to the recipient’s, it'll be replaced by a local number, except in <a href=\"https://help.clicksend.com/category/mfdctha7f0-country-specific-features-and-restrictions\" target=\"_blank\">certain countries</a>. If the sender number is blocked, a different number will replace it.", alias="from", json_schema_extra={"examples": ["sendmobile"]})
-    schedule: Optional[StrictInt] = Field(default=None, description="The scheduled date of the message. It is in <a href=\"http://help.clicksend.com/what-is-a-unix-timestamp\" target=\"_blank\">Unix format</a>.", json_schema_extra={"examples": [1436874701]})
+    schedule: Optional[StrictStr] = Field(default=None, description="The scheduled date of the message. It is in <a href=\"http://help.clicksend.com/what-is-a-unix-timestamp\" target=\"_blank\">Unix format</a>.", json_schema_extra={"examples": ["1436874701"]})
     message_id: Optional[StrictStr] = Field(default=None, description="The generated ID of the message. This ID is typically used as a reference for <a href=\"https://www.clicksend.com/au/help/\" target=\"_blank\">customer support</a> in case of any issues.", json_schema_extra={"examples": ["BF7AD270-0DE2-418B-B606-71D527D9C1AE"]})
     message_parts: Optional[StrictInt] = Field(default=None, description="The number of parts the message was broken into. To look at how many parts your message is broken down into, use the **<a href=\"http://smscharactercount.com/\">SMS Character Count</a>**.", json_schema_extra={"examples": [1]})
-    message_price: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, description="The price of this message. This depends on the total number of parts of the message.", json_schema_extra={"examples": [0.07]})
+    message_price: Optional[StrictStr] = Field(default=None, description="The price of this message. This depends on the total number of parts of the message.", json_schema_extra={"examples": ["0.07"]})
     custom_string: Optional[StrictStr] = Field(default=None, description="A note that was sent from the request.", json_schema_extra={"examples": ["this is a test"]})
     contact_id: Optional[StrictStr] = Field(default=None, description="This is the ID of the contact. This parameter will have a **null** value if you didn’t provide a _contact_id_ in the request.", json_schema_extra={"examples": ["52649412"]})
     is_shared_system_number: Optional[StrictBool] = Field(default=None, description="Indicates whether you use a shared number to send a message:  - **True** \\- if the sender is randomly selected.      - **False** \\- if the sender is specified and passed the validation process.", json_schema_extra={"examples": [False]})

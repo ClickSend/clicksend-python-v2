@@ -19,20 +19,25 @@ import json
 
 from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
-from clicksend.models.view_voice_languages_data_inner import ViewVoiceLanguagesDataInner
+from clicksend.models.contact import Contact
 from typing import Optional, Set
 from typing_extensions import Self
 from pydantic_core import to_jsonable_python
 
-class ViewVoiceLanguages(BaseModel):
+class ViewListContactsData(BaseModel):
     """
-    ViewVoiceLanguages
+    ViewListContactsData
     """ # noqa: E501
-    http_code: Optional[StrictInt] = Field(default=None, description="The HTTP status code of the response.", json_schema_extra={"examples": [200]})
-    response_code: Optional[StrictStr] = Field(default=None, description="The response code indicating the status of the operation.", json_schema_extra={"examples": ["SUCCESS"]})
-    response_msg: Optional[StrictStr] = Field(default=None, description="A message describing the outcome of the operation.", json_schema_extra={"examples": ["Here are the possible languages."]})
-    data: Optional[List[ViewVoiceLanguagesDataInner]] = Field(default=None, json_schema_extra={"examples": [[{"code": "en-us", "country": "English, US", "gender": "male"}, {"code": "en-au", "country": "English, Australia", "gender": "female"}]]})
-    __properties: ClassVar[List[str]] = ["http_code", "response_code", "response_msg", "data"]
+    total: Optional[StrictInt] = Field(default=None, description="The total number of items available for viewing.", json_schema_extra={"examples": [2]})
+    per_page: Optional[StrictInt] = Field(default=None, description="The number of items returned per page. This is specified in the limit parameter. You can have 100 items at maximum, and 15 at minimum.", json_schema_extra={"examples": [15]})
+    current_page: Optional[StrictInt] = Field(default=None, description="The current page number.", json_schema_extra={"examples": [1]})
+    last_page: Optional[StrictInt] = Field(default=None, description="The last page number.", json_schema_extra={"examples": [1]})
+    next_page_url: Optional[StrictStr] = Field(default=None, description="A URL of the next page. It will return **null** if there’s no next page.")
+    prev_page_url: Optional[StrictStr] = Field(default=None, description="A URL of the previous page. It will return **null** if there’s no previous page.")
+    var_from: Optional[StrictInt] = Field(default=None, description="The number of the first result in the current page.", alias="from", json_schema_extra={"examples": [1]})
+    to: Optional[StrictInt] = Field(default=None, description="The number of the last result in the current page.", json_schema_extra={"examples": [2]})
+    data: Optional[List[Contact]] = None
+    __properties: ClassVar[List[str]] = ["total", "per_page", "current_page", "last_page", "next_page_url", "prev_page_url", "from", "to", "data"]
 
     model_config = ConfigDict(
         validate_by_name=True,
@@ -52,7 +57,7 @@ class ViewVoiceLanguages(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of ViewVoiceLanguages from a JSON string"""
+        """Create an instance of ViewListContactsData from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -80,11 +85,21 @@ class ViewVoiceLanguages(BaseModel):
                 if _item_data:
                     _items.append(_item_data.to_dict())
             _dict['data'] = _items
+        # set to None if next_page_url (nullable) is None
+        # and model_fields_set contains the field
+        if self.next_page_url is None and "next_page_url" in self.model_fields_set:
+            _dict['next_page_url'] = None
+
+        # set to None if prev_page_url (nullable) is None
+        # and model_fields_set contains the field
+        if self.prev_page_url is None and "prev_page_url" in self.model_fields_set:
+            _dict['prev_page_url'] = None
+
         return _dict
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of ViewVoiceLanguages from a dict"""
+        """Create an instance of ViewListContactsData from a dict"""
         if obj is None:
             return None
 
@@ -92,10 +107,15 @@ class ViewVoiceLanguages(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "http_code": obj.get("http_code"),
-            "response_code": obj.get("response_code"),
-            "response_msg": obj.get("response_msg"),
-            "data": [ViewVoiceLanguagesDataInner.from_dict(_item) for _item in obj["data"]] if obj.get("data") is not None else None
+            "total": obj.get("total"),
+            "per_page": obj.get("per_page"),
+            "current_page": obj.get("current_page"),
+            "last_page": obj.get("last_page"),
+            "next_page_url": obj.get("next_page_url"),
+            "prev_page_url": obj.get("prev_page_url"),
+            "from": obj.get("from"),
+            "to": obj.get("to"),
+            "data": [Contact.from_dict(_item) for _item in obj["data"]] if obj.get("data") is not None else None
         })
         return _obj
 

@@ -6,7 +6,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **var_date** | **float** | The date. | [optional] 
-**outbound** | [**ViewVoiceStatisticsDataStatsInnerOutbound**](ViewVoiceStatisticsDataStatsInnerOutbound.md) |  | [optional] 
+**outbound** | [**ViewVoiceStatisticsDataTotalOutbound**](ViewVoiceStatisticsDataTotalOutbound.md) |  | [optional] 
 **inbound** | [**CancelAllSmsData**](CancelAllSmsData.md) |  | [optional] 
 **bounced** | [**CancelAllSmsData**](CancelAllSmsData.md) |  | [optional] 
 

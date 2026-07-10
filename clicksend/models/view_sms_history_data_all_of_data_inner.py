@@ -17,8 +17,8 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, StrictFloat, StrictInt, StrictStr
-from typing import Any, ClassVar, Dict, List, Optional, Union
+from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr
+from typing import Any, ClassVar, Dict, List, Optional
 from typing import Optional, Set
 from typing_extensions import Self
 from pydantic_core import to_jsonable_python
@@ -33,14 +33,14 @@ class ViewSmsHistoryDataAllOfDataInner(BaseModel):
     body: Optional[StrictStr] = Field(default=None, description="The message sent.", json_schema_extra={"examples": ["Chocolate bar icing icing oat cake carrot cake jelly cotton 1iQByXxdLN."]})
     status: Optional[StrictStr] = Field(default=None, description="The status of the SMS. It can either be:  - _Queued_ - _Completed_ - _Scheduled_ - _WaitApproval_ - _Failed_ - _Cancelled_ - _CancelledAfterReview_ - _Received_ - _Sent_  This parameter reflects the actual status of the SMS. It is based on the  status of the SMS sent from the <a href=\"https://en.wikipedia.org/wiki/SMS_gateway\" target=\"_blank\">SMS gateway</a>, which is different  from the [API status code](https://developers-dev.clicksend.net/docs/#status-codes). Visit <a href=\"https://help.clicksend.com/article/8cc479qlbb-list-of-sms-gateway-error-codes\" target=\"_blank\">this page</a> for more information.", json_schema_extra={"examples": ["Completed"]})
     var_from: Optional[StrictStr] = Field(default=None, description="The sender of the message.", alias="from", json_schema_extra={"examples": ["sendlist"]})
-    schedule: Optional[StrictInt] = Field(default=None, description="The scheduled date of the message. It is in <a href=\"http://help.clicksend.com/what-is-a-unix-timestamp\" target=\"_blank\">Unix format</a>.", json_schema_extra={"examples": [1436879372]})
-    status_code: Optional[StrictInt] = Field(default=None, description="The status code sent from the <a href=\"https://en.wikipedia.org/wiki/SMS_gateway\" target=\"_blank\">SMS gateway</a>. Visit <a href=\"https://help.clicksend.com/article/8cc479qlbb-list-of-sms-gateway-error-codes\" target=\"_blank\">this page</a> for more information.")
+    schedule: Optional[StrictStr] = Field(default=None, description="The scheduled date of the message. It is in <a href=\"http://help.clicksend.com/what-is-a-unix-timestamp\" target=\"_blank\">Unix format</a>.", json_schema_extra={"examples": ["1436879372"]})
+    status_code: Optional[StrictStr] = Field(default=None, description="The status code sent from the <a href=\"https://en.wikipedia.org/wiki/SMS_gateway\" target=\"_blank\">SMS gateway</a>. Visit <a href=\"https://help.clicksend.com/article/8cc479qlbb-list-of-sms-gateway-error-codes\" target=\"_blank\">this page</a> for more information.")
     status_text: Optional[StrictStr] = Field(default=None, description="A message describing the _status_code_ of the operation. Visit <a href=\"https://help.clicksend.com/article/8cc479qlbb-list-of-sms-gateway-error-codes\" target=\"_blank\">this page</a> for more information.")
-    error_code: Optional[StrictInt] = Field(default=None, description="The error code of the operation. Visit <a href=\"https://help.clicksend.com/article/8cc479qlbb-list-of-sms-gateway-error-codes\" target=\"_blank\">this page</a> for more information. If no error occurred, the value is **null**.")
+    error_code: Optional[StrictStr] = Field(default=None, description="The error code of the operation. Visit <a href=\"https://help.clicksend.com/article/8cc479qlbb-list-of-sms-gateway-error-codes\" target=\"_blank\">this page</a> for more information. If no error occurred, the value is **null**.")
     error_text: Optional[StrictStr] = Field(default=None, description="A message describing the _error_code_ of the operation. Visit <a href=\"https://help.clicksend.com/article/8cc479qlbb-list-of-sms-gateway-error-codes\" target=\"_blank\">this page</a> for more information. If no error occurred, the value is **null**.")
-    message_id: Optional[StrictInt] = Field(default=None, description="The generated ID of the message.")
-    message_parts: Optional[StrictInt] = Field(default=None, description="The number of parts the message was broken into. To look at how many parts your message is broken down into, use the <a href=\"http://smscharactercount.com/\" target=\"_blank\"><strong>SMS Character Count</strong></a>.")
-    message_price: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, description="The price of this message. This depends on the total number of parts of the message.", json_schema_extra={"examples": [0.07]})
+    message_id: Optional[StrictStr] = Field(default=None, description="The generated ID of the message.", json_schema_extra={"examples": ["4E90F4C3-43A3-489D-9AB8-DA1F4332A0C3"]})
+    message_parts: Optional[StrictStr] = Field(default=None, description="The number of parts the message was broken into. To look at how many parts your message is broken down into, use the <a href=\"http://smscharactercount.com/\" target=\"_blank\"><strong>SMS Character Count</strong></a>.", json_schema_extra={"examples": ["1.00"]})
+    message_price: Optional[StrictStr] = Field(default=None, description="The price of this message. This depends on the total number of parts of the message.", json_schema_extra={"examples": ["0.070000"]})
     from_email: Optional[StrictStr] = Field(default=None, description="The email address to which replies should be emailed to. If omitted, the reply will be emailed back to the user who sent the outgoing SMS")
     list_id: Optional[StrictStr] = Field(default=None, description="The _list_id_ of the contact list the message was sent to. This parameter will have a **null** value if you didn’t send to a list in the request.")
     custom_string: Optional[StrictStr] = Field(default=None, description="A note that was included with the outgoing SMS. If no note was included, the value is **null**.", json_schema_extra={"examples": ["this is a test"]})
