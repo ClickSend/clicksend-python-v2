@@ -87,6 +87,26 @@ class SmsSendSms(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # set to None if from_email (nullable) is None
+        # and model_fields_set contains the field
+        if self.from_email is None and "from_email" in self.model_fields_set:
+            _dict['from_email'] = None
+
+        # set to None if list_id (nullable) is None
+        # and model_fields_set contains the field
+        if self.list_id is None and "list_id" in self.model_fields_set:
+            _dict['list_id'] = None
+
+        # set to None if custom_string (nullable) is None
+        # and model_fields_set contains the field
+        if self.custom_string is None and "custom_string" in self.model_fields_set:
+            _dict['custom_string'] = None
+
+        # set to None if contact_id (nullable) is None
+        # and model_fields_set contains the field
+        if self.contact_id is None and "contact_id" in self.model_fields_set:
+            _dict['contact_id'] = None
+
         return _dict
 
     @classmethod
