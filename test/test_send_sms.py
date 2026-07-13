@@ -35,7 +35,7 @@ class TestSendSms(unittest.TestCase):
         model = SendSms()
         if include_optional:
             return SendSms(
-                http_code = '200',
+                http_code = 200,
                 response_code = 'SUCCESS',
                 response_msg = 'Messages queued for delivery.',
                 data = clicksend.models.send_sms_data.send_sms_data(
