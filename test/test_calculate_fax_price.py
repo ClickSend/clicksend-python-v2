@@ -40,8 +40,8 @@ class TestCalculateFaxPrice(unittest.TestCase):
                 response_msg = 'Here are some prices.',
                 data = clicksend.models.send_fax_data.send_fax_data(
                     total_price = 13.2, 
-                    total_count = '1', 
-                    queued_count = '1', 
+                    total_count = 1, 
+                    queued_count = 1, 
                     messages = [
                         clicksend.models.fax.fax(
                             user_id = 1, 

@@ -43,7 +43,7 @@ class TestSmsSendSms(unittest.TestCase):
                 schedule = 1436874701,
                 message_id = 'BF7AD270-0DE2-418B-B606-71D527D9C1AE',
                 message_parts = 1,
-                message_price = 0.07,
+                message_price = '0.07',
                 from_email = 'john@example.com',
                 list_id = '1',
                 custom_string = 'this is a test',

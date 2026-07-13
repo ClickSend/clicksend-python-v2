@@ -35,7 +35,7 @@ class TestCalculateMmsCampaignPriceData(unittest.TestCase):
         model = CalculateMmsCampaignPriceData()
         if include_optional:
             return CalculateMmsCampaignPriceData(
-                total_count = '1',
+                total_count = 1,
                 total_price = '0.429',
                 data = clicksend.models.calculate_mms_campaign_price_data_data.calculate_mms_campaign_price_data_data(
                     from = '+61411111111', 

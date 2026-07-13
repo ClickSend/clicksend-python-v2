@@ -42,7 +42,7 @@ class TestSendSms(unittest.TestCase):
                     total_price = 0.0792, 
                     total_count = 1, 
                     queued_count = 1, 
-                    messages = [{"direction":"out","date":"1721099039,","to":"+61411111111","body":"test message","from":"+61431111112","schedule":1721099039,"message_id":"1ABC3200-C38C-6308-BE4B-C7C51D01DCF0","message_parts":1,"message_price":0.0792,"from_email":null,"list_id":null,"custom_string":"","contact_id":null,"user_id":123456,"subaccount_id":123456,"is_shared_system_number":false,"country":"AU","carrier":"Vodafone","status":"SUCCESS"}], 
+                    messages = [{"direction":"out","date":"1721099039,","to":"+61411111111","body":"test message","from":"+61431111112","schedule":1721099039,"message_id":"1ABC3200-C38C-6308-BE4B-C7C51D01DCF0","message_parts":1,"message_price":"0.0792","from_email":null,"list_id":null,"custom_string":"","contact_id":null,"user_id":123456,"subaccount_id":123456,"is_shared_system_number":false,"country":"AU","carrier":"Vodafone","status":"SUCCESS"}], 
                     _currency = clicksend.models.currency.currency(
                         currency_name_short = 'AUD', 
                         currency_prefix_d = '$', 

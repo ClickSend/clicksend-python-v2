@@ -17,7 +17,7 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, StrictFloat, StrictInt, StrictStr
+from pydantic import BaseModel, ConfigDict, Field, StrictFloat, StrictInt
 from typing import Any, ClassVar, Dict, List, Optional, Union
 from clicksend.models.currency import Currency
 from clicksend.models.fax import Fax
@@ -30,8 +30,8 @@ class SendFaxData(BaseModel):
     SendFaxData
     """ # noqa: E501
     total_price: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, description="The total price of the fax.", json_schema_extra={"examples": [13.2]})
-    total_count: Optional[StrictStr] = Field(default=None, description="The total count of the fax.", json_schema_extra={"examples": ["1"]})
-    queued_count: Optional[StrictStr] = Field(default=None, description="The count of the queued fax.", json_schema_extra={"examples": ["1"]})
+    total_count: Optional[StrictInt] = Field(default=None, description="The total count of the fax.", json_schema_extra={"examples": [1]})
+    queued_count: Optional[StrictInt] = Field(default=None, description="The count of the queued fax.", json_schema_extra={"examples": [1]})
     messages: Optional[List[Fax]] = Field(default=None, description="The list of messages that were sent.")
     currency: Optional[Currency] = Field(default=None, alias="_currency")
     __properties: ClassVar[List[str]] = ["total_price", "total_count", "queued_count", "messages", "_currency"]

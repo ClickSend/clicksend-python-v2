@@ -35,7 +35,7 @@ class TestUpdateSmsTemplate(unittest.TestCase):
         model = UpdateSmsTemplate()
         if include_optional:
             return UpdateSmsTemplate(
-                http_code = '200',
+                http_code = 200,
                 response_code = 'SUCCESS',
                 response_msg = 'Your template has been updated.',
                 data = clicksend.models.sms_template_update.sms_template_update(

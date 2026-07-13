@@ -35,7 +35,7 @@ class TestViewASpecificSmsTemplate(unittest.TestCase):
         model = ViewASpecificSmsTemplate()
         if include_optional:
             return ViewASpecificSmsTemplate(
-                http_code = '200',
+                http_code = 200,
                 response_code = 'SUCCESS',
                 response_msg = 'Here is your template.',
                 data = clicksend.models.view_a_specific_sms_template_data.view_a_specific_sms_template_data(

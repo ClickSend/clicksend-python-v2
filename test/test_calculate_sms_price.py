@@ -35,7 +35,7 @@ class TestCalculateSmsPrice(unittest.TestCase):
         model = CalculateSmsPrice()
         if include_optional:
             return CalculateSmsPrice(
-                http_code = '200',
+                http_code = 200,
                 response_code = 'SUCCESS',
                 response_msg = 'Here are your data.',
                 data = clicksend.models.calculate_sms_price_data.calculate_sms_price_data(

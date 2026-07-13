@@ -36,8 +36,8 @@ class TestSendFaxData(unittest.TestCase):
         if include_optional:
             return SendFaxData(
                 total_price = 13.2,
-                total_count = '1',
-                queued_count = '1',
+                total_count = 1,
+                queued_count = 1,
                 messages = [
                     clicksend.models.fax.fax(
                         user_id = 1, 

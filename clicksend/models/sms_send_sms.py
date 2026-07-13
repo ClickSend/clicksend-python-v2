@@ -17,8 +17,8 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictFloat, StrictInt, StrictStr
-from typing import Any, ClassVar, Dict, List, Optional, Union
+from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictInt, StrictStr
+from typing import Any, ClassVar, Dict, List, Optional
 from typing import Optional, Set
 from typing_extensions import Self
 from pydantic_core import to_jsonable_python
@@ -35,7 +35,7 @@ class SmsSendSms(BaseModel):
     schedule: Optional[StrictInt] = Field(default=None, description="The scheduled date of the message. It is in <a href=\"http://help.clicksend.com/what-is-a-unix-timestamp\" target=\"_blank\">Unix format</a>.", json_schema_extra={"examples": [1436874701]})
     message_id: Optional[StrictStr] = Field(default=None, description="The generated ID of the message. This ID is typically used as a reference for <a href=\"https://www.clicksend.com/au/help/\" target=\"_blank\">customer support</a> in case of any issues.", json_schema_extra={"examples": ["BF7AD270-0DE2-418B-B606-71D527D9C1AE"]})
     message_parts: Optional[StrictInt] = Field(default=None, description="The number of parts the message was broken into. To look at how many parts your message is broken down into, use the **<a href=\"http://smscharactercount.com/\">SMS Character Count</a>**.", json_schema_extra={"examples": [1]})
-    message_price: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, description="The price of this message. This depends on the total number of parts of the message.", json_schema_extra={"examples": [0.07]})
+    message_price: Optional[StrictStr] = Field(default=None, description="The price of this message. This depends on the total number of parts of the message.", json_schema_extra={"examples": ["0.07"]})
     from_email: Optional[StrictStr] = Field(default=None, description="The email address to which replies should be emailed to. If omitted, the reply will be emailed back to the user who sent the outgoing SMS.", json_schema_extra={"examples": ["john@example.com"]})
     list_id: Optional[StrictStr] = Field(default=None, description="The _list_id_ of the contact list the message was sent to. This parameter will have a **null** value if you didn’t send to a list in the request.", json_schema_extra={"examples": ["1"]})
     custom_string: Optional[StrictStr] = Field(default=None, description="A note that was sent from the request.", json_schema_extra={"examples": ["this is a test"]})

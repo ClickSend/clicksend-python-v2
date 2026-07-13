@@ -17,7 +17,7 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, StrictStr
+from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from clicksend.models.calculate_mms_campaign_price_data_data import CalculateMmsCampaignPriceDataData
 from clicksend.models.currency import Currency
@@ -29,7 +29,7 @@ class CalculateMmsCampaignPriceData(BaseModel):
     """
     CalculateMmsCampaignPriceData
     """ # noqa: E501
-    total_count: Optional[StrictStr] = Field(default=None, description="The total number of records.", json_schema_extra={"examples": ["1"]})
+    total_count: Optional[StrictInt] = Field(default=None, description="The total number of records.", json_schema_extra={"examples": [1]})
     total_price: Optional[StrictStr] = Field(default=None, description="The total price of the MMS campaign.", json_schema_extra={"examples": ["0.429"]})
     data: Optional[CalculateMmsCampaignPriceDataData] = None
     currency: Optional[Currency] = Field(default=None, alias="_currency")

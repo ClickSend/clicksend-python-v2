@@ -17,7 +17,7 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, StrictStr
+from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from typing import Optional, Set
 from typing_extensions import Self
@@ -27,7 +27,7 @@ class CancelSms(BaseModel):
     """
     CancelSms
     """ # noqa: E501
-    http_code: Optional[StrictStr] = Field(default=None, description="The HTTP code of the response. Visit [this page](/#status-codes) for more information.", json_schema_extra={"examples": ["200"]})
+    http_code: Optional[StrictInt] = Field(default=None, description="The HTTP code of the response. Visit [this page](/#status-codes) for more information.", json_schema_extra={"examples": [200]})
     response_code: Optional[StrictStr] = Field(default=None, description="The response code of the operation. Visit [this page](/#status-codes) for more information.", json_schema_extra={"examples": ["SUCCESS"]})
     response_msg: Optional[StrictStr] = Field(default=None, description="A message describing the outcome of the operation.")
     data: Optional[Dict[str, Any]] = Field(default=None, description="The parameters related to the scheduled SMS.  <div class=\"warning-box\">   <h4><i class=\"fas fa-exclamation-triangle\"></i> Warning:</h4>   <p>This parameter is deprecated and will return <strong>null</strong/>.</p> </div>")

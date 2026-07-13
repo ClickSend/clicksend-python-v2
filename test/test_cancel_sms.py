@@ -35,7 +35,7 @@ class TestCancelSms(unittest.TestCase):
         model = CancelSms()
         if include_optional:
             return CancelSms(
-                http_code = '200',
+                http_code = 200,
                 response_code = 'SUCCESS',
                 response_msg = '',
                 data = None

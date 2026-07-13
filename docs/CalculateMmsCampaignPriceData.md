@@ -5,7 +5,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**total_count** | **str** | The total number of records. | [optional] 
+**total_count** | **int** | The total number of records. | [optional] 
 **total_price** | **str** | The total price of the MMS campaign. | [optional] 
 **data** | [**CalculateMmsCampaignPriceDataData**](CalculateMmsCampaignPriceDataData.md) |  | [optional] 
 **currency** | [**Currency**](Currency.md) |  | [optional] 
