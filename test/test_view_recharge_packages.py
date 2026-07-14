@@ -46,10 +46,14 @@ class TestViewRechargePackages(unittest.TestCase):
                             price_rate = 0, 
                             sms_price = 0.099, 
                             sms_quantity = 202, 
+                            price_sms_carrier_fee = '0.0000', 
                             voice_mobile_price = 0.99, 
                             voice_mobile_quantity = 202, 
                             voice_landline_price = 0.0583, 
                             voice_landline_quantity = 343, 
+                            mms_price = 0.275, 
+                            mms_quantity = 72, 
+                            price_mms_carrier_fee = '', 
                             fax_price = 0.198, 
                             fax_quantity = 101, 
                             email_price = 0.033, 
@@ -67,11 +71,13 @@ class TestViewRechargePackages(unittest.TestCase):
                             postcard_quantity = 1, 
                             automation_price = 0.0017, )
                         ], 
-                    _currency = clicksend.models.currency.currency(
+                    currency = clicksend.models.currency.currency(
                         currency_name_short = 'AUD', 
                         currency_prefix_d = '$', 
                         currency_prefix_c = 'c', 
-                        currency_name_long = 'Australian Dollars', ), )
+                        currency_name_long = 'Australian Dollars', 
+                        min_recharge_amount = '20.00', 
+                        max_recharge_amount = '10000.00', ), )
             )
         else:
             return ViewRechargePackages(

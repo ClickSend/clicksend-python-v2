@@ -34,10 +34,10 @@ class CalculateSmsPriceData(BaseModel):
     total_count: Optional[StrictInt] = Field(default=None, description="The total number of messages sent from the request.", json_schema_extra={"examples": [1]})
     queued_count: Optional[StrictInt] = Field(default=None, description="The messages will be put in a queue if it goes through the validation process. The validation process checks whether the **Sender ID** is registered or not. Some countries don't require messages to go through the validation process.  Messages scheduled to be sent right away will be sent immediately. If not, it will be queued.", json_schema_extra={"examples": [1]})
     messages: Optional[List[Sms]] = Field(default=None, description="The parameters related to messages.")
-    currency: Optional[Currency] = None
+    currency: Optional[Currency] = Field(default=None, alias="_currency")
     summary: Optional[CalculateSmsPriceDataSummary] = Field(default=None, alias="_summary")
     blocked_count: Optional[StrictInt] = Field(default=None, description="The number of messages unable to be sent. This is often caused by:  - Receipient’s country not enabled for global sending.      - Sender ID resitriction.      - Number registration restrcition.")
-    __properties: ClassVar[List[str]] = ["total_price", "total_count", "queued_count", "messages", "currency", "_summary", "blocked_count"]
+    __properties: ClassVar[List[str]] = ["total_price", "total_count", "queued_count", "messages", "_currency", "_summary", "blocked_count"]
 
     model_config = ConfigDict(
         validate_by_name=True,
@@ -87,7 +87,7 @@ class CalculateSmsPriceData(BaseModel):
             _dict['messages'] = _items
         # override the default output from pydantic by calling `to_dict()` of currency
         if self.currency:
-            _dict['currency'] = self.currency.to_dict()
+            _dict['_currency'] = self.currency.to_dict()
         # override the default output from pydantic by calling `to_dict()` of summary
         if self.summary:
             _dict['_summary'] = self.summary.to_dict()
@@ -107,7 +107,7 @@ class CalculateSmsPriceData(BaseModel):
             "total_count": obj.get("total_count"),
             "queued_count": obj.get("queued_count"),
             "messages": [Sms.from_dict(_item) for _item in obj["messages"]] if obj.get("messages") is not None else None,
-            "currency": Currency.from_dict(obj["currency"]) if obj.get("currency") is not None else None,
+            "_currency": Currency.from_dict(obj["_currency"]) if obj.get("_currency") is not None else None,
             "_summary": CalculateSmsPriceDataSummary.from_dict(obj["_summary"]) if obj.get("_summary") is not None else None,
             "blocked_count": obj.get("blocked_count")
         })

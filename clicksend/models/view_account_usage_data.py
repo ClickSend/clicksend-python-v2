@@ -19,11 +19,13 @@ import json
 
 from pydantic import BaseModel, ConfigDict, Field
 from typing import Any, ClassVar, Dict, List, Optional
+from clicksend.models.currency import Currency
 from clicksend.models.view_account_usage_data_email_inner import ViewAccountUsageDataEmailInner
 from clicksend.models.view_account_usage_data_email_total import ViewAccountUsageDataEmailTotal
+from clicksend.models.view_account_usage_data_mms_inner import ViewAccountUsageDataMmsInner
 from clicksend.models.view_account_usage_data_sms_inner import ViewAccountUsageDataSmsInner
 from clicksend.models.view_account_usage_data_sms_total import ViewAccountUsageDataSmsTotal
-from clicksend.models.view_account_usage_data_voice_inner import ViewAccountUsageDataVoiceInner
+from clicksend.models.view_voice_statistics_data_total_outbound import ViewVoiceStatisticsDataTotalOutbound
 from typing import Optional, Set
 from typing_extensions import Self
 from pydantic_core import to_jsonable_python
@@ -33,16 +35,23 @@ class ViewAccountUsageData(BaseModel):
     ViewAccountUsageData
     """ # noqa: E501
     sms: Optional[List[ViewAccountUsageDataSmsInner]] = Field(default=None, json_schema_extra={"examples": [[{"subaccount_id": 1039, "username": "gerald", "total_count": "29.00", "total_price": "2.1337"}, {"subaccount_id": 1047, "username": "user5", "total_count": "4.00", "total_price": "0.3080"}]]})
-    voice: Optional[List[ViewAccountUsageDataVoiceInner]] = Field(default=None, json_schema_extra={"examples": [[{"subaccount_id": 1039, "username": "user1", "total_count": "6.00", "total_price": "0.1980"}, {"subaccount_id": 1047, "username": "user5", "total_count": "1.00", "total_price": "0.0330"}]]})
-    fax: Optional[List[ViewAccountUsageDataVoiceInner]] = Field(default=None, json_schema_extra={"examples": [[{"subaccount_id": 1039, "username": "user1", "total_count": "3.00", "total_price": "0.6943"}, {"subaccount_id": 1047, "username": "user5", "total_count": "1.00", "total_price": "0.2314"}]]})
-    post: Optional[List[ViewAccountUsageDataVoiceInner]] = Field(default=None, json_schema_extra={"examples": [[{"subaccount_id": 1039, "username": "user1", "total_count": "10", "total_price": "8.5624"}, {"subaccount_id": 1047, "username": "user5", "total_count": "3", "total_price": "2.5586"}]]})
+    mms: Optional[List[ViewAccountUsageDataMmsInner]] = Field(default=None, json_schema_extra={"examples": [[]]})
+    voice: Optional[List[ViewAccountUsageDataMmsInner]] = Field(default=None, json_schema_extra={"examples": [[{"subaccount_id": 1039, "username": "user1", "total_count": "6.00", "total_price": "0.1980"}, {"subaccount_id": 1047, "username": "user5", "total_count": "1.00", "total_price": "0.0330"}]]})
+    fax: Optional[List[ViewAccountUsageDataMmsInner]] = Field(default=None, json_schema_extra={"examples": [[{"subaccount_id": 1039, "username": "user1", "total_count": "3.00", "total_price": "0.6943"}, {"subaccount_id": 1047, "username": "user5", "total_count": "1.00", "total_price": "0.2314"}]]})
+    post: Optional[List[ViewAccountUsageDataMmsInner]] = Field(default=None, json_schema_extra={"examples": [[{"subaccount_id": 1039, "username": "user1", "total_count": "10", "total_price": "8.5624"}, {"subaccount_id": 1047, "username": "user5", "total_count": "3", "total_price": "2.5586"}]]})
     email: Optional[List[ViewAccountUsageDataEmailInner]] = Field(default=None, json_schema_extra={"examples": [[{"subaccount_id": 1039, "username": "user1", "total_count": 3992, "total_price": "9.0020"}, {"subaccount_id": 1047, "username": "user5", "total_count": 998, "total_price": "0.0000"}]]})
+    email_transactional: Optional[List[ViewAccountUsageDataEmailInner]] = Field(default=None, json_schema_extra={"examples": [[]]})
+    postcards: Optional[List[ViewAccountUsageDataMmsInner]] = Field(default=None, json_schema_extra={"examples": [[]]})
     sms_total: Optional[ViewAccountUsageDataSmsTotal] = None
     voice_total: Optional[ViewAccountUsageDataSmsTotal] = None
     fax_total: Optional[ViewAccountUsageDataSmsTotal] = None
     post_total: Optional[ViewAccountUsageDataSmsTotal] = None
     email_total: Optional[ViewAccountUsageDataEmailTotal] = None
-    __properties: ClassVar[List[str]] = ["sms", "voice", "fax", "post", "email", "sms_total", "voice_total", "fax_total", "post_total", "email_total"]
+    mms_total: Optional[ViewVoiceStatisticsDataTotalOutbound] = None
+    email_transactional_total: Optional[ViewVoiceStatisticsDataTotalOutbound] = None
+    postcards_total: Optional[ViewVoiceStatisticsDataTotalOutbound] = None
+    currency: Optional[Currency] = Field(default=None, alias="_currency")
+    __properties: ClassVar[List[str]] = ["sms", "mms", "voice", "fax", "post", "email", "email_transactional", "postcards", "sms_total", "voice_total", "fax_total", "post_total", "email_total", "mms_total", "email_transactional_total", "postcards_total", "_currency"]
 
     model_config = ConfigDict(
         validate_by_name=True,
@@ -90,6 +99,13 @@ class ViewAccountUsageData(BaseModel):
                 if _item_sms:
                     _items.append(_item_sms.to_dict())
             _dict['sms'] = _items
+        # override the default output from pydantic by calling `to_dict()` of each item in mms (list)
+        _items = []
+        if self.mms:
+            for _item_mms in self.mms:
+                if _item_mms:
+                    _items.append(_item_mms.to_dict())
+            _dict['mms'] = _items
         # override the default output from pydantic by calling `to_dict()` of each item in voice (list)
         _items = []
         if self.voice:
@@ -118,6 +134,20 @@ class ViewAccountUsageData(BaseModel):
                 if _item_email:
                     _items.append(_item_email.to_dict())
             _dict['email'] = _items
+        # override the default output from pydantic by calling `to_dict()` of each item in email_transactional (list)
+        _items = []
+        if self.email_transactional:
+            for _item_email_transactional in self.email_transactional:
+                if _item_email_transactional:
+                    _items.append(_item_email_transactional.to_dict())
+            _dict['email_transactional'] = _items
+        # override the default output from pydantic by calling `to_dict()` of each item in postcards (list)
+        _items = []
+        if self.postcards:
+            for _item_postcards in self.postcards:
+                if _item_postcards:
+                    _items.append(_item_postcards.to_dict())
+            _dict['postcards'] = _items
         # override the default output from pydantic by calling `to_dict()` of sms_total
         if self.sms_total:
             _dict['sms_total'] = self.sms_total.to_dict()
@@ -133,6 +163,18 @@ class ViewAccountUsageData(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of email_total
         if self.email_total:
             _dict['email_total'] = self.email_total.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of mms_total
+        if self.mms_total:
+            _dict['mms_total'] = self.mms_total.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of email_transactional_total
+        if self.email_transactional_total:
+            _dict['email_transactional_total'] = self.email_transactional_total.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of postcards_total
+        if self.postcards_total:
+            _dict['postcards_total'] = self.postcards_total.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of currency
+        if self.currency:
+            _dict['_currency'] = self.currency.to_dict()
         return _dict
 
     @classmethod
@@ -146,15 +188,22 @@ class ViewAccountUsageData(BaseModel):
 
         _obj = cls.model_validate({
             "sms": [ViewAccountUsageDataSmsInner.from_dict(_item) for _item in obj["sms"]] if obj.get("sms") is not None else None,
-            "voice": [ViewAccountUsageDataVoiceInner.from_dict(_item) for _item in obj["voice"]] if obj.get("voice") is not None else None,
-            "fax": [ViewAccountUsageDataVoiceInner.from_dict(_item) for _item in obj["fax"]] if obj.get("fax") is not None else None,
-            "post": [ViewAccountUsageDataVoiceInner.from_dict(_item) for _item in obj["post"]] if obj.get("post") is not None else None,
+            "mms": [ViewAccountUsageDataMmsInner.from_dict(_item) for _item in obj["mms"]] if obj.get("mms") is not None else None,
+            "voice": [ViewAccountUsageDataMmsInner.from_dict(_item) for _item in obj["voice"]] if obj.get("voice") is not None else None,
+            "fax": [ViewAccountUsageDataMmsInner.from_dict(_item) for _item in obj["fax"]] if obj.get("fax") is not None else None,
+            "post": [ViewAccountUsageDataMmsInner.from_dict(_item) for _item in obj["post"]] if obj.get("post") is not None else None,
             "email": [ViewAccountUsageDataEmailInner.from_dict(_item) for _item in obj["email"]] if obj.get("email") is not None else None,
+            "email_transactional": [ViewAccountUsageDataEmailInner.from_dict(_item) for _item in obj["email_transactional"]] if obj.get("email_transactional") is not None else None,
+            "postcards": [ViewAccountUsageDataMmsInner.from_dict(_item) for _item in obj["postcards"]] if obj.get("postcards") is not None else None,
             "sms_total": ViewAccountUsageDataSmsTotal.from_dict(obj["sms_total"]) if obj.get("sms_total") is not None else None,
             "voice_total": ViewAccountUsageDataSmsTotal.from_dict(obj["voice_total"]) if obj.get("voice_total") is not None else None,
             "fax_total": ViewAccountUsageDataSmsTotal.from_dict(obj["fax_total"]) if obj.get("fax_total") is not None else None,
             "post_total": ViewAccountUsageDataSmsTotal.from_dict(obj["post_total"]) if obj.get("post_total") is not None else None,
-            "email_total": ViewAccountUsageDataEmailTotal.from_dict(obj["email_total"]) if obj.get("email_total") is not None else None
+            "email_total": ViewAccountUsageDataEmailTotal.from_dict(obj["email_total"]) if obj.get("email_total") is not None else None,
+            "mms_total": ViewVoiceStatisticsDataTotalOutbound.from_dict(obj["mms_total"]) if obj.get("mms_total") is not None else None,
+            "email_transactional_total": ViewVoiceStatisticsDataTotalOutbound.from_dict(obj["email_transactional_total"]) if obj.get("email_transactional_total") is not None else None,
+            "postcards_total": ViewVoiceStatisticsDataTotalOutbound.from_dict(obj["postcards_total"]) if obj.get("postcards_total") is not None else None,
+            "_currency": Currency.from_dict(obj["_currency"]) if obj.get("_currency") is not None else None
         })
         return _obj
 

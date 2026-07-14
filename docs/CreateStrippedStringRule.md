@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **http_code** | **int** | The HTTP status code of the response. | [optional] 
 **response_code** | **str** | The response code indicating the status of the operation. | [optional] 
 **response_msg** | **str** | A message describing the outcome of the operation. | [optional] 
-**data** | [**ViewStrippedStringRulesDataDataInner**](ViewStrippedStringRulesDataDataInner.md) |  | [optional] 
+**data** | [**ViewStrippedStringRulesDataAllOfDataInner**](ViewStrippedStringRulesDataAllOfDataInner.md) |  | [optional] 
 
 ## Example
 

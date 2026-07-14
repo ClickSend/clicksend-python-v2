@@ -1,4 +1,4 @@
-# ViewAllowedEmailsDataInner
+# AddAllowedEmailData
 
 
 ## Properties
@@ -12,19 +12,19 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from clicksend.models.view_allowed_emails_data_inner import ViewAllowedEmailsDataInner
+from clicksend.models.add_allowed_email_data import AddAllowedEmailData
 
 # TODO update the JSON string below
 json = "{}"
-# create an instance of ViewAllowedEmailsDataInner from a JSON string
-view_allowed_emails_data_inner_instance = ViewAllowedEmailsDataInner.from_json(json)
+# create an instance of AddAllowedEmailData from a JSON string
+add_allowed_email_data_instance = AddAllowedEmailData.from_json(json)
 # print the JSON string representation of the object
-print(ViewAllowedEmailsDataInner.to_json())
+print(AddAllowedEmailData.to_json())
 
 # convert the object into a dict
-view_allowed_emails_data_inner_dict = view_allowed_emails_data_inner_instance.to_dict()
-# create an instance of ViewAllowedEmailsDataInner from a dict
-view_allowed_emails_data_inner_from_dict = ViewAllowedEmailsDataInner.from_dict(view_allowed_emails_data_inner_dict)
+add_allowed_email_data_dict = add_allowed_email_data_instance.to_dict()
+# create an instance of AddAllowedEmailData from a dict
+add_allowed_email_data_from_dict = AddAllowedEmailData.from_dict(add_allowed_email_data_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -17,20 +17,19 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, StrictFloat, StrictInt, StrictStr
-from typing import Any, ClassVar, Dict, List, Optional, Union
+from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr
+from typing import Any, ClassVar, Dict, List, Optional
 from typing import Optional, Set
 from typing_extensions import Self
 from pydantic_core import to_jsonable_python
 
-class ViewAllowedEmailsDataInner(BaseModel):
+class AccountReferrerChosen(BaseModel):
     """
-    ViewAllowedEmailsDataInner
+    The referral source chosen at sign-up, if any.
     """ # noqa: E501
-    email_address_id: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, description="The ID of the email address.", json_schema_extra={"examples": [1]})
-    email_address: Optional[StrictStr] = Field(default=None, description="The email address.", json_schema_extra={"examples": ["my@email.com"]})
-    var_from: Optional[StrictStr] = Field(default=None, description="The sender.", alias="from", json_schema_extra={"examples": ["+13523944199"]})
-    __properties: ClassVar[List[str]] = ["email_address_id", "email_address", "from"]
+    id: Optional[StrictInt] = Field(default=None, description="The ID of the referral source.", json_schema_extra={"examples": [8]})
+    name: Optional[StrictStr] = Field(default=None, description="The name of the referral source.", json_schema_extra={"examples": ["Other"]})
+    __properties: ClassVar[List[str]] = ["id", "name"]
 
     model_config = ConfigDict(
         validate_by_name=True,
@@ -50,7 +49,7 @@ class ViewAllowedEmailsDataInner(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of ViewAllowedEmailsDataInner from a JSON string"""
+        """Create an instance of AccountReferrerChosen from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -75,7 +74,7 @@ class ViewAllowedEmailsDataInner(BaseModel):
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of ViewAllowedEmailsDataInner from a dict"""
+        """Create an instance of AccountReferrerChosen from a dict"""
         if obj is None:
             return None
 
@@ -83,9 +82,8 @@ class ViewAllowedEmailsDataInner(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "email_address_id": obj.get("email_address_id"),
-            "email_address": obj.get("email_address"),
-            "from": obj.get("from")
+            "id": obj.get("id"),
+            "name": obj.get("name")
         })
         return _obj
 

@@ -44,7 +44,7 @@ class TestCalculateSmsPrice(unittest.TestCase):
                     queued_count = 1, 
                     messages = [
                         clicksend.models.sms.sms(
-                            date = 1436871253, 
+                            date = '1436871253', 
                             to = '+61411111111', 
                             body = 'Jelly liquorice marshmallow candy carrot cake 4Eyffjs1vL.', 
                             from = 'sendmobile', 
@@ -58,11 +58,13 @@ class TestCalculateSmsPrice(unittest.TestCase):
                             country = 'AU', 
                             status = 'SUCCESS', )
                         ], 
-                    currency = clicksend.models.currency.currency(
+                    _currency = clicksend.models.currency.currency(
                         currency_name_short = 'AUD', 
                         currency_prefix_d = '$', 
                         currency_prefix_c = 'c', 
-                        currency_name_long = 'Australian Dollars', ), 
+                        currency_name_long = 'Australian Dollars', 
+                        min_recharge_amount = '20.00', 
+                        max_recharge_amount = '10000.00', ), 
                     _summary = clicksend.models.calculate_sms_price_data__summary.calculate_sms_price_data__summary(
                         test_message = '', 
                         countries = [

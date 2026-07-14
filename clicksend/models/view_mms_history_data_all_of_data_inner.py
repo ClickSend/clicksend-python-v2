@@ -31,9 +31,13 @@ class ViewMmsHistoryDataAllOfDataInner(BaseModel):
     var_date: Optional[StrictStr] = Field(default=None, description="The date of the message.", alias="date", json_schema_extra={"examples": ["1436932432"]})
     to: Optional[StrictStr] = Field(default=None, description="The recipient of the message.", json_schema_extra={"examples": ["+16783270696"]})
     body: Optional[StrictStr] = Field(default=None, description="The body of the message.", json_schema_extra={"examples": ["Chocolate bar icing icing oat cake carrot cake jelly cotton 1iQByXxdLN."]})
+    subject: Optional[StrictStr] = Field(default=None, description="The subject of the message.", json_schema_extra={"examples": ["This is a subject"]})
+    priority: Optional[StrictInt] = Field(default=None, description="The priority of the message.", json_schema_extra={"examples": [2]})
+    media_file_url: Optional[StrictStr] = Field(default=None, description="A temporary, signed URL to download the message's media attachment.", alias="_media_file_url", json_schema_extra={"examples": ["https://clicksend-api-downloads.s3.ap-southeast-2.amazonaws.com/_private/example.jpg"]})
     status: Optional[StrictStr] = Field(default=None, description="The status of the message.", json_schema_extra={"examples": ["Completed"]})
     var_from: Optional[StrictStr] = Field(default=None, description="The sender of the message.", alias="from", json_schema_extra={"examples": ["sendlist"]})
     schedule: Optional[StrictStr] = Field(default=None, description="The schedule time of the message.", json_schema_extra={"examples": ["1436879372"]})
+    date_added: Optional[StrictInt] = Field(default=None, description="The Unix timestamp when the message was added.", json_schema_extra={"examples": [1436879372]})
     status_code: Optional[StrictStr] = Field(default=None, description="The status code (if applicable).")
     status_text: Optional[StrictStr] = Field(default=None, description="The status text (if applicable).")
     error_code: Optional[StrictStr] = Field(default=None, description="The error code (if applicable).")
@@ -52,7 +56,7 @@ class ViewMmsHistoryDataAllOfDataInner(BaseModel):
     first_name: Optional[StrictStr] = Field(default=None, description="The first name of the sender.", json_schema_extra={"examples": ["John"]})
     last_name: Optional[StrictStr] = Field(default=None, description="The last name of the sender.", json_schema_extra={"examples": ["Doe"]})
     api_username: Optional[StrictStr] = Field(default=None, description="The API username associated with the message.", alias="_api_username", json_schema_extra={"examples": ["johndoe"]})
-    __properties: ClassVar[List[str]] = ["direction", "date", "to", "body", "status", "from", "schedule", "status_code", "status_text", "error_code", "error_text", "message_id", "message_parts", "message_price", "from_email", "list_id", "custom_string", "contact_id", "user_id", "subaccount_id", "country", "carrier", "first_name", "last_name", "_api_username"]
+    __properties: ClassVar[List[str]] = ["direction", "date", "to", "body", "subject", "priority", "_media_file_url", "status", "from", "schedule", "date_added", "status_code", "status_text", "error_code", "error_text", "message_id", "message_parts", "message_price", "from_email", "list_id", "custom_string", "contact_id", "user_id", "subaccount_id", "country", "carrier", "first_name", "last_name", "_api_username"]
 
     model_config = ConfigDict(
         validate_by_name=True,
@@ -93,6 +97,16 @@ class ViewMmsHistoryDataAllOfDataInner(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # set to None if subject (nullable) is None
+        # and model_fields_set contains the field
+        if self.subject is None and "subject" in self.model_fields_set:
+            _dict['subject'] = None
+
+        # set to None if media_file_url (nullable) is None
+        # and model_fields_set contains the field
+        if self.media_file_url is None and "media_file_url" in self.model_fields_set:
+            _dict['_media_file_url'] = None
+
         # set to None if status_code (nullable) is None
         # and model_fields_set contains the field
         if self.status_code is None and "status_code" in self.model_fields_set:
@@ -134,9 +148,13 @@ class ViewMmsHistoryDataAllOfDataInner(BaseModel):
             "date": obj.get("date"),
             "to": obj.get("to"),
             "body": obj.get("body"),
+            "subject": obj.get("subject"),
+            "priority": obj.get("priority"),
+            "_media_file_url": obj.get("_media_file_url"),
             "status": obj.get("status"),
             "from": obj.get("from"),
             "schedule": obj.get("schedule"),
+            "date_added": obj.get("date_added"),
             "status_code": obj.get("status_code"),
             "status_text": obj.get("status_text"),
             "error_code": obj.get("error_code"),

@@ -19,6 +19,7 @@ import json
 
 from pydantic import BaseModel, ConfigDict, Field, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
+from clicksend.models.view_voice_languages_data_inner_gender import ViewVoiceLanguagesDataInnerGender
 from typing import Optional, Set
 from typing_extensions import Self
 from pydantic_core import to_jsonable_python
@@ -29,7 +30,7 @@ class ViewVoiceLanguagesDataInner(BaseModel):
     """ # noqa: E501
     code: Optional[StrictStr] = Field(default=None, description="The code of the language.", json_schema_extra={"examples": ["en-us"]})
     country: Optional[StrictStr] = Field(default=None, description="The country of the language.", json_schema_extra={"examples": ["English, US"]})
-    gender: Optional[StrictStr] = Field(default=None, description="The gender of the language.", json_schema_extra={"examples": ["male"]})
+    gender: Optional[ViewVoiceLanguagesDataInnerGender] = None
     __properties: ClassVar[List[str]] = ["code", "country", "gender"]
 
     model_config = ConfigDict(
@@ -71,6 +72,9 @@ class ViewVoiceLanguagesDataInner(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # override the default output from pydantic by calling `to_dict()` of gender
+        if self.gender:
+            _dict['gender'] = self.gender.to_dict()
         return _dict
 
     @classmethod
@@ -85,7 +89,7 @@ class ViewVoiceLanguagesDataInner(BaseModel):
         _obj = cls.model_validate({
             "code": obj.get("code"),
             "country": obj.get("country"),
-            "gender": obj.get("gender")
+            "gender": ViewVoiceLanguagesDataInnerGender.from_dict(obj["gender"]) if obj.get("gender") is not None else None
         })
         return _obj
 

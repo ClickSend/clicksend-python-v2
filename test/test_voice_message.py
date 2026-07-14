@@ -35,16 +35,18 @@ class TestVoiceMessage(unittest.TestCase):
         model = VoiceMessage()
         if include_optional:
             return VoiceMessage(
-                var_date = 1436871253,
+                var_date = '1436871253',
+                date_added = 1436871253,
+                list_id = '',
                 to = '+61411111111',
                 to_type = 'mobile',
                 body = 'Jelly liquorice marshmallow candy carrot cake 4Eyffjs1vL.',
                 var_from = '',
                 lang = 'en-au',
                 voice = 'female',
-                schedule = 1436874701,
+                schedule = '1436874701',
                 message_id = 'BF7AD270-0DE2-418B-B606-71D527D9C1AE',
-                message_parts = 1,
+                message_parts = '1.00',
                 message_price = '0.07',
                 custom_string = 'this is a test',
                 user_id = 1,
@@ -52,7 +54,13 @@ class TestVoiceMessage(unittest.TestCase):
                 country = 'AU',
                 require_input = 0,
                 machine_detection = 0,
-                status = 'SUCCESS'
+                machine_detected = 0,
+                digits = '',
+                carrier = 'Telstra',
+                status_code = '201',
+                status_text = 'Delivered',
+                status = 'SUCCESS',
+                api_username = 'johndoe1'
             )
         else:
             return VoiceMessage(

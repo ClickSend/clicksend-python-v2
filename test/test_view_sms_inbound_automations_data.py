@@ -43,6 +43,16 @@ class TestViewSmsInboundAutomationsData(unittest.TestCase):
                 prev_page_url = '',
                 var_from = 1,
                 to = 2,
+                first_page_url = 'https://rest.clicksend.com/v3/automations/sms/inbound?page=1',
+                last_page_url = 'https://rest.clicksend.com/v3/automations/sms/inbound?page=2',
+                path = 'https://rest.clicksend.com/v3/automations/sms/inbound',
+                links = [
+                    clicksend.models.view_sms_inbound_automations_data_all_of_links_inner.view_sms_inbound_automations_data_allOf_links_inner(
+                        url = '', 
+                        label = '', 
+                        page = 56, 
+                        active = True, )
+                    ],
                 data = [{"sms_inbound_rule_id":1,"dedicated_number":"+61298441484","rule_name":"My Rule 10","message_search_type":3,"message_search_term":"My Search Term","action":"CREATE_CONTACT_PLUS_EMAIL","action_address":"430","body":"test@test.com","enabled":1},{"sms_inbound_rule_id":9,"dedicated_number":"+61298441484","rule_name":"My Rule 9","message_search_type":3,"message_search_term":"My Search Term","action":"CREATE_CONTACT","action_address":"john@doe.com","body":null,"enabled":1}]
             )
         else:

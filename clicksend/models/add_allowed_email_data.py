@@ -17,19 +17,20 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr
-from typing import Any, ClassVar, Dict, List, Optional
+from pydantic import BaseModel, ConfigDict, Field, StrictFloat, StrictInt, StrictStr
+from typing import Any, ClassVar, Dict, List, Optional, Union
 from typing import Optional, Set
 from typing_extensions import Self
 from pydantic_core import to_jsonable_python
 
-class ViewStrippedStringRulesDataDataInner(BaseModel):
+class AddAllowedEmailData(BaseModel):
     """
-    ViewStrippedStringRulesDataDataInner
+    AddAllowedEmailData
     """ # noqa: E501
-    rule_id: Optional[StrictInt] = Field(default=None, description="The ID of the rule.")
-    strip_string: Optional[StrictStr] = Field(default=None, description="The string to be stripped.")
-    __properties: ClassVar[List[str]] = ["rule_id", "strip_string"]
+    email_address_id: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, description="The ID of the email address.", json_schema_extra={"examples": [107]})
+    email_address: Optional[StrictStr] = Field(default=None, description="The email address.", json_schema_extra={"examples": ["Cv3p0@gmail.com"]})
+    var_from: Optional[StrictStr] = Field(default=None, description="The sender.", alias="from", json_schema_extra={"examples": ["+17128845887"]})
+    __properties: ClassVar[List[str]] = ["email_address_id", "email_address", "from"]
 
     model_config = ConfigDict(
         validate_by_name=True,
@@ -49,7 +50,7 @@ class ViewStrippedStringRulesDataDataInner(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of ViewStrippedStringRulesDataDataInner from a JSON string"""
+        """Create an instance of AddAllowedEmailData from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -74,7 +75,7 @@ class ViewStrippedStringRulesDataDataInner(BaseModel):
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of ViewStrippedStringRulesDataDataInner from a dict"""
+        """Create an instance of AddAllowedEmailData from a dict"""
         if obj is None:
             return None
 
@@ -82,8 +83,9 @@ class ViewStrippedStringRulesDataDataInner(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "rule_id": obj.get("rule_id"),
-            "strip_string": obj.get("strip_string")
+            "email_address_id": obj.get("email_address_id"),
+            "email_address": obj.get("email_address"),
+            "from": obj.get("from")
         })
         return _obj
 

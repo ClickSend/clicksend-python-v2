@@ -6,15 +6,22 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **sms** | [**List[ViewAccountUsageDataSmsInner]**](ViewAccountUsageDataSmsInner.md) |  | [optional] 
-**voice** | [**List[ViewAccountUsageDataVoiceInner]**](ViewAccountUsageDataVoiceInner.md) |  | [optional] 
-**fax** | [**List[ViewAccountUsageDataVoiceInner]**](ViewAccountUsageDataVoiceInner.md) |  | [optional] 
-**post** | [**List[ViewAccountUsageDataVoiceInner]**](ViewAccountUsageDataVoiceInner.md) |  | [optional] 
+**mms** | [**List[ViewAccountUsageDataMmsInner]**](ViewAccountUsageDataMmsInner.md) |  | [optional] 
+**voice** | [**List[ViewAccountUsageDataMmsInner]**](ViewAccountUsageDataMmsInner.md) |  | [optional] 
+**fax** | [**List[ViewAccountUsageDataMmsInner]**](ViewAccountUsageDataMmsInner.md) |  | [optional] 
+**post** | [**List[ViewAccountUsageDataMmsInner]**](ViewAccountUsageDataMmsInner.md) |  | [optional] 
 **email** | [**List[ViewAccountUsageDataEmailInner]**](ViewAccountUsageDataEmailInner.md) |  | [optional] 
+**email_transactional** | [**List[ViewAccountUsageDataEmailInner]**](ViewAccountUsageDataEmailInner.md) |  | [optional] 
+**postcards** | [**List[ViewAccountUsageDataMmsInner]**](ViewAccountUsageDataMmsInner.md) |  | [optional] 
 **sms_total** | [**ViewAccountUsageDataSmsTotal**](ViewAccountUsageDataSmsTotal.md) |  | [optional] 
 **voice_total** | [**ViewAccountUsageDataSmsTotal**](ViewAccountUsageDataSmsTotal.md) |  | [optional] 
 **fax_total** | [**ViewAccountUsageDataSmsTotal**](ViewAccountUsageDataSmsTotal.md) |  | [optional] 
 **post_total** | [**ViewAccountUsageDataSmsTotal**](ViewAccountUsageDataSmsTotal.md) |  | [optional] 
 **email_total** | [**ViewAccountUsageDataEmailTotal**](ViewAccountUsageDataEmailTotal.md) |  | [optional] 
+**mms_total** | [**ViewVoiceStatisticsDataTotalOutbound**](ViewVoiceStatisticsDataTotalOutbound.md) |  | [optional] 
+**email_transactional_total** | [**ViewVoiceStatisticsDataTotalOutbound**](ViewVoiceStatisticsDataTotalOutbound.md) |  | [optional] 
+**postcards_total** | [**ViewVoiceStatisticsDataTotalOutbound**](ViewVoiceStatisticsDataTotalOutbound.md) |  | [optional] 
+**currency** | [**Currency**](Currency.md) |  | [optional] 
 
 ## Example
 

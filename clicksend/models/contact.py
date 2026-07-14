@@ -17,7 +17,6 @@ import pprint
 import re  # noqa: F401
 import json
 
-from datetime import datetime
 from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from typing import Optional, Set
@@ -37,8 +36,8 @@ class Contact(BaseModel):
     custom_2: Optional[StrictStr] = Field(default=None, description="Custom field 2.", json_schema_extra={"examples": ["Custom 2"]})
     custom_3: Optional[StrictStr] = Field(default=None, description="Custom field 3.", json_schema_extra={"examples": ["Custom 3"]})
     custom_4: Optional[StrictStr] = Field(default=None, description="Custom field 4.", json_schema_extra={"examples": ["Custom 4"]})
-    date_added: Optional[datetime] = Field(default=None, description="The date when the contact was added.", json_schema_extra={"examples": ["2015-07-05T14:51:26Z"]})
-    date_updated: Optional[datetime] = Field(default=None, description="The date when the contact was last updated.", json_schema_extra={"examples": ["2015-07-05T14:51:26Z"]})
+    date_added: Optional[StrictStr] = Field(default=None, description="The date when the contact was added. Returned as a plain string rather than a strict date-time since the API sometimes returns a raw Unix timestamp (e.g. \"1783997542\") instead of ISO 8601.", json_schema_extra={"examples": ["2015-07-05T14:51:26Z"]})
+    date_updated: Optional[StrictStr] = Field(default=None, description="The date when the contact was last updated. Returned as a plain string rather than a strict date-time since the API sometimes returns a raw Unix timestamp (e.g. \"1783997542\") instead of ISO 8601.", json_schema_extra={"examples": ["2015-07-05T14:51:26Z"]})
     fax_number: Optional[StrictStr] = Field(default=None, description="The fax number of the contact.", json_schema_extra={"examples": ["+61477141888"]})
     organization_name: Optional[StrictStr] = Field(default=None, description="The organization name of the contact.", json_schema_extra={"examples": ["Awesome Company"]})
     email: Optional[StrictStr] = Field(default=None, description="The email address of the contact.", json_schema_extra={"examples": ["john@doe.com"]})

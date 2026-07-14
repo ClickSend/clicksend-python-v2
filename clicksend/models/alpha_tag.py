@@ -17,7 +17,6 @@ import pprint
 import re  # noqa: F401
 import json
 
-from datetime import datetime
 from pydantic import BaseModel, ConfigDict, Field, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from typing import Optional, Set
@@ -36,8 +35,8 @@ class AlphaTag(BaseModel):
     status: Optional[StrictStr] = Field(default=None, description="The status of the record.", json_schema_extra={"examples": ["PENDING"]})
     reason: Optional[StrictStr] = Field(default=None, description="The reason for the status.", json_schema_extra={"examples": ["Sole Trader Name"]})
     countries: Optional[List[StrictStr]] = Field(default=None, description="List of country codes where the alpha tag is requested. If not provided, it means a global alpha tag.", json_schema_extra={"examples": [["AU"]]})
-    created_timestamp: Optional[datetime] = Field(default=None, description="The timestamp when the record was created.", json_schema_extra={"examples": ["2021-05-11T01:00:00.123Z"]})
-    updated_timestamp: Optional[datetime] = Field(default=None, description="The timestamp when the record was last updated.", json_schema_extra={"examples": ["2021-05-11T01:05:00.123Z"]})
+    created_timestamp: Optional[StrictStr] = Field(default=None, description="The timestamp when the record was created. Usually ISO 8601 (e.g. \"2021-05-11T01:00:00.123Z\"), but returned as a plain string rather than a strict date-time since some older records don't include a UTC offset (e.g. \"2024-01-10T10:55:26.818097\").", json_schema_extra={"examples": ["2021-05-11T01:00:00.123Z"]})
+    updated_timestamp: Optional[StrictStr] = Field(default=None, description="The timestamp when the record was last updated. Usually ISO 8601 (e.g. \"2021-05-11T01:05:00.123Z\"), but returned as a plain string rather than a strict date-time since some older records don't include a UTC offset.", json_schema_extra={"examples": ["2021-05-11T01:05:00.123Z"]})
     __properties: ClassVar[List[str]] = ["id", "account_id", "workspace_id", "user_id", "alpha_tag", "status", "reason", "countries", "created_timestamp", "updated_timestamp"]
 
     model_config = ConfigDict(

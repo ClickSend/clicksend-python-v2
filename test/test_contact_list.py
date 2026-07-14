@@ -38,7 +38,9 @@ class TestContactList(unittest.TestCase):
                 list_id = 428,
                 list_name = 'ListCT3QrVL4od',
                 list_email_id = 'KB0LHD6WXFVHZWTR',
-                contacts_count = 0
+                contacts_count = 0,
+                import_in_progress = 0,
+                optout_in_progress = 0
             )
         else:
             return ContactList(

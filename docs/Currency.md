@@ -10,6 +10,8 @@ Name | Type | Description | Notes
 **currency_prefix_d** | **str** | The symbol used to indicate the currency of the sender (e.g. $ , €, etc). | [optional] 
 **currency_prefix_c** | **str** | The currency basic unit (e.g. cents). | [optional] 
 **currency_name_long** | **str** | The full name of the currency. | [optional] 
+**min_recharge_amount** | **str** | The minimum amount that can be used to recharge the account, in this currency. | [optional] 
+**max_recharge_amount** | **str** | The maximum amount that can be used to recharge the account, in this currency. | [optional] 
 
 ## Example
 

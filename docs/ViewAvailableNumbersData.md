@@ -14,6 +14,7 @@ Name | Type | Description | Notes
 **var_from** | **int** | The number of the first result in the current page. | [optional] 
 **to** | **int** | The number of the last result in the current page. | [optional] 
 **data** | [**List[ViewAvailableNumbersDataAllOfDataInner]**](ViewAvailableNumbersDataAllOfDataInner.md) |  | [optional] 
+**currency** | [**Currency**](Currency.md) |  | [optional] 
 
 ## Example
 

@@ -38,7 +38,7 @@ class TestCreateStrippedStringRule(unittest.TestCase):
                 http_code = 200,
                 response_code = 'SUCCESS',
                 response_msg = 'Strip string has been created.',
-                data = clicksend.models.view_stripped_string_rules_data_data_inner.view_stripped_string_rules_data_data_inner(
+                data = clicksend.models.view_stripped_string_rules_data_all_of_data_inner.view_stripped_string_rules_data_allOf_data_inner(
                     rule_id = 56, 
                     strip_string = '', )
             )

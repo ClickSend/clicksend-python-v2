@@ -65,7 +65,9 @@ class TestSendEmailCampaignData(unittest.TestCase):
                     currency_name_short = 'AUD', 
                     currency_prefix_d = '$', 
                     currency_prefix_c = 'c', 
-                    currency_name_long = 'Australian Dollars', )
+                    currency_name_long = 'Australian Dollars', 
+                    min_recharge_amount = '20.00', 
+                    max_recharge_amount = '10000.00', )
             )
         else:
             return SendEmailCampaignData(

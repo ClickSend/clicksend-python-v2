@@ -19,7 +19,6 @@ import json
 
 from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
-from clicksend.models.currency import Currency
 from clicksend.models.view_available_numbers_data import ViewAvailableNumbersData
 from typing import Optional, Set
 from typing_extensions import Self
@@ -33,8 +32,7 @@ class ViewAvailableNumbers(BaseModel):
     response_code: Optional[StrictStr] = Field(default=None, description="The response code indicating the status of the operation.", json_schema_extra={"examples": ["SUCCESS"]})
     response_msg: Optional[StrictStr] = Field(default=None, description="A message describing the outcome of the operation.", json_schema_extra={"examples": ["Here are some numbers."]})
     data: Optional[ViewAvailableNumbersData] = None
-    currency: Optional[Currency] = Field(default=None, alias="_currency")
-    __properties: ClassVar[List[str]] = ["http_code", "response_code", "response_msg", "data", "_currency"]
+    __properties: ClassVar[List[str]] = ["http_code", "response_code", "response_msg", "data"]
 
     model_config = ConfigDict(
         validate_by_name=True,
@@ -78,9 +76,6 @@ class ViewAvailableNumbers(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of data
         if self.data:
             _dict['data'] = self.data.to_dict()
-        # override the default output from pydantic by calling `to_dict()` of currency
-        if self.currency:
-            _dict['_currency'] = self.currency.to_dict()
         return _dict
 
     @classmethod
@@ -96,8 +91,7 @@ class ViewAvailableNumbers(BaseModel):
             "http_code": obj.get("http_code"),
             "response_code": obj.get("response_code"),
             "response_msg": obj.get("response_msg"),
-            "data": ViewAvailableNumbersData.from_dict(obj["data"]) if obj.get("data") is not None else None,
-            "_currency": Currency.from_dict(obj["_currency"]) if obj.get("_currency") is not None else None
+            "data": ViewAvailableNumbersData.from_dict(obj["data"]) if obj.get("data") is not None else None
         })
         return _obj
 

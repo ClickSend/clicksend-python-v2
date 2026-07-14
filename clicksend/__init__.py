@@ -57,7 +57,9 @@ __all__ = [
     "ApiAttributeError",
     "ApiException",
     "Account",
+    "AccountReferrerChosen",
     "AddAllowedEmail",
+    "AddAllowedEmailData",
     "AddAllowedEmailRequest",
     "AgreeToRulesAndRegulation",
     "AlphaTag",
@@ -202,6 +204,7 @@ __all__ = [
     "GenerateNewApiKeyData",
     "GenerateNewApiKeyRequest",
     "GetAllDeliveryIssues",
+    "GetAllDeliveryIssuesData",
     "GetCountriesForGlobalSending",
     "GetDefaultSenderDetails",
     "GetDefaultSendersList",
@@ -367,13 +370,12 @@ __all__ = [
     "ViewAccountUsageData",
     "ViewAccountUsageDataEmailInner",
     "ViewAccountUsageDataEmailTotal",
+    "ViewAccountUsageDataMmsInner",
     "ViewAccountUsageDataSmsInner",
     "ViewAccountUsageDataSmsTotal",
-    "ViewAccountUsageDataVoiceInner",
     "ViewAllEmailCampaigns",
     "ViewAllEmailCampaignsData",
     "ViewAllMmsCampaigns",
-    "ViewAllMmsCampaignsData",
     "ViewAllTransactions",
     "ViewAllTransactionsData",
     "ViewAllTransactionsDataAllOfDataInner",
@@ -381,7 +383,8 @@ __all__ = [
     "ViewAllowedEmailAddresses",
     "ViewAllowedEmailAddressesData",
     "ViewAllowedEmails",
-    "ViewAllowedEmailsDataInner",
+    "ViewAllowedEmailsData",
+    "ViewAllowedEmailsDataAllOfDataInner",
     "ViewAvailableNumbers",
     "ViewAvailableNumbersData",
     "ViewAvailableNumbersDataAllOfDataInner",
@@ -442,6 +445,7 @@ __all__ = [
     "ViewSmsInboundAutomation",
     "ViewSmsInboundAutomations",
     "ViewSmsInboundAutomationsData",
+    "ViewSmsInboundAutomationsDataAllOfLinksInner",
     "ViewSmsReceipts",
     "ViewSmsReceiptsData",
     "ViewSmsStatistics",
@@ -462,7 +466,7 @@ __all__ = [
     "ViewStrippedStringRuleData",
     "ViewStrippedStringRules",
     "ViewStrippedStringRulesData",
-    "ViewStrippedStringRulesDataDataInner",
+    "ViewStrippedStringRulesDataAllOfDataInner",
     "ViewSubaccounts",
     "ViewSubaccountsData",
     "ViewTemplateCategories",
@@ -475,6 +479,7 @@ __all__ = [
     "ViewVoiceDeliveryReceiptRulesData",
     "ViewVoiceLanguages",
     "ViewVoiceLanguagesDataInner",
+    "ViewVoiceLanguagesDataInnerGender",
     "ViewVoiceReceipts",
     "ViewVoiceReceiptsData",
     "ViewVoiceStatistics",
@@ -537,7 +542,9 @@ from clicksend.exceptions import ApiException as ApiException
 
 # import models into sdk package
 from clicksend.models.account import Account as Account
+from clicksend.models.account_referrer_chosen import AccountReferrerChosen as AccountReferrerChosen
 from clicksend.models.add_allowed_email import AddAllowedEmail as AddAllowedEmail
+from clicksend.models.add_allowed_email_data import AddAllowedEmailData as AddAllowedEmailData
 from clicksend.models.add_allowed_email_request import AddAllowedEmailRequest as AddAllowedEmailRequest
 from clicksend.models.agree_to_rules_and_regulation import AgreeToRulesAndRegulation as AgreeToRulesAndRegulation
 from clicksend.models.alpha_tag import AlphaTag as AlphaTag
@@ -682,6 +689,7 @@ from clicksend.models.generate_new_api_key import GenerateNewApiKey as GenerateN
 from clicksend.models.generate_new_api_key_data import GenerateNewApiKeyData as GenerateNewApiKeyData
 from clicksend.models.generate_new_api_key_request import GenerateNewApiKeyRequest as GenerateNewApiKeyRequest
 from clicksend.models.get_all_delivery_issues import GetAllDeliveryIssues as GetAllDeliveryIssues
+from clicksend.models.get_all_delivery_issues_data import GetAllDeliveryIssuesData as GetAllDeliveryIssuesData
 from clicksend.models.get_countries_for_global_sending import GetCountriesForGlobalSending as GetCountriesForGlobalSending
 from clicksend.models.get_default_sender_details import GetDefaultSenderDetails as GetDefaultSenderDetails
 from clicksend.models.get_default_senders_list import GetDefaultSendersList as GetDefaultSendersList
@@ -847,13 +855,12 @@ from clicksend.models.view_account_usage import ViewAccountUsage as ViewAccountU
 from clicksend.models.view_account_usage_data import ViewAccountUsageData as ViewAccountUsageData
 from clicksend.models.view_account_usage_data_email_inner import ViewAccountUsageDataEmailInner as ViewAccountUsageDataEmailInner
 from clicksend.models.view_account_usage_data_email_total import ViewAccountUsageDataEmailTotal as ViewAccountUsageDataEmailTotal
+from clicksend.models.view_account_usage_data_mms_inner import ViewAccountUsageDataMmsInner as ViewAccountUsageDataMmsInner
 from clicksend.models.view_account_usage_data_sms_inner import ViewAccountUsageDataSmsInner as ViewAccountUsageDataSmsInner
 from clicksend.models.view_account_usage_data_sms_total import ViewAccountUsageDataSmsTotal as ViewAccountUsageDataSmsTotal
-from clicksend.models.view_account_usage_data_voice_inner import ViewAccountUsageDataVoiceInner as ViewAccountUsageDataVoiceInner
 from clicksend.models.view_all_email_campaigns import ViewAllEmailCampaigns as ViewAllEmailCampaigns
 from clicksend.models.view_all_email_campaigns_data import ViewAllEmailCampaignsData as ViewAllEmailCampaignsData
 from clicksend.models.view_all_mms_campaigns import ViewAllMmsCampaigns as ViewAllMmsCampaigns
-from clicksend.models.view_all_mms_campaigns_data import ViewAllMmsCampaignsData as ViewAllMmsCampaignsData
 from clicksend.models.view_all_transactions import ViewAllTransactions as ViewAllTransactions
 from clicksend.models.view_all_transactions_data import ViewAllTransactionsData as ViewAllTransactionsData
 from clicksend.models.view_all_transactions_data_all_of_data_inner import ViewAllTransactionsDataAllOfDataInner as ViewAllTransactionsDataAllOfDataInner
@@ -861,7 +868,8 @@ from clicksend.models.view_allowed_email_address import ViewAllowedEmailAddress 
 from clicksend.models.view_allowed_email_addresses import ViewAllowedEmailAddresses as ViewAllowedEmailAddresses
 from clicksend.models.view_allowed_email_addresses_data import ViewAllowedEmailAddressesData as ViewAllowedEmailAddressesData
 from clicksend.models.view_allowed_emails import ViewAllowedEmails as ViewAllowedEmails
-from clicksend.models.view_allowed_emails_data_inner import ViewAllowedEmailsDataInner as ViewAllowedEmailsDataInner
+from clicksend.models.view_allowed_emails_data import ViewAllowedEmailsData as ViewAllowedEmailsData
+from clicksend.models.view_allowed_emails_data_all_of_data_inner import ViewAllowedEmailsDataAllOfDataInner as ViewAllowedEmailsDataAllOfDataInner
 from clicksend.models.view_available_numbers import ViewAvailableNumbers as ViewAvailableNumbers
 from clicksend.models.view_available_numbers_data import ViewAvailableNumbersData as ViewAvailableNumbersData
 from clicksend.models.view_available_numbers_data_all_of_data_inner import ViewAvailableNumbersDataAllOfDataInner as ViewAvailableNumbersDataAllOfDataInner
@@ -922,6 +930,7 @@ from clicksend.models.view_sms_history_data_all_of_data_inner import ViewSmsHist
 from clicksend.models.view_sms_inbound_automation import ViewSmsInboundAutomation as ViewSmsInboundAutomation
 from clicksend.models.view_sms_inbound_automations import ViewSmsInboundAutomations as ViewSmsInboundAutomations
 from clicksend.models.view_sms_inbound_automations_data import ViewSmsInboundAutomationsData as ViewSmsInboundAutomationsData
+from clicksend.models.view_sms_inbound_automations_data_all_of_links_inner import ViewSmsInboundAutomationsDataAllOfLinksInner as ViewSmsInboundAutomationsDataAllOfLinksInner
 from clicksend.models.view_sms_receipts import ViewSmsReceipts as ViewSmsReceipts
 from clicksend.models.view_sms_receipts_data import ViewSmsReceiptsData as ViewSmsReceiptsData
 from clicksend.models.view_sms_statistics import ViewSmsStatistics as ViewSmsStatistics
@@ -942,7 +951,7 @@ from clicksend.models.view_stripped_string_rule import ViewStrippedStringRule as
 from clicksend.models.view_stripped_string_rule_data import ViewStrippedStringRuleData as ViewStrippedStringRuleData
 from clicksend.models.view_stripped_string_rules import ViewStrippedStringRules as ViewStrippedStringRules
 from clicksend.models.view_stripped_string_rules_data import ViewStrippedStringRulesData as ViewStrippedStringRulesData
-from clicksend.models.view_stripped_string_rules_data_data_inner import ViewStrippedStringRulesDataDataInner as ViewStrippedStringRulesDataDataInner
+from clicksend.models.view_stripped_string_rules_data_all_of_data_inner import ViewStrippedStringRulesDataAllOfDataInner as ViewStrippedStringRulesDataAllOfDataInner
 from clicksend.models.view_subaccounts import ViewSubaccounts as ViewSubaccounts
 from clicksend.models.view_subaccounts_data import ViewSubaccountsData as ViewSubaccountsData
 from clicksend.models.view_template_categories import ViewTemplateCategories as ViewTemplateCategories
@@ -955,6 +964,7 @@ from clicksend.models.view_voice_delivery_receipt_rules import ViewVoiceDelivery
 from clicksend.models.view_voice_delivery_receipt_rules_data import ViewVoiceDeliveryReceiptRulesData as ViewVoiceDeliveryReceiptRulesData
 from clicksend.models.view_voice_languages import ViewVoiceLanguages as ViewVoiceLanguages
 from clicksend.models.view_voice_languages_data_inner import ViewVoiceLanguagesDataInner as ViewVoiceLanguagesDataInner
+from clicksend.models.view_voice_languages_data_inner_gender import ViewVoiceLanguagesDataInnerGender as ViewVoiceLanguagesDataInnerGender
 from clicksend.models.view_voice_receipts import ViewVoiceReceipts as ViewVoiceReceipts
 from clicksend.models.view_voice_receipts_data import ViewVoiceReceiptsData as ViewVoiceReceiptsData
 from clicksend.models.view_voice_statistics import ViewVoiceStatistics as ViewVoiceStatistics

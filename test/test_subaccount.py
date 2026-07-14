@@ -42,6 +42,7 @@ class TestSubaccount(unittest.TestCase):
                 first_name = 'John',
                 last_name = 'Doe',
                 api_key = 'F3702045-EB2C-0091-C211-7728048DCAE2',
+                access_smpp = 0,
                 access_users = 1,
                 access_billing = 1,
                 access_reporting = 1,
@@ -53,9 +54,13 @@ class TestSubaccount(unittest.TestCase):
                 access_fax = 1,
                 access_post = 1,
                 access_reseller = 1,
+                access_global_sending = 1,
                 access_mms = 1,
+                hide_pricing = 0,
                 share_campaigns = 0,
-                notes = ''
+                notes = '',
+                is_main = 0,
+                sign_up_type = ''
             )
         else:
             return Subaccount(

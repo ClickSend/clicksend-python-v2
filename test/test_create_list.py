@@ -42,7 +42,9 @@ class TestCreateList(unittest.TestCase):
                     list_id = 428, 
                     list_name = 'ListCT3QrVL4od', 
                     list_email_id = 'KB0LHD6WXFVHZWTR', 
-                    _contacts_count = 0, )
+                    _contacts_count = 0, 
+                    _import_in_progress = 0, 
+                    _optout_in_progress = 0, )
             )
         else:
             return CreateList(

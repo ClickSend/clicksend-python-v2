@@ -38,7 +38,7 @@ class TestViewAllowedEmails(unittest.TestCase):
                 http_code = 200,
                 response_code = 'SUCCESS',
                 response_msg = 'Here are some data.',
-                data = [{"email_address_id":84,"email_address":"my@email.com","from":"+13523944199"},{"email_address_id":85,"email_address":"my@email.com","from":"+13523944199"}]
+                data = None
             )
         else:
             return ViewAllowedEmails(

@@ -36,15 +36,34 @@ class TestViewAccountUsageData(unittest.TestCase):
         if include_optional:
             return ViewAccountUsageData(
                 sms = [{"subaccount_id":1039,"username":"gerald","total_count":"29.00","total_price":"2.1337"},{"subaccount_id":1047,"username":"user5","total_count":"4.00","total_price":"0.3080"}],
+                mms = [],
                 voice = [{"subaccount_id":1039,"username":"user1","total_count":"6.00","total_price":"0.1980"},{"subaccount_id":1047,"username":"user5","total_count":"1.00","total_price":"0.0330"}],
                 fax = [{"subaccount_id":1039,"username":"user1","total_count":"3.00","total_price":"0.6943"},{"subaccount_id":1047,"username":"user5","total_count":"1.00","total_price":"0.2314"}],
                 post = [{"subaccount_id":1039,"username":"user1","total_count":"10","total_price":"8.5624"},{"subaccount_id":1047,"username":"user5","total_count":"3","total_price":"2.5586"}],
                 email = [{"subaccount_id":1039,"username":"user1","total_count":3992,"total_price":"9.0020"},{"subaccount_id":1047,"username":"user5","total_count":998,"total_price":"0.0000"}],
+                email_transactional = [],
+                postcards = [],
                 sms_total = {"count":33,"price":"2.4417"},
                 voice_total = {"count":33,"price":"2.4417"},
                 fax_total = {"count":33,"price":"2.4417"},
                 post_total = {"count":33,"price":"2.4417"},
-                email_total = {"count":4990,"price":"9.0020"}
+                email_total = {"count":4990,"price":"9.0020"},
+                mms_total = clicksend.models.view_voice_statistics_data_total_outbound.view_voice_statistics_data_total_outbound(
+                    count = 1, 
+                    price = 0, ),
+                email_transactional_total = clicksend.models.view_voice_statistics_data_total_outbound.view_voice_statistics_data_total_outbound(
+                    count = 1, 
+                    price = 0, ),
+                postcards_total = clicksend.models.view_voice_statistics_data_total_outbound.view_voice_statistics_data_total_outbound(
+                    count = 1, 
+                    price = 0, ),
+                currency = clicksend.models.currency.currency(
+                    currency_name_short = 'AUD', 
+                    currency_prefix_d = '$', 
+                    currency_prefix_c = 'c', 
+                    currency_name_long = 'Australian Dollars', 
+                    min_recharge_amount = '20.00', 
+                    max_recharge_amount = '10000.00', )
             )
         else:
             return ViewAccountUsageData(

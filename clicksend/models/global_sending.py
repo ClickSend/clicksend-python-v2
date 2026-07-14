@@ -17,8 +17,9 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr
+from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
+from clicksend.models.account_referrer_chosen import AccountReferrerChosen
 from clicksend.models.global_sending_registration_status import GlobalSendingRegistrationStatus
 from typing import Optional, Set
 from typing_extensions import Self
@@ -33,14 +34,14 @@ class GlobalSending(BaseModel):
     code: Optional[StrictStr] = Field(default=None, description="The country code.", json_schema_extra={"examples": ["AU"]})
     region: Optional[StrictStr] = Field(default=None, description="The region of the country.", json_schema_extra={"examples": ["Oceania"]})
     agreed_at: Optional[StrictStr] = Field(default=None, description="The date when the country was agreed upon.")
-    registration_entity: Optional[StrictStr] = Field(default=None, description="The entity responsible for the registration.")
+    registration_entity: Optional[AccountReferrerChosen] = None
     registration_status: Optional[GlobalSendingRegistrationStatus] = None
     jotform_id: Optional[StrictStr] = Field(default=None, description="The ID of the country in JotForm.", json_schema_extra={"examples": ["12345"]})
     sms_registration_type: Optional[StrictInt] = Field(default=None, description="The type of SMS registration.", json_schema_extra={"examples": [0]})
-    block_registration: Optional[StrictInt] = Field(default=None, description="Indicates if registration is blocked.", json_schema_extra={"examples": [0]})
-    block_leads: Optional[StrictInt] = Field(default=None, description="Indicates if leads are blocked.", json_schema_extra={"examples": [0]})
+    block_registration: Optional[StrictBool] = Field(default=None, description="Indicates if registration is blocked.", json_schema_extra={"examples": [False]})
+    block_leads: Optional[StrictBool] = Field(default=None, description="Indicates if leads are blocked.", json_schema_extra={"examples": [False]})
     trial_from_address: Optional[StrictStr] = Field(default=None, description="The trial from address.", json_schema_extra={"examples": [""]})
-    restricted_sending: Optional[StrictInt] = Field(default=None, description="Indicates if sending is restricted.", json_schema_extra={"examples": [0]})
+    restricted_sending: Optional[StrictBool] = Field(default=None, description="Indicates if sending is restricted.", json_schema_extra={"examples": [False]})
     trial_sending: Optional[StrictInt] = Field(default=None, description="Indicates if trial sending is allowed.", json_schema_extra={"examples": [0]})
     trial_sending_description: Optional[StrictStr] = Field(default=None, description="Description of trial sending.", json_schema_extra={"examples": [""]})
     has_regulation_requirements: Optional[StrictInt] = Field(default=None, description="Indicates if there are regulation requirements.", json_schema_extra={"examples": [0]})
@@ -87,6 +88,9 @@ class GlobalSending(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # override the default output from pydantic by calling `to_dict()` of registration_entity
+        if self.registration_entity:
+            _dict['registration_entity'] = self.registration_entity.to_dict()
         # override the default output from pydantic by calling `to_dict()` of registration_status
         if self.registration_status:
             _dict['registration_status'] = self.registration_status.to_dict()
@@ -117,7 +121,7 @@ class GlobalSending(BaseModel):
             "code": obj.get("code"),
             "region": obj.get("region"),
             "agreed_at": obj.get("agreed_at"),
-            "registration_entity": obj.get("registration_entity"),
+            "registration_entity": AccountReferrerChosen.from_dict(obj["registration_entity"]) if obj.get("registration_entity") is not None else None,
             "registration_status": GlobalSendingRegistrationStatus.from_dict(obj["registration_status"]) if obj.get("registration_status") is not None else None,
             "jotform_id": obj.get("jotform_id"),
             "sms_registration_type": obj.get("sms_registration_type"),

@@ -38,10 +38,10 @@ class TestAddAllowedEmail(unittest.TestCase):
                 http_code = 200,
                 response_code = 'SUCCESS',
                 response_msg = 'New data has been saved.',
-                data = clicksend.models.view_allowed_emails_data_inner.view_allowed_emails_data_inner(
-                    email_address_id = 1, 
-                    email_address = 'my@email.com', 
-                    from = '+13523944199', )
+                data = clicksend.models.add_allowed_email_data.add_allowed_email_data(
+                    email_address_id = 107, 
+                    email_address = 'Cv3p0@gmail.com', 
+                    from = '+17128845887', )
             )
         else:
             return AddAllowedEmail(

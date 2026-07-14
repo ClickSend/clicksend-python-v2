@@ -17,7 +17,7 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field
+from pydantic import BaseModel, ConfigDict
 from typing import Any, ClassVar, Dict, List, Optional
 from clicksend.models.currency import Currency
 from clicksend.models.view_recharge_packages_data_packages_inner import ViewRechargePackagesDataPackagesInner
@@ -30,8 +30,8 @@ class ViewRechargePackagesData(BaseModel):
     ViewRechargePackagesData
     """ # noqa: E501
     packages: Optional[List[ViewRechargePackagesDataPackagesInner]] = None
-    currency: Optional[Currency] = Field(default=None, alias="_currency")
-    __properties: ClassVar[List[str]] = ["packages", "_currency"]
+    currency: Optional[Currency] = None
+    __properties: ClassVar[List[str]] = ["packages", "currency"]
 
     model_config = ConfigDict(
         validate_by_name=True,
@@ -81,7 +81,7 @@ class ViewRechargePackagesData(BaseModel):
             _dict['packages'] = _items
         # override the default output from pydantic by calling `to_dict()` of currency
         if self.currency:
-            _dict['_currency'] = self.currency.to_dict()
+            _dict['currency'] = self.currency.to_dict()
         return _dict
 
     @classmethod
@@ -95,7 +95,7 @@ class ViewRechargePackagesData(BaseModel):
 
         _obj = cls.model_validate({
             "packages": [ViewRechargePackagesDataPackagesInner.from_dict(_item) for _item in obj["packages"]] if obj.get("packages") is not None else None,
-            "_currency": Currency.from_dict(obj["_currency"]) if obj.get("_currency") is not None else None
+            "currency": Currency.from_dict(obj["currency"]) if obj.get("currency") is not None else None
         })
         return _obj
 

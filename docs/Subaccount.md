@@ -12,6 +12,7 @@ Name | Type | Description | Notes
 **first_name** | **str** | The first name of the subaccount. | [optional] 
 **last_name** | **str** | The last name of the subaccount. | [optional] 
 **api_key** | **str** | The API key of the subaccount. | [optional] 
+**access_smpp** | **int** | Flag indicating if the subaccount has access to SMPP. | [optional] 
 **access_users** | **int** | Flag indicating if the subaccount has access to users. | [optional] 
 **access_billing** | **int** | Flag indicating if the subaccount has access to billing. | [optional] 
 **access_reporting** | **int** | Flag indicating if the subaccount has access to reporting. | [optional] 
@@ -23,9 +24,13 @@ Name | Type | Description | Notes
 **access_fax** | **int** | Flag indicating if the subaccount has access to fax services. | [optional] 
 **access_post** | **int** | Flag indicating if the subaccount has access to post services. | [optional] 
 **access_reseller** | **int** | Flag indicating if the subaccount has access to reseller services. | [optional] 
+**access_global_sending** | **int** | Flag indicating if the subaccount has access to global sending. | [optional] 
 **access_mms** | **int** | Flag indicating if the subaccount has access to MMS services. | [optional] 
+**hide_pricing** | **int** | Flag indicating if pricing is hidden for the subaccount. | [optional] 
 **share_campaigns** | **int** | Flag indicating if the subaccount can share campaigns. | [optional] 
 **notes** | **str** | Additional notes for the subaccount. | [optional] 
+**is_main** | **int** | Flag indicating if this is the main account rather than a subaccount. | [optional] 
+**sign_up_type** | **str** | The sign-up type used to create the subaccount, if applicable. | [optional] 
 
 ## Example
 

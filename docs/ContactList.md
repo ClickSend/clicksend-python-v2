@@ -9,6 +9,8 @@ Name | Type | Description | Notes
 **list_name** | **str** | The name of the list. | [optional] 
 **list_email_id** | **str** | The email address id of the list. | [optional] 
 **contacts_count** | **int** | The number of contacts in the list. | [optional] 
+**import_in_progress** | **int** | Flag indicating if a contact import is currently in progress for this list. | [optional] 
+**optout_in_progress** | **int** | Flag indicating if an opt-out removal is currently in progress for this list. | [optional] 
 
 ## Example
 

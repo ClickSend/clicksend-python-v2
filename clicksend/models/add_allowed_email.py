@@ -19,7 +19,7 @@ import json
 
 from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
-from clicksend.models.view_allowed_emails_data_inner import ViewAllowedEmailsDataInner
+from clicksend.models.add_allowed_email_data import AddAllowedEmailData
 from typing import Optional, Set
 from typing_extensions import Self
 from pydantic_core import to_jsonable_python
@@ -31,7 +31,7 @@ class AddAllowedEmail(BaseModel):
     http_code: Optional[StrictInt] = Field(default=None, description="The HTTP status code of the response.", json_schema_extra={"examples": [200]})
     response_code: Optional[StrictStr] = Field(default=None, description="The response code indicating the status of the operation.", json_schema_extra={"examples": ["SUCCESS"]})
     response_msg: Optional[StrictStr] = Field(default=None, description="A message describing the outcome of the operation.", json_schema_extra={"examples": ["New data has been saved."]})
-    data: Optional[ViewAllowedEmailsDataInner] = None
+    data: Optional[AddAllowedEmailData] = None
     __properties: ClassVar[List[str]] = ["http_code", "response_code", "response_msg", "data"]
 
     model_config = ConfigDict(
@@ -91,7 +91,7 @@ class AddAllowedEmail(BaseModel):
             "http_code": obj.get("http_code"),
             "response_code": obj.get("response_code"),
             "response_msg": obj.get("response_msg"),
-            "data": ViewAllowedEmailsDataInner.from_dict(obj["data"]) if obj.get("data") is not None else None
+            "data": AddAllowedEmailData.from_dict(obj["data"]) if obj.get("data") is not None else None
         })
         return _obj
 

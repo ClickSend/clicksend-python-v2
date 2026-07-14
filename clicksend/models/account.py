@@ -19,6 +19,7 @@ import json
 
 from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
+from clicksend.models.account_referrer_chosen import AccountReferrerChosen
 from clicksend.models.currency import Currency
 from clicksend.models.subaccount import Subaccount
 from typing import Optional, Set
@@ -34,6 +35,7 @@ class Account(BaseModel):
     user_email: Optional[StrictStr] = Field(default=None, description="The email address of the user.", json_schema_extra={"examples": ["johndoe1@awesome.com"]})
     active: Optional[StrictInt] = Field(default=None, description="Flag indicating if the user account is active.", json_schema_extra={"examples": [0]})
     banned: Optional[StrictInt] = Field(default=None, description="Flag indicating if the user account is banned.", json_schema_extra={"examples": [0]})
+    date_sign_up: Optional[StrictInt] = Field(default=None, description="The Unix timestamp of when the account was created.", json_schema_extra={"examples": [1436871253]})
     balance: Optional[StrictStr] = Field(default=None, description="The balance of the user's account.", json_schema_extra={"examples": ["4.998000"]})
     user_phone: Optional[StrictStr] = Field(default=None, description="The phone number of the user.", json_schema_extra={"examples": ["+15184811001"]})
     reply_to: Optional[StrictStr] = Field(default=None, description="The email address to reply to.", json_schema_extra={"examples": ["originalemail"]})
@@ -44,7 +46,9 @@ class Account(BaseModel):
     account_name: Optional[StrictStr] = Field(default=None, description="The name of the account.", json_schema_extra={"examples": ["The Awesome Company"]})
     account_billing_email: Optional[StrictStr] = Field(default=None, description="The billing email address of the account.", json_schema_extra={"examples": ["johndoe1@awesome.com"]})
     account_billing_mobile: Optional[StrictStr] = Field(default=None, description="The billing mobile number of the account.", json_schema_extra={"examples": ["+15184811001"]})
+    priority: Optional[StrictInt] = Field(default=None, description="The account's priority tier.", json_schema_extra={"examples": [2]})
     country: Optional[StrictStr] = Field(default=None, description="The country of the user.", json_schema_extra={"examples": ["US"]})
+    country_ip: Optional[StrictStr] = Field(default=None, description="The country the user is currently connecting from, based on IP address.", json_schema_extra={"examples": ["US"]})
     default_country_sms: Optional[StrictStr] = Field(default=None, description="The default country for SMS.", json_schema_extra={"examples": ["US"]})
     auto_recharge: Optional[StrictInt] = Field(default=None, description="Flag indicating if auto-recharge is enabled.", json_schema_extra={"examples": [0]})
     auto_recharge_amount: Optional[StrictStr] = Field(default=None, description="The auto-recharge amount.", json_schema_extra={"examples": ["20.00"]})
@@ -57,9 +61,17 @@ class Account(BaseModel):
     balance_commission: Optional[StrictStr] = Field(default=None, description="The balance commission.", json_schema_extra={"examples": ["0.299954"]})
     timezone: Optional[StrictStr] = Field(default=None, description="The timezone of the user.", json_schema_extra={"examples": ["Australia/Melbourne"]})
     price_rate: Optional[StrictInt] = Field(default=None, description="The pricing tier used to determine the cost per message.", json_schema_extra={"examples": [0]})
+    private_uploads: Optional[StrictInt] = Field(default=None, description="Flag indicating if uploaded media is kept private.", json_schema_extra={"examples": [0]})
+    fax_quality: Optional[StrictInt] = Field(default=None, description="The quality setting used for outgoing faxes.", json_schema_extra={"examples": [0]})
+    setting_sms_hide_your_number: Optional[StrictInt] = Field(default=None, description="Flag indicating if your number is hidden on outgoing SMS.", json_schema_extra={"examples": [0]})
+    setting_sms_hide_business_name: Optional[StrictInt] = Field(default=None, description="Flag indicating if the business name is hidden on outgoing SMS.", json_schema_extra={"examples": [0]})
+    pricing_variant: Optional[StrictInt] = Field(default=None, description="The pricing variant applied to the account.", json_schema_extra={"examples": [0]})
+    on_trial: Optional[StrictInt] = Field(default=None, description="Flag indicating if the account is currently on a trial.", json_schema_extra={"examples": [0]})
+    trial_expiry: Optional[StrictStr] = Field(default=None, description="The date the trial expires, if the account is on a trial.")
     currency: Optional[Currency] = Field(default=None, alias="_currency")
     subaccount: Optional[Subaccount] = Field(default=None, alias="_subaccount")
-    __properties: ClassVar[List[str]] = ["user_id", "username", "user_email", "active", "banned", "balance", "user_phone", "reply_to", "delivery_to", "user_first_name", "user_last_name", "account", "account_name", "account_billing_email", "account_billing_mobile", "country", "default_country_sms", "auto_recharge", "auto_recharge_amount", "low_credit_amount", "setting_unicode_sms", "setting_email_sms_subject", "setting_fix_sender_id", "setting_sms_message_char_limit", "old_dashboard", "balance_commission", "timezone", "price_rate", "_currency", "_subaccount"]
+    referrer_chosen: Optional[AccountReferrerChosen] = Field(default=None, alias="_referrer_chosen")
+    __properties: ClassVar[List[str]] = ["user_id", "username", "user_email", "active", "banned", "date_sign_up", "balance", "user_phone", "reply_to", "delivery_to", "user_first_name", "user_last_name", "account", "account_name", "account_billing_email", "account_billing_mobile", "priority", "country", "country_ip", "default_country_sms", "auto_recharge", "auto_recharge_amount", "low_credit_amount", "setting_unicode_sms", "setting_email_sms_subject", "setting_fix_sender_id", "setting_sms_message_char_limit", "old_dashboard", "balance_commission", "timezone", "price_rate", "private_uploads", "fax_quality", "setting_sms_hide_your_number", "setting_sms_hide_business_name", "pricing_variant", "on_trial", "trial_expiry", "_currency", "_subaccount", "_referrer_chosen"]
 
     model_config = ConfigDict(
         validate_by_name=True,
@@ -106,10 +118,23 @@ class Account(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of subaccount
         if self.subaccount:
             _dict['_subaccount'] = self.subaccount.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of referrer_chosen
+        if self.referrer_chosen:
+            _dict['_referrer_chosen'] = self.referrer_chosen.to_dict()
         # set to None if delivery_to (nullable) is None
         # and model_fields_set contains the field
         if self.delivery_to is None and "delivery_to" in self.model_fields_set:
             _dict['delivery_to'] = None
+
+        # set to None if trial_expiry (nullable) is None
+        # and model_fields_set contains the field
+        if self.trial_expiry is None and "trial_expiry" in self.model_fields_set:
+            _dict['trial_expiry'] = None
+
+        # set to None if referrer_chosen (nullable) is None
+        # and model_fields_set contains the field
+        if self.referrer_chosen is None and "referrer_chosen" in self.model_fields_set:
+            _dict['_referrer_chosen'] = None
 
         return _dict
 
@@ -128,6 +153,7 @@ class Account(BaseModel):
             "user_email": obj.get("user_email"),
             "active": obj.get("active"),
             "banned": obj.get("banned"),
+            "date_sign_up": obj.get("date_sign_up"),
             "balance": obj.get("balance"),
             "user_phone": obj.get("user_phone"),
             "reply_to": obj.get("reply_to"),
@@ -138,7 +164,9 @@ class Account(BaseModel):
             "account_name": obj.get("account_name"),
             "account_billing_email": obj.get("account_billing_email"),
             "account_billing_mobile": obj.get("account_billing_mobile"),
+            "priority": obj.get("priority"),
             "country": obj.get("country"),
+            "country_ip": obj.get("country_ip"),
             "default_country_sms": obj.get("default_country_sms"),
             "auto_recharge": obj.get("auto_recharge"),
             "auto_recharge_amount": obj.get("auto_recharge_amount"),
@@ -151,8 +179,16 @@ class Account(BaseModel):
             "balance_commission": obj.get("balance_commission"),
             "timezone": obj.get("timezone"),
             "price_rate": obj.get("price_rate"),
+            "private_uploads": obj.get("private_uploads"),
+            "fax_quality": obj.get("fax_quality"),
+            "setting_sms_hide_your_number": obj.get("setting_sms_hide_your_number"),
+            "setting_sms_hide_business_name": obj.get("setting_sms_hide_business_name"),
+            "pricing_variant": obj.get("pricing_variant"),
+            "on_trial": obj.get("on_trial"),
+            "trial_expiry": obj.get("trial_expiry"),
             "_currency": Currency.from_dict(obj["_currency"]) if obj.get("_currency") is not None else None,
-            "_subaccount": Subaccount.from_dict(obj["_subaccount"]) if obj.get("_subaccount") is not None else None
+            "_subaccount": Subaccount.from_dict(obj["_subaccount"]) if obj.get("_subaccount") is not None else None,
+            "_referrer_chosen": AccountReferrerChosen.from_dict(obj["_referrer_chosen"]) if obj.get("_referrer_chosen") is not None else None
         })
         return _obj
 

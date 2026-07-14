@@ -38,12 +38,7 @@ class TestViewAvailableNumbers(unittest.TestCase):
                 http_code = 200,
                 response_code = 'SUCCESS',
                 response_msg = 'Here are some numbers.',
-                data = None,
-                currency = clicksend.models.currency.currency(
-                    currency_name_short = 'AUD', 
-                    currency_prefix_d = '$', 
-                    currency_prefix_c = 'c', 
-                    currency_name_long = 'Australian Dollars', )
+                data = None
             )
         else:
             return ViewAvailableNumbers(

@@ -9,7 +9,6 @@ Name | Type | Description | Notes
 **response_code** | **str** | The response code indicating the status of the operation. | [optional] 
 **response_msg** | **str** | A message describing the outcome of the operation. | [optional] 
 **data** | [**ViewAvailableNumbersData**](ViewAvailableNumbersData.md) |  | [optional] 
-**currency** | [**Currency**](Currency.md) |  | [optional] 
 
 ## Example
 

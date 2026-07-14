@@ -19,7 +19,7 @@ import json
 
 from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
-from clicksend.models.view_all_mms_campaigns_data import ViewAllMmsCampaignsData
+from clicksend.models.mms_campaign import MmsCampaign
 from typing import Optional, Set
 from typing_extensions import Self
 from pydantic_core import to_jsonable_python
@@ -28,11 +28,16 @@ class ViewAllMmsCampaigns(BaseModel):
     """
     ViewAllMmsCampaigns
     """ # noqa: E501
-    http_code: Optional[StrictInt] = Field(default=None, description="The HTTP status code of the response.", json_schema_extra={"examples": [200]})
-    response_code: Optional[StrictStr] = Field(default=None, description="The response code indicating the status of the operation.", json_schema_extra={"examples": ["SUCCESS"]})
-    response_msg: Optional[StrictStr] = Field(default=None, description="A message describing the outcome of the operation.", json_schema_extra={"examples": ["Countries have been selected."]})
-    data: Optional[ViewAllMmsCampaignsData] = None
-    __properties: ClassVar[List[str]] = ["http_code", "response_code", "response_msg", "data"]
+    total: Optional[StrictInt] = Field(default=None, description="The total number of items available for viewing.", json_schema_extra={"examples": [2]})
+    per_page: Optional[StrictInt] = Field(default=None, description="The number of items returned per page. This is specified in the limit parameter. You can have 100 items at maximum, and 15 at minimum.", json_schema_extra={"examples": [15]})
+    current_page: Optional[StrictInt] = Field(default=None, description="The current page number.", json_schema_extra={"examples": [1]})
+    last_page: Optional[StrictInt] = Field(default=None, description="The last page number.", json_schema_extra={"examples": [1]})
+    next_page_url: Optional[StrictStr] = Field(default=None, description="A URL of the next page. It will return **null** if there’s no next page.")
+    prev_page_url: Optional[StrictStr] = Field(default=None, description="A URL of the previous page. It will return **null** if there’s no previous page.")
+    var_from: Optional[StrictInt] = Field(default=None, description="The number of the first result in the current page.", alias="from", json_schema_extra={"examples": [1]})
+    to: Optional[StrictInt] = Field(default=None, description="The number of the last result in the current page.", json_schema_extra={"examples": [2]})
+    data: Optional[List[MmsCampaign]] = None
+    __properties: ClassVar[List[str]] = ["total", "per_page", "current_page", "last_page", "next_page_url", "prev_page_url", "from", "to", "data"]
 
     model_config = ConfigDict(
         validate_by_name=True,
@@ -73,9 +78,23 @@ class ViewAllMmsCampaigns(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # override the default output from pydantic by calling `to_dict()` of data
+        # override the default output from pydantic by calling `to_dict()` of each item in data (list)
+        _items = []
         if self.data:
-            _dict['data'] = self.data.to_dict()
+            for _item_data in self.data:
+                if _item_data:
+                    _items.append(_item_data.to_dict())
+            _dict['data'] = _items
+        # set to None if next_page_url (nullable) is None
+        # and model_fields_set contains the field
+        if self.next_page_url is None and "next_page_url" in self.model_fields_set:
+            _dict['next_page_url'] = None
+
+        # set to None if prev_page_url (nullable) is None
+        # and model_fields_set contains the field
+        if self.prev_page_url is None and "prev_page_url" in self.model_fields_set:
+            _dict['prev_page_url'] = None
+
         return _dict
 
     @classmethod
@@ -88,10 +107,15 @@ class ViewAllMmsCampaigns(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "http_code": obj.get("http_code"),
-            "response_code": obj.get("response_code"),
-            "response_msg": obj.get("response_msg"),
-            "data": ViewAllMmsCampaignsData.from_dict(obj["data"]) if obj.get("data") is not None else None
+            "total": obj.get("total"),
+            "per_page": obj.get("per_page"),
+            "current_page": obj.get("current_page"),
+            "last_page": obj.get("last_page"),
+            "next_page_url": obj.get("next_page_url"),
+            "prev_page_url": obj.get("prev_page_url"),
+            "from": obj.get("from"),
+            "to": obj.get("to"),
+            "data": [MmsCampaign.from_dict(_item) for _item in obj["data"]] if obj.get("data") is not None else None
         })
         return _obj
 

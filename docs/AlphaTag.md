@@ -13,8 +13,8 @@ Name | Type | Description | Notes
 **status** | **str** | The status of the record. | [optional] 
 **reason** | **str** | The reason for the status. | [optional] 
 **countries** | **List[str]** | List of country codes where the alpha tag is requested. If not provided, it means a global alpha tag. | [optional] 
-**created_timestamp** | **datetime** | The timestamp when the record was created. | [optional] 
-**updated_timestamp** | **datetime** | The timestamp when the record was last updated. | [optional] 
+**created_timestamp** | **str** | The timestamp when the record was created. Usually ISO 8601 (e.g. \&quot;2021-05-11T01:00:00.123Z\&quot;), but returned as a plain string rather than a strict date-time since some older records don&#39;t include a UTC offset (e.g. \&quot;2024-01-10T10:55:26.818097\&quot;). | [optional] 
+**updated_timestamp** | **str** | The timestamp when the record was last updated. Usually ISO 8601 (e.g. \&quot;2021-05-11T01:05:00.123Z\&quot;), but returned as a plain string rather than a strict date-time since some older records don&#39;t include a UTC offset. | [optional] 
 
 ## Example
 

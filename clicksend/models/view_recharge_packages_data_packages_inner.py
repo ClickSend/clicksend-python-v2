@@ -32,10 +32,14 @@ class ViewRechargePackagesDataPackagesInner(BaseModel):
     price_rate: Optional[StrictInt] = Field(default=None, description="The pricing tier used to determine the cost per message.", json_schema_extra={"examples": [0]})
     sms_price: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, description="The price of the SMS.", json_schema_extra={"examples": [0.099]})
     sms_quantity: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, description="The quantity of the SMS.", json_schema_extra={"examples": [202]})
+    price_sms_carrier_fee: Optional[StrictStr] = Field(default=None, description="The carrier fee applied to SMS in this package.", json_schema_extra={"examples": ["0.0000"]})
     voice_mobile_price: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, description="The price of the voice mobile.", json_schema_extra={"examples": [0.99]})
     voice_mobile_quantity: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, description="The quantity of the voice mobile.", json_schema_extra={"examples": [202]})
     voice_landline_price: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, description="The price of the voice landline.", json_schema_extra={"examples": [0.0583]})
     voice_landline_quantity: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, description="The quantity of the voice landline.", json_schema_extra={"examples": [343]})
+    mms_price: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, description="The price of the MMS.", json_schema_extra={"examples": [0.275]})
+    mms_quantity: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, description="The quantity of the MMS.", json_schema_extra={"examples": [72]})
+    price_mms_carrier_fee: Optional[StrictStr] = Field(default=None, description="The carrier fee applied to MMS in this package.")
     fax_price: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, description="The price of the fax.", json_schema_extra={"examples": [0.198]})
     fax_quantity: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, description="The quantity of the fax.", json_schema_extra={"examples": [101]})
     email_price: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, description="The price of the email.", json_schema_extra={"examples": [0.033]})
@@ -52,7 +56,7 @@ class ViewRechargePackagesDataPackagesInner(BaseModel):
     postcard_price: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, description="The price of the postcard.", json_schema_extra={"examples": [11]})
     postcard_quantity: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, description="The quantity of the postcard.", json_schema_extra={"examples": [1]})
     automation_price: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, description="The price of the automation.", json_schema_extra={"examples": [0.0017]})
-    __properties: ClassVar[List[str]] = ["package_id", "package_price", "price_rate", "sms_price", "sms_quantity", "voice_mobile_price", "voice_mobile_quantity", "voice_landline_price", "voice_landline_quantity", "fax_price", "fax_quantity", "email_price", "email_quantity", "post_letter_black_price", "post_letter_colour_price", "post_page_black_price", "post_page_colour_price", "post_letter_black_quantity", "post_letter_colour_quantity", "post_direct_mail_dl_price", "post_direct_mail_a5_price", "post_direct_mail_min_quantity", "postcard_price", "postcard_quantity", "automation_price"]
+    __properties: ClassVar[List[str]] = ["package_id", "package_price", "price_rate", "sms_price", "sms_quantity", "price_sms_carrier_fee", "voice_mobile_price", "voice_mobile_quantity", "voice_landline_price", "voice_landline_quantity", "mms_price", "mms_quantity", "price_mms_carrier_fee", "fax_price", "fax_quantity", "email_price", "email_quantity", "post_letter_black_price", "post_letter_colour_price", "post_page_black_price", "post_page_colour_price", "post_letter_black_quantity", "post_letter_colour_quantity", "post_direct_mail_dl_price", "post_direct_mail_a5_price", "post_direct_mail_min_quantity", "postcard_price", "postcard_quantity", "automation_price"]
 
     model_config = ConfigDict(
         validate_by_name=True,
@@ -93,6 +97,16 @@ class ViewRechargePackagesDataPackagesInner(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # set to None if price_sms_carrier_fee (nullable) is None
+        # and model_fields_set contains the field
+        if self.price_sms_carrier_fee is None and "price_sms_carrier_fee" in self.model_fields_set:
+            _dict['price_sms_carrier_fee'] = None
+
+        # set to None if price_mms_carrier_fee (nullable) is None
+        # and model_fields_set contains the field
+        if self.price_mms_carrier_fee is None and "price_mms_carrier_fee" in self.model_fields_set:
+            _dict['price_mms_carrier_fee'] = None
+
         return _dict
 
     @classmethod
@@ -110,10 +124,14 @@ class ViewRechargePackagesDataPackagesInner(BaseModel):
             "price_rate": obj.get("price_rate"),
             "sms_price": obj.get("sms_price"),
             "sms_quantity": obj.get("sms_quantity"),
+            "price_sms_carrier_fee": obj.get("price_sms_carrier_fee"),
             "voice_mobile_price": obj.get("voice_mobile_price"),
             "voice_mobile_quantity": obj.get("voice_mobile_quantity"),
             "voice_landline_price": obj.get("voice_landline_price"),
             "voice_landline_quantity": obj.get("voice_landline_quantity"),
+            "mms_price": obj.get("mms_price"),
+            "mms_quantity": obj.get("mms_quantity"),
+            "price_mms_carrier_fee": obj.get("price_mms_carrier_fee"),
             "fax_price": obj.get("fax_price"),
             "fax_quantity": obj.get("fax_quantity"),
             "email_price": obj.get("email_price"),

@@ -5,16 +5,18 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**var_date** | **float** | The date. | [optional] 
+**var_date** | **str** | The date, if applicable. May be null; see also &#x60;date_added&#x60;. | [optional] 
+**date_added** | **int** | The Unix timestamp when the message was added. | [optional] 
+**list_id** | **str** | The ID of the list associated with the message, if applicable. | [optional] 
 **to** | **str** | The recipient&#39;s phone number. | [optional] 
 **to_type** | **str** | The type of recipient. | [optional] 
 **body** | **str** | The body of the message. | [optional] 
 **var_from** | **str** | The sender&#39;s phone number. | [optional] 
 **lang** | **str** | The language of the message. | [optional] 
 **voice** | **str** | The voice of the message. | [optional] 
-**schedule** | **int** | The timestamp when the message should be sent. | [optional] 
+**schedule** | **str** | The timestamp when the message should be sent. Returned as a string since it may be an empty string when no schedule was set. | [optional] 
 **message_id** | **str** | The ID of the message. | [optional] 
-**message_parts** | **int** | The number of parts in the message. | [optional] 
+**message_parts** | **str** | The number of parts in the message. | [optional] 
 **message_price** | **str** | The price of the message. | [optional] 
 **custom_string** | **str** | The custom string of the message. | [optional] 
 **user_id** | **float** | The ID of the user. | [optional] 
@@ -22,7 +24,13 @@ Name | Type | Description | Notes
 **country** | **str** | The country code of the message. | [optional] 
 **require_input** | **float** | The require input of the message. | [optional] 
 **machine_detection** | **float** | The machine detection of the message. | [optional] 
+**machine_detected** | **float** | Flag indicating if an answering machine was detected. | [optional] 
+**digits** | **str** | The digits entered by the recipient, if any input was collected. | [optional] 
+**carrier** | **str** | The carrier of the recipient&#39;s phone number. | [optional] 
+**status_code** | **str** | The status code of the message. | [optional] 
+**status_text** | **str** | A human-readable description of the status. | [optional] 
 **status** | **str** | The status of the message. | [optional] 
+**api_username** | **str** | The API username associated with the message. | [optional] 
 
 ## Example
 

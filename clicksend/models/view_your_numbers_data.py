@@ -19,6 +19,7 @@ import json
 
 from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
+from clicksend.models.currency import Currency
 from clicksend.models.view_your_numbers_data_all_of_data_inner import ViewYourNumbersDataAllOfDataInner
 from typing import Optional, Set
 from typing_extensions import Self
@@ -37,7 +38,8 @@ class ViewYourNumbersData(BaseModel):
     var_from: Optional[StrictInt] = Field(default=None, description="The number of the first result in the current page.", alias="from", json_schema_extra={"examples": [1]})
     to: Optional[StrictInt] = Field(default=None, description="The number of the last result in the current page.", json_schema_extra={"examples": [2]})
     data: Optional[List[ViewYourNumbersDataAllOfDataInner]] = Field(default=None, json_schema_extra={"examples": [[{"dedicated_number": "+61411111111", "country": "AU", "price": "18.59", "_country_name": "Australia", "type": "sms", "number_type": "longcode", "number_guid": "60744953-781E-463C-A7FF-F194228674BB", "status": {"value": 0, "label": "REGISTRATION_NOT_REQUIRED", "description": "Your number is ready to go.", "name": "Ready to use"}}, {"dedicated_number": "+61422222222", "country": "AU", "price": "20.99", "_country_name": "Australia", "notes": "Business line", "type": "mms", "number_type": "longcode", "number_guid": "83955064-892F-574D-B8GG-G2053339785CC", "status": {"value": 1, "label": "REGISTRATION_NOT_INITIATED", "description": "Your number is unregistered. You will not be able to send messages to certain countries.", "name": "Unregistered"}}]]})
-    __properties: ClassVar[List[str]] = ["total", "per_page", "current_page", "last_page", "next_page_url", "prev_page_url", "from", "to", "data"]
+    currency: Optional[Currency] = Field(default=None, alias="_currency")
+    __properties: ClassVar[List[str]] = ["total", "per_page", "current_page", "last_page", "next_page_url", "prev_page_url", "from", "to", "data", "_currency"]
 
     model_config = ConfigDict(
         validate_by_name=True,
@@ -85,6 +87,9 @@ class ViewYourNumbersData(BaseModel):
                 if _item_data:
                     _items.append(_item_data.to_dict())
             _dict['data'] = _items
+        # override the default output from pydantic by calling `to_dict()` of currency
+        if self.currency:
+            _dict['_currency'] = self.currency.to_dict()
         # set to None if next_page_url (nullable) is None
         # and model_fields_set contains the field
         if self.next_page_url is None and "next_page_url" in self.model_fields_set:
@@ -115,7 +120,8 @@ class ViewYourNumbersData(BaseModel):
             "prev_page_url": obj.get("prev_page_url"),
             "from": obj.get("from"),
             "to": obj.get("to"),
-            "data": [ViewYourNumbersDataAllOfDataInner.from_dict(_item) for _item in obj["data"]] if obj.get("data") is not None else None
+            "data": [ViewYourNumbersDataAllOfDataInner.from_dict(_item) for _item in obj["data"]] if obj.get("data") is not None else None,
+            "_currency": Currency.from_dict(obj["_currency"]) if obj.get("_currency") is not None else None
         })
         return _obj
 

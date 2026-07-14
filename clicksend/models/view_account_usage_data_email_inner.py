@@ -31,7 +31,8 @@ class ViewAccountUsageDataEmailInner(BaseModel):
     username: Optional[StrictStr] = Field(default=None, description="The username associated with the subaccount.")
     total_count: Optional[StrictInt] = Field(default=None, description="The total count of emails.")
     total_price: Optional[StrictStr] = None
-    __properties: ClassVar[List[str]] = ["subaccount_id", "username", "total_count", "total_price"]
+    notes: Optional[StrictStr] = Field(default=None, description="Optional notes.")
+    __properties: ClassVar[List[str]] = ["subaccount_id", "username", "total_count", "total_price", "notes"]
 
     model_config = ConfigDict(
         validate_by_name=True,
@@ -72,6 +73,11 @@ class ViewAccountUsageDataEmailInner(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # set to None if notes (nullable) is None
+        # and model_fields_set contains the field
+        if self.notes is None and "notes" in self.model_fields_set:
+            _dict['notes'] = None
+
         return _dict
 
     @classmethod
@@ -87,7 +93,8 @@ class ViewAccountUsageDataEmailInner(BaseModel):
             "subaccount_id": obj.get("subaccount_id"),
             "username": obj.get("username"),
             "total_count": obj.get("total_count"),
-            "total_price": obj.get("total_price")
+            "total_price": obj.get("total_price"),
+            "notes": obj.get("notes")
         })
         return _obj
 

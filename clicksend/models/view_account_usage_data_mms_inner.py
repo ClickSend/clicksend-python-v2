@@ -23,15 +23,16 @@ from typing import Optional, Set
 from typing_extensions import Self
 from pydantic_core import to_jsonable_python
 
-class ViewAccountUsageDataVoiceInner(BaseModel):
+class ViewAccountUsageDataMmsInner(BaseModel):
     """
-    ViewAccountUsageDataVoiceInner
+    ViewAccountUsageDataMmsInner
     """ # noqa: E501
     subaccount_id: Optional[StrictInt] = Field(default=None, description="The subaccount identifier.")
     username: Optional[StrictStr] = Field(default=None, description="The username associated with the subaccount.")
-    total_count: Optional[StrictStr] = Field(default=None, description="The total count of voice calls.")
-    total_price: Optional[StrictStr] = Field(default=None, description="The total price of voice calls.")
-    __properties: ClassVar[List[str]] = ["subaccount_id", "username", "total_count", "total_price"]
+    total_count: Optional[StrictStr] = Field(default=None, description="The total count of MMS.")
+    total_price: Optional[StrictStr] = Field(default=None, description="The total price of MMS.")
+    notes: Optional[StrictStr] = Field(default=None, description="Optional notes.")
+    __properties: ClassVar[List[str]] = ["subaccount_id", "username", "total_count", "total_price", "notes"]
 
     model_config = ConfigDict(
         validate_by_name=True,
@@ -51,7 +52,7 @@ class ViewAccountUsageDataVoiceInner(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of ViewAccountUsageDataVoiceInner from a JSON string"""
+        """Create an instance of ViewAccountUsageDataMmsInner from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -72,11 +73,16 @@ class ViewAccountUsageDataVoiceInner(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # set to None if notes (nullable) is None
+        # and model_fields_set contains the field
+        if self.notes is None and "notes" in self.model_fields_set:
+            _dict['notes'] = None
+
         return _dict
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of ViewAccountUsageDataVoiceInner from a dict"""
+        """Create an instance of ViewAccountUsageDataMmsInner from a dict"""
         if obj is None:
             return None
 
@@ -87,7 +93,8 @@ class ViewAccountUsageDataVoiceInner(BaseModel):
             "subaccount_id": obj.get("subaccount_id"),
             "username": obj.get("username"),
             "total_count": obj.get("total_count"),
-            "total_price": obj.get("total_price")
+            "total_price": obj.get("total_price"),
+            "notes": obj.get("notes")
         })
         return _obj
 

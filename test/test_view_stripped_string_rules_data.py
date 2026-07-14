@@ -41,6 +41,8 @@ class TestViewStrippedStringRulesData(unittest.TestCase):
                 last_page = 1,
                 next_page_url = '',
                 prev_page_url = '',
+                var_from = 1,
+                to = 2,
                 data = [{"rule_id":18,"strip_string":"This is a test1."},{"rule_id":19,"strip_string":"This is a test2."}]
             )
         else:

@@ -35,10 +35,32 @@ class TestViewAllMmsCampaigns(unittest.TestCase):
         model = ViewAllMmsCampaigns()
         if include_optional:
             return ViewAllMmsCampaigns(
-                http_code = 200,
-                response_code = 'SUCCESS',
-                response_msg = 'Countries have been selected.',
-                data = None
+                total = 2,
+                per_page = 15,
+                current_page = 1,
+                last_page = 1,
+                next_page_url = '',
+                prev_page_url = '',
+                var_from = 1,
+                to = 2,
+                data = [
+                    clicksend.models.mms_campaign.mms_campaign(
+                        mms_campaign_id = 96, 
+                        name = 'Koala Campaign', 
+                        user_id = 20807, 
+                        subaccount_id = 15, 
+                        list_id = 85262, 
+                        from = '0451919865', 
+                        subject = 'New MMS campaign test', 
+                        file_name = '8EA5FA8C-3216-4A5D-86EA-6BE78050E439.jpg', 
+                        body = 'Hey (First Name), I want to ask if this is your lastname: (Last Name)? Also, do you like koalas? Visit http://smsu.io/xxxxx for more details.', 
+                        schedule = 1531800743, 
+                        status = 'Queued', 
+                        date_added = 1531800745, 
+                        _total_count = 1, 
+                        _list_name = 'test', 
+                        _media_file_url = 'http://rest.clicksend.clicksend/files/8EA5FA8C-3216-4A5D-86EA-6BE78050E439.jpg', )
+                    ]
             )
         else:
             return ViewAllMmsCampaigns(

@@ -31,7 +31,9 @@ class Currency(BaseModel):
     currency_prefix_d: Optional[StrictStr] = Field(default=None, description="The symbol used to indicate the currency of the sender (e.g. $ , €, etc).", json_schema_extra={"examples": ["$"]})
     currency_prefix_c: Optional[StrictStr] = Field(default=None, description="The currency basic unit (e.g. cents).", json_schema_extra={"examples": ["c"]})
     currency_name_long: Optional[StrictStr] = Field(default=None, description="The full name of the currency.", json_schema_extra={"examples": ["Australian Dollars"]})
-    __properties: ClassVar[List[str]] = ["currency_name_short", "currency_prefix_d", "currency_prefix_c", "currency_name_long"]
+    min_recharge_amount: Optional[StrictStr] = Field(default=None, description="The minimum amount that can be used to recharge the account, in this currency.", json_schema_extra={"examples": ["20.00"]})
+    max_recharge_amount: Optional[StrictStr] = Field(default=None, description="The maximum amount that can be used to recharge the account, in this currency.", json_schema_extra={"examples": ["10000.00"]})
+    __properties: ClassVar[List[str]] = ["currency_name_short", "currency_prefix_d", "currency_prefix_c", "currency_name_long", "min_recharge_amount", "max_recharge_amount"]
 
     model_config = ConfigDict(
         validate_by_name=True,
@@ -87,7 +89,9 @@ class Currency(BaseModel):
             "currency_name_short": obj.get("currency_name_short"),
             "currency_prefix_d": obj.get("currency_prefix_d"),
             "currency_prefix_c": obj.get("currency_prefix_c"),
-            "currency_name_long": obj.get("currency_name_long")
+            "currency_name_long": obj.get("currency_name_long"),
+            "min_recharge_amount": obj.get("min_recharge_amount"),
+            "max_recharge_amount": obj.get("max_recharge_amount")
         })
         return _obj
 

@@ -14,10 +14,10 @@
 
 import unittest
 
-from clicksend.models.view_stripped_string_rules_data_data_inner import ViewStrippedStringRulesDataDataInner
+from clicksend.models.add_allowed_email_data import AddAllowedEmailData
 
-class TestViewStrippedStringRulesDataDataInner(unittest.TestCase):
-    """ViewStrippedStringRulesDataDataInner unit test stubs"""
+class TestAddAllowedEmailData(unittest.TestCase):
+    """AddAllowedEmailData unit test stubs"""
 
     def setUp(self):
         pass
@@ -25,26 +25,27 @@ class TestViewStrippedStringRulesDataDataInner(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(self, include_optional) -> ViewStrippedStringRulesDataDataInner:
-        """Test ViewStrippedStringRulesDataDataInner
+    def make_instance(self, include_optional) -> AddAllowedEmailData:
+        """Test AddAllowedEmailData
             include_optional is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
-        # uncomment below to create an instance of `ViewStrippedStringRulesDataDataInner`
+        # uncomment below to create an instance of `AddAllowedEmailData`
         """
-        model = ViewStrippedStringRulesDataDataInner()
+        model = AddAllowedEmailData()
         if include_optional:
-            return ViewStrippedStringRulesDataDataInner(
-                rule_id = 56,
-                strip_string = ''
+            return AddAllowedEmailData(
+                email_address_id = 107,
+                email_address = 'Cv3p0@gmail.com',
+                var_from = '+17128845887'
             )
         else:
-            return ViewStrippedStringRulesDataDataInner(
+            return AddAllowedEmailData(
         )
         """
 
-    def testViewStrippedStringRulesDataDataInner(self):
-        """Test ViewStrippedStringRulesDataDataInner"""
+    def testAddAllowedEmailData(self):
+        """Test AddAllowedEmailData"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
 

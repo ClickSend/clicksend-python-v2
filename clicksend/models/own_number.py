@@ -38,10 +38,11 @@ class OwnNumber(BaseModel):
     label: Optional[StrictStr] = Field(default=None, description="A label for the phone number.", json_schema_extra={"examples": ["My phone number"]})
     status: Optional[StrictStr] = Field(default=None, description="The status of the phone number.", json_schema_extra={"examples": ["APPROVED"]})
     verified_timestamp: Optional[datetime] = Field(default=None, description="The timestamp when the phone number was verified.", json_schema_extra={"examples": ["2023-08-31T12:00:00Z"]})
+    notified_timestamp: Optional[StrictStr] = Field(default=None, description="The timestamp when the user was last notified about this number, if applicable.")
     is_nearing_expiration: Optional[StrictBool] = Field(default=None, description="Indicates whether the phone number verification is nearing its expiration date: - **true:** The verification was completed more than 11 months ago and will expire soon. You should re-verify your phone number to maintain uninterrupted service. - **false:** The verification is still valid and not approaching expiration.", json_schema_extra={"examples": [True]})
     created_timestamp: Optional[datetime] = Field(default=None, description="The timestamp when the record was created.", json_schema_extra={"examples": ["2023-08-25T08:00:00Z"]})
     updated_timestamp: Optional[datetime] = Field(default=None, description="The timestamp when the record was last updated.", json_schema_extra={"examples": ["2023-08-25T08:30:00Z"]})
-    __properties: ClassVar[List[str]] = ["id", "account_id", "workspace_id", "user_id", "phone_number", "country", "label", "status", "verified_timestamp", "is_nearing_expiration", "created_timestamp", "updated_timestamp"]
+    __properties: ClassVar[List[str]] = ["id", "account_id", "workspace_id", "user_id", "phone_number", "country", "label", "status", "verified_timestamp", "notified_timestamp", "is_nearing_expiration", "created_timestamp", "updated_timestamp"]
 
     model_config = ConfigDict(
         validate_by_name=True,
@@ -82,6 +83,11 @@ class OwnNumber(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # set to None if notified_timestamp (nullable) is None
+        # and model_fields_set contains the field
+        if self.notified_timestamp is None and "notified_timestamp" in self.model_fields_set:
+            _dict['notified_timestamp'] = None
+
         return _dict
 
     @classmethod
@@ -103,6 +109,7 @@ class OwnNumber(BaseModel):
             "label": obj.get("label"),
             "status": obj.get("status"),
             "verified_timestamp": obj.get("verified_timestamp"),
+            "notified_timestamp": obj.get("notified_timestamp"),
             "is_nearing_expiration": obj.get("is_nearing_expiration"),
             "created_timestamp": obj.get("created_timestamp"),
             "updated_timestamp": obj.get("updated_timestamp")

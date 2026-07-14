@@ -37,8 +37,8 @@ class DeliveryIssue(BaseModel):
     status: Optional[StrictStr] = Field(default=None, description="The status of the delivery issue.")
     date_added: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, description="The date and time the delivery issue was created.", json_schema_extra={"examples": [1590000000]})
     resolved: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, description="Flag indicating if the delivery issue is resolved.", json_schema_extra={"examples": [0]})
-    email_address: Optional[StrictStr] = Field(default=None, description="The user's email address.", alias="email-address", json_schema_extra={"examples": ["johndoe1@awesome.com"]})
-    __properties: ClassVar[List[str]] = ["issue_id", "user_id", "message_id", "type", "description", "client_comments", "support_comments", "status", "date_added", "resolved", "email-address"]
+    email_address: Optional[StrictStr] = Field(default=None, description="The user's email address.", json_schema_extra={"examples": ["johndoe1@awesome.com"]})
+    __properties: ClassVar[List[str]] = ["issue_id", "user_id", "message_id", "type", "description", "client_comments", "support_comments", "status", "date_added", "resolved", "email_address"]
 
     model_config = ConfigDict(
         validate_by_name=True,
@@ -116,7 +116,7 @@ class DeliveryIssue(BaseModel):
             "status": obj.get("status"),
             "date_added": obj.get("date_added"),
             "resolved": obj.get("resolved"),
-            "email-address": obj.get("email-address")
+            "email_address": obj.get("email_address")
         })
         return _obj
 

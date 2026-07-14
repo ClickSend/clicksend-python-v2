@@ -19,6 +19,7 @@ import json
 
 from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
+from clicksend.models.currency import Currency
 from clicksend.models.view_available_numbers_data_all_of_data_inner import ViewAvailableNumbersDataAllOfDataInner
 from typing import Optional, Set
 from typing_extensions import Self
@@ -37,7 +38,8 @@ class ViewAvailableNumbersData(BaseModel):
     var_from: Optional[StrictInt] = Field(default=None, description="The number of the first result in the current page.", alias="from", json_schema_extra={"examples": [1]})
     to: Optional[StrictInt] = Field(default=None, description="The number of the last result in the current page.", json_schema_extra={"examples": [2]})
     data: Optional[List[ViewAvailableNumbersDataAllOfDataInner]] = Field(default=None, json_schema_extra={"examples": [[{"country": "AU", "country_name": "Australia", "dedicated_number": "+61280662298", "price_setup": "0.0000", "price_monthly": "20.7100", "price_total": "20.7100", "address_requirement": "local"}, {"country": "AU", "country_name": "Australia", "dedicated_number": "+61280662299", "price_setup": "0.0000", "price_monthly": "20.7100", "price_total": "20.7100", "address_requirement": "local"}]]})
-    __properties: ClassVar[List[str]] = ["total", "per_page", "current_page", "last_page", "next_page_url", "prev_page_url", "from", "to", "data"]
+    currency: Optional[Currency] = Field(default=None, alias="_currency")
+    __properties: ClassVar[List[str]] = ["total", "per_page", "current_page", "last_page", "next_page_url", "prev_page_url", "from", "to", "data", "_currency"]
 
     model_config = ConfigDict(
         validate_by_name=True,
@@ -85,6 +87,9 @@ class ViewAvailableNumbersData(BaseModel):
                 if _item_data:
                     _items.append(_item_data.to_dict())
             _dict['data'] = _items
+        # override the default output from pydantic by calling `to_dict()` of currency
+        if self.currency:
+            _dict['_currency'] = self.currency.to_dict()
         # set to None if next_page_url (nullable) is None
         # and model_fields_set contains the field
         if self.next_page_url is None and "next_page_url" in self.model_fields_set:
@@ -115,7 +120,8 @@ class ViewAvailableNumbersData(BaseModel):
             "prev_page_url": obj.get("prev_page_url"),
             "from": obj.get("from"),
             "to": obj.get("to"),
-            "data": [ViewAvailableNumbersDataAllOfDataInner.from_dict(_item) for _item in obj["data"]] if obj.get("data") is not None else None
+            "data": [ViewAvailableNumbersDataAllOfDataInner.from_dict(_item) for _item in obj["data"]] if obj.get("data") is not None else None,
+            "_currency": Currency.from_dict(obj["_currency"]) if obj.get("_currency") is not None else None
         })
         return _obj
 

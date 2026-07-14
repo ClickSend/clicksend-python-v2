@@ -40,6 +40,7 @@ class TestAccount(unittest.TestCase):
                 user_email = 'johndoe1@awesome.com',
                 active = 0,
                 banned = 0,
+                date_sign_up = 1436871253,
                 balance = '4.998000',
                 user_phone = '+15184811001',
                 reply_to = 'originalemail',
@@ -50,7 +51,9 @@ class TestAccount(unittest.TestCase):
                 account_name = 'The Awesome Company',
                 account_billing_email = 'johndoe1@awesome.com',
                 account_billing_mobile = '+15184811001',
+                priority = 2,
                 country = 'US',
+                country_ip = 'US',
                 default_country_sms = 'US',
                 auto_recharge = 0,
                 auto_recharge_amount = '20.00',
@@ -63,11 +66,20 @@ class TestAccount(unittest.TestCase):
                 balance_commission = '0.299954',
                 timezone = 'Australia/Melbourne',
                 price_rate = 0,
+                private_uploads = 0,
+                fax_quality = 0,
+                setting_sms_hide_your_number = 0,
+                setting_sms_hide_business_name = 0,
+                pricing_variant = 0,
+                on_trial = 0,
+                trial_expiry = '',
                 currency = clicksend.models.currency.currency(
                     currency_name_short = 'AUD', 
                     currency_prefix_d = '$', 
                     currency_prefix_c = 'c', 
-                    currency_name_long = 'Australian Dollars', ),
+                    currency_name_long = 'Australian Dollars', 
+                    min_recharge_amount = '20.00', 
+                    max_recharge_amount = '10000.00', ),
                 subaccount = clicksend.models.subaccount.subaccount(
                     subaccount_id = 126, 
                     api_username = 'johndoe1', 
@@ -76,6 +88,7 @@ class TestAccount(unittest.TestCase):
                     first_name = 'John', 
                     last_name = 'Doe', 
                     api_key = 'F3702045-EB2C-0091-C211-7728048DCAE2', 
+                    access_smpp = 0, 
                     access_users = 1, 
                     access_billing = 1, 
                     access_reporting = 1, 
@@ -87,9 +100,16 @@ class TestAccount(unittest.TestCase):
                     access_fax = 1, 
                     access_post = 1, 
                     access_reseller = 1, 
+                    access_global_sending = 1, 
                     access_mms = 1, 
+                    hide_pricing = 0, 
                     share_campaigns = 0, 
-                    notes = '', )
+                    notes = '', 
+                    is_main = 0, 
+                    sign_up_type = '', ),
+                referrer_chosen = clicksend.models.account__referrer_chosen.account__referrer_chosen(
+                    id = 8, 
+                    name = 'Other', )
             )
         else:
             return Account(

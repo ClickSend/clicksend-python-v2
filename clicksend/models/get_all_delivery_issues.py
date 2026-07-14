@@ -19,7 +19,7 @@ import json
 
 from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
-from clicksend.models.delivery_issue import DeliveryIssue
+from clicksend.models.get_all_delivery_issues_data import GetAllDeliveryIssuesData
 from typing import Optional, Set
 from typing_extensions import Self
 from pydantic_core import to_jsonable_python
@@ -31,7 +31,7 @@ class GetAllDeliveryIssues(BaseModel):
     http_code: Optional[StrictInt] = Field(default=None, description="The HTTP status code of the response.", json_schema_extra={"examples": [200]})
     response_code: Optional[StrictStr] = Field(default=None, description="The response code indicating the status of the operation.", json_schema_extra={"examples": ["SUCCESS"]})
     response_msg: Optional[StrictStr] = Field(default=None, description="A message describing the outcome of the operation.", json_schema_extra={"examples": ["Here is your result."]})
-    data: Optional[List[DeliveryIssue]] = Field(default=None, json_schema_extra={"examples": [[{"issue_id": 1, "user_id": 3820, "message_id": "B388828B-AD46-4366-8AD3-0305FF5E3FE5", "type": "sms", "description": "this is a test.", "date_added": 1481610495, "resolved": 0, "email_address": "test@user.com"}, {"issue_id": 2, "user_id": 3820, "message_id": "90396A38-146B-46C4-A455-675F620C2E05", "type": "sms", "description": "this is a test.", "date_added": 1481610495, "resolved": 0, "email_address": "test@user.com"}, {"issue_id": 3, "user_id": 3820, "message_id": "4ECFB6CB-0300-45EC-96E1-5AB189432AF5", "type": "sms", "description": "this is a test.", "date_added": 1481611389, "resolved": 0, "email_address": "test@user.com"}]]})
+    data: Optional[GetAllDeliveryIssuesData] = None
     __properties: ClassVar[List[str]] = ["http_code", "response_code", "response_msg", "data"]
 
     model_config = ConfigDict(
@@ -73,13 +73,9 @@ class GetAllDeliveryIssues(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # override the default output from pydantic by calling `to_dict()` of each item in data (list)
-        _items = []
+        # override the default output from pydantic by calling `to_dict()` of data
         if self.data:
-            for _item_data in self.data:
-                if _item_data:
-                    _items.append(_item_data.to_dict())
-            _dict['data'] = _items
+            _dict['data'] = self.data.to_dict()
         return _dict
 
     @classmethod
@@ -95,7 +91,7 @@ class GetAllDeliveryIssues(BaseModel):
             "http_code": obj.get("http_code"),
             "response_code": obj.get("response_code"),
             "response_msg": obj.get("response_msg"),
-            "data": [DeliveryIssue.from_dict(_item) for _item in obj["data"]] if obj.get("data") is not None else None
+            "data": GetAllDeliveryIssuesData.from_dict(obj["data"]) if obj.get("data") is not None else None
         })
         return _obj
 

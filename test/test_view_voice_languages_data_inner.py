@@ -37,7 +37,7 @@ class TestViewVoiceLanguagesDataInner(unittest.TestCase):
             return ViewVoiceLanguagesDataInner(
                 code = 'en-us',
                 country = 'English, US',
-                gender = 'male'
+                gender = male
             )
         else:
             return ViewVoiceLanguagesDataInner(

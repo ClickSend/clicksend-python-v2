@@ -43,7 +43,14 @@ class TestViewAvailableNumbersData(unittest.TestCase):
                 prev_page_url = '',
                 var_from = 1,
                 to = 2,
-                data = [{"country":"AU","country_name":"Australia","dedicated_number":"+61280662298","price_setup":"0.0000","price_monthly":"20.7100","price_total":"20.7100","address_requirement":"local"},{"country":"AU","country_name":"Australia","dedicated_number":"+61280662299","price_setup":"0.0000","price_monthly":"20.7100","price_total":"20.7100","address_requirement":"local"}]
+                data = [{"country":"AU","country_name":"Australia","dedicated_number":"+61280662298","price_setup":"0.0000","price_monthly":"20.7100","price_total":"20.7100","address_requirement":"local"},{"country":"AU","country_name":"Australia","dedicated_number":"+61280662299","price_setup":"0.0000","price_monthly":"20.7100","price_total":"20.7100","address_requirement":"local"}],
+                currency = clicksend.models.currency.currency(
+                    currency_name_short = 'AUD', 
+                    currency_prefix_d = '$', 
+                    currency_prefix_c = 'c', 
+                    currency_name_long = 'Australian Dollars', 
+                    min_recharge_amount = '20.00', 
+                    max_recharge_amount = '10000.00', )
             )
         else:
             return ViewAvailableNumbersData(

@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **username** | **str** | The username associated with the subaccount. | [optional] 
 **total_count** | **str** | The total count of SMS. | [optional] 
 **total_price** | **float** | The total price of SMS. | [optional] 
+**notes** | **str** | Optional notes. | [optional] 
 
 ## Example
 

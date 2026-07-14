@@ -27,16 +27,18 @@ class VoiceMessage(BaseModel):
     """
     VoiceMessage
     """ # noqa: E501
-    var_date: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, description="The date.", alias="date", json_schema_extra={"examples": [1436871253]})
+    var_date: Optional[StrictStr] = Field(default=None, description="The date, if applicable. May be null; see also `date_added`.", alias="date", json_schema_extra={"examples": ["1436871253"]})
+    date_added: Optional[StrictInt] = Field(default=None, description="The Unix timestamp when the message was added.", json_schema_extra={"examples": [1436871253]})
+    list_id: Optional[StrictStr] = Field(default=None, description="The ID of the list associated with the message, if applicable.")
     to: Optional[StrictStr] = Field(default=None, description="The recipient's phone number.", json_schema_extra={"examples": ["+61411111111"]})
     to_type: Optional[StrictStr] = Field(default=None, description="The type of recipient.", json_schema_extra={"examples": ["mobile"]})
     body: Optional[StrictStr] = Field(default=None, description="The body of the message.", json_schema_extra={"examples": ["Jelly liquorice marshmallow candy carrot cake 4Eyffjs1vL."]})
     var_from: Optional[StrictStr] = Field(default=None, description="The sender's phone number.", alias="from")
     lang: Optional[StrictStr] = Field(default=None, description="The language of the message.", json_schema_extra={"examples": ["en-au"]})
     voice: Optional[StrictStr] = Field(default=None, description="The voice of the message.", json_schema_extra={"examples": ["female"]})
-    schedule: Optional[StrictInt] = Field(default=None, description="The timestamp when the message should be sent.", json_schema_extra={"examples": [1436874701]})
+    schedule: Optional[StrictStr] = Field(default=None, description="The timestamp when the message should be sent. Returned as a string since it may be an empty string when no schedule was set.", json_schema_extra={"examples": ["1436874701"]})
     message_id: Optional[StrictStr] = Field(default=None, description="The ID of the message.", json_schema_extra={"examples": ["BF7AD270-0DE2-418B-B606-71D527D9C1AE"]})
-    message_parts: Optional[StrictInt] = Field(default=None, description="The number of parts in the message.", json_schema_extra={"examples": [1]})
+    message_parts: Optional[StrictStr] = Field(default=None, description="The number of parts in the message.", json_schema_extra={"examples": ["1.00"]})
     message_price: Optional[StrictStr] = Field(default=None, description="The price of the message.", json_schema_extra={"examples": ["0.07"]})
     custom_string: Optional[StrictStr] = Field(default=None, description="The custom string of the message.", json_schema_extra={"examples": ["this is a test"]})
     user_id: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, description="The ID of the user.", json_schema_extra={"examples": [1]})
@@ -44,8 +46,14 @@ class VoiceMessage(BaseModel):
     country: Optional[StrictStr] = Field(default=None, description="The country code of the message.", json_schema_extra={"examples": ["AU"]})
     require_input: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, description="The require input of the message.", json_schema_extra={"examples": [0]})
     machine_detection: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, description="The machine detection of the message.", json_schema_extra={"examples": [0]})
+    machine_detected: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, description="Flag indicating if an answering machine was detected.", json_schema_extra={"examples": [0]})
+    digits: Optional[StrictStr] = Field(default=None, description="The digits entered by the recipient, if any input was collected.")
+    carrier: Optional[StrictStr] = Field(default=None, description="The carrier of the recipient's phone number.", json_schema_extra={"examples": ["Telstra"]})
+    status_code: Optional[StrictStr] = Field(default=None, description="The status code of the message.", json_schema_extra={"examples": ["201"]})
+    status_text: Optional[StrictStr] = Field(default=None, description="A human-readable description of the status.", json_schema_extra={"examples": ["Delivered"]})
     status: Optional[StrictStr] = Field(default=None, description="The status of the message.", json_schema_extra={"examples": ["SUCCESS"]})
-    __properties: ClassVar[List[str]] = ["date", "to", "to_type", "body", "from", "lang", "voice", "schedule", "message_id", "message_parts", "message_price", "custom_string", "user_id", "subaccount_id", "country", "require_input", "machine_detection", "status"]
+    api_username: Optional[StrictStr] = Field(default=None, description="The API username associated with the message.", alias="_api_username", json_schema_extra={"examples": ["johndoe1"]})
+    __properties: ClassVar[List[str]] = ["date", "date_added", "list_id", "to", "to_type", "body", "from", "lang", "voice", "schedule", "message_id", "message_parts", "message_price", "custom_string", "user_id", "subaccount_id", "country", "require_input", "machine_detection", "machine_detected", "digits", "carrier", "status_code", "status_text", "status", "_api_username"]
 
     model_config = ConfigDict(
         validate_by_name=True,
@@ -86,10 +94,45 @@ class VoiceMessage(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # set to None if var_date (nullable) is None
+        # and model_fields_set contains the field
+        if self.var_date is None and "var_date" in self.model_fields_set:
+            _dict['date'] = None
+
+        # set to None if list_id (nullable) is None
+        # and model_fields_set contains the field
+        if self.list_id is None and "list_id" in self.model_fields_set:
+            _dict['list_id'] = None
+
         # set to None if var_from (nullable) is None
         # and model_fields_set contains the field
         if self.var_from is None and "var_from" in self.model_fields_set:
             _dict['from'] = None
+
+        # set to None if machine_detected (nullable) is None
+        # and model_fields_set contains the field
+        if self.machine_detected is None and "machine_detected" in self.model_fields_set:
+            _dict['machine_detected'] = None
+
+        # set to None if digits (nullable) is None
+        # and model_fields_set contains the field
+        if self.digits is None and "digits" in self.model_fields_set:
+            _dict['digits'] = None
+
+        # set to None if carrier (nullable) is None
+        # and model_fields_set contains the field
+        if self.carrier is None and "carrier" in self.model_fields_set:
+            _dict['carrier'] = None
+
+        # set to None if status_code (nullable) is None
+        # and model_fields_set contains the field
+        if self.status_code is None and "status_code" in self.model_fields_set:
+            _dict['status_code'] = None
+
+        # set to None if status_text (nullable) is None
+        # and model_fields_set contains the field
+        if self.status_text is None and "status_text" in self.model_fields_set:
+            _dict['status_text'] = None
 
         return _dict
 
@@ -104,6 +147,8 @@ class VoiceMessage(BaseModel):
 
         _obj = cls.model_validate({
             "date": obj.get("date"),
+            "date_added": obj.get("date_added"),
+            "list_id": obj.get("list_id"),
             "to": obj.get("to"),
             "to_type": obj.get("to_type"),
             "body": obj.get("body"),
@@ -120,7 +165,13 @@ class VoiceMessage(BaseModel):
             "country": obj.get("country"),
             "require_input": obj.get("require_input"),
             "machine_detection": obj.get("machine_detection"),
-            "status": obj.get("status")
+            "machine_detected": obj.get("machine_detected"),
+            "digits": obj.get("digits"),
+            "carrier": obj.get("carrier"),
+            "status_code": obj.get("status_code"),
+            "status_text": obj.get("status_text"),
+            "status": obj.get("status"),
+            "_api_username": obj.get("_api_username")
         })
         return _obj
 

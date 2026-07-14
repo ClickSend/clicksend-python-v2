@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **username** | **str** | The username associated with the subaccount. | [optional] 
 **total_count** | **int** | The total count of emails. | [optional] 
 **total_price** | **str** |  | [optional] 
+**notes** | **str** | Optional notes. | [optional] 
 
 ## Example
 

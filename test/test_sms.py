@@ -35,7 +35,7 @@ class TestSms(unittest.TestCase):
         model = Sms()
         if include_optional:
             return Sms(
-                var_date = 1436871253,
+                var_date = '1436871253',
                 to = '+61411111111',
                 body = 'Jelly liquorice marshmallow candy carrot cake 4Eyffjs1vL.',
                 var_from = 'sendmobile',

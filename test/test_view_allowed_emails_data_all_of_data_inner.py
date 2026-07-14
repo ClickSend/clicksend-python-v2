@@ -14,10 +14,10 @@
 
 import unittest
 
-from clicksend.models.view_all_mms_campaigns_data import ViewAllMmsCampaignsData
+from clicksend.models.view_allowed_emails_data_all_of_data_inner import ViewAllowedEmailsDataAllOfDataInner
 
-class TestViewAllMmsCampaignsData(unittest.TestCase):
-    """ViewAllMmsCampaignsData unit test stubs"""
+class TestViewAllowedEmailsDataAllOfDataInner(unittest.TestCase):
+    """ViewAllowedEmailsDataAllOfDataInner unit test stubs"""
 
     def setUp(self):
         pass
@@ -25,50 +25,32 @@ class TestViewAllMmsCampaignsData(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(self, include_optional) -> ViewAllMmsCampaignsData:
-        """Test ViewAllMmsCampaignsData
+    def make_instance(self, include_optional) -> ViewAllowedEmailsDataAllOfDataInner:
+        """Test ViewAllowedEmailsDataAllOfDataInner
             include_optional is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
-        # uncomment below to create an instance of `ViewAllMmsCampaignsData`
+        # uncomment below to create an instance of `ViewAllowedEmailsDataAllOfDataInner`
         """
-        model = ViewAllMmsCampaignsData()
+        model = ViewAllowedEmailsDataAllOfDataInner()
         if include_optional:
-            return ViewAllMmsCampaignsData(
-                total = 2,
-                per_page = 15,
-                current_page = 1,
-                last_page = 1,
-                next_page_url = '',
-                prev_page_url = '',
-                var_from = 1,
-                to = 2,
-                data = [
-                    clicksend.models.mms_campaign.mms_campaign(
-                        mms_campaign_id = 96, 
-                        name = 'Koala Campaign', 
-                        user_id = 20807, 
-                        subaccount_id = 15, 
-                        list_id = 85262, 
-                        from = '0451919865', 
-                        subject = 'New MMS campaign test', 
-                        file_name = '8EA5FA8C-3216-4A5D-86EA-6BE78050E439.jpg', 
-                        body = 'Hey (First Name), I want to ask if this is your lastname: (Last Name)? Also, do you like koalas? Visit http://smsu.io/xxxxx for more details.', 
-                        schedule = 1531800743, 
-                        status = 'Queued', 
-                        date_added = 1531800745, 
-                        _total_count = 1, 
-                        _list_name = 'test', 
-                        _media_file_url = 'http://rest.clicksend.clicksend/files/8EA5FA8C-3216-4A5D-86EA-6BE78050E439.jpg', )
-                    ]
+            return ViewAllowedEmailsDataAllOfDataInner(
+                email_address_id = 1,
+                email_address = 'my@email.com',
+                var_from = '+13523944199',
+                subaccount_id = 345789,
+                from_fax = '',
+                voice = 'male',
+                lang = 'en-us',
+                subaccount_name = 'my@email.com'
             )
         else:
-            return ViewAllMmsCampaignsData(
+            return ViewAllowedEmailsDataAllOfDataInner(
         )
         """
 
-    def testViewAllMmsCampaignsData(self):
-        """Test ViewAllMmsCampaignsData"""
+    def testViewAllowedEmailsDataAllOfDataInner(self):
+        """Test ViewAllowedEmailsDataAllOfDataInner"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
 

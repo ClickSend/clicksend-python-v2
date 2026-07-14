@@ -38,7 +38,7 @@ class TestGetAllDeliveryIssues(unittest.TestCase):
                 http_code = 200,
                 response_code = 'SUCCESS',
                 response_msg = 'Here is your result.',
-                data = [{"issue_id":1,"user_id":3820,"message_id":"B388828B-AD46-4366-8AD3-0305FF5E3FE5","type":"sms","description":"this is a test.","client_comments":null,"support_comments":null,"status":null,"date_added":1481610495,"resolved":0,"email_address":"test@user.com"},{"issue_id":2,"user_id":3820,"message_id":"90396A38-146B-46C4-A455-675F620C2E05","type":"sms","description":"this is a test.","client_comments":null,"support_comments":null,"status":null,"date_added":1481610495,"resolved":0,"email_address":"test@user.com"},{"issue_id":3,"user_id":3820,"message_id":"4ECFB6CB-0300-45EC-96E1-5AB189432AF5","type":"sms","description":"this is a test.","client_comments":null,"support_comments":null,"status":null,"date_added":1481611389,"resolved":0,"email_address":"test@user.com"}]
+                data = None
             )
         else:
             return GetAllDeliveryIssues(

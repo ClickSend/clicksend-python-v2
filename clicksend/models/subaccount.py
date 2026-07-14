@@ -34,6 +34,7 @@ class Subaccount(BaseModel):
     first_name: Optional[StrictStr] = Field(default=None, description="The first name of the subaccount.", json_schema_extra={"examples": ["John"]})
     last_name: Optional[StrictStr] = Field(default=None, description="The last name of the subaccount.", json_schema_extra={"examples": ["Doe"]})
     api_key: Optional[StrictStr] = Field(default=None, description="The API key of the subaccount.", json_schema_extra={"examples": ["F3702045-EB2C-0091-C211-7728048DCAE2"]})
+    access_smpp: Optional[StrictInt] = Field(default=None, description="Flag indicating if the subaccount has access to SMPP.", json_schema_extra={"examples": [0]})
     access_users: Optional[StrictInt] = Field(default=None, description="Flag indicating if the subaccount has access to users.", json_schema_extra={"examples": [1]})
     access_billing: Optional[StrictInt] = Field(default=None, description="Flag indicating if the subaccount has access to billing.", json_schema_extra={"examples": [1]})
     access_reporting: Optional[StrictInt] = Field(default=None, description="Flag indicating if the subaccount has access to reporting.", json_schema_extra={"examples": [1]})
@@ -45,10 +46,14 @@ class Subaccount(BaseModel):
     access_fax: Optional[StrictInt] = Field(default=None, description="Flag indicating if the subaccount has access to fax services.", json_schema_extra={"examples": [1]})
     access_post: Optional[StrictInt] = Field(default=None, description="Flag indicating if the subaccount has access to post services.", json_schema_extra={"examples": [1]})
     access_reseller: Optional[StrictInt] = Field(default=None, description="Flag indicating if the subaccount has access to reseller services.", json_schema_extra={"examples": [1]})
+    access_global_sending: Optional[StrictInt] = Field(default=None, description="Flag indicating if the subaccount has access to global sending.", json_schema_extra={"examples": [1]})
     access_mms: Optional[StrictInt] = Field(default=None, description="Flag indicating if the subaccount has access to MMS services.", json_schema_extra={"examples": [1]})
+    hide_pricing: Optional[StrictInt] = Field(default=None, description="Flag indicating if pricing is hidden for the subaccount.", json_schema_extra={"examples": [0]})
     share_campaigns: Optional[StrictInt] = Field(default=None, description="Flag indicating if the subaccount can share campaigns.", json_schema_extra={"examples": [0]})
     notes: Optional[StrictStr] = Field(default=None, description="Additional notes for the subaccount.")
-    __properties: ClassVar[List[str]] = ["subaccount_id", "api_username", "email", "phone_number", "first_name", "last_name", "api_key", "access_users", "access_billing", "access_reporting", "access_contacts", "access_settings", "access_sms", "access_email", "access_voice", "access_fax", "access_post", "access_reseller", "access_mms", "share_campaigns", "notes"]
+    is_main: Optional[StrictInt] = Field(default=None, description="Flag indicating if this is the main account rather than a subaccount.", json_schema_extra={"examples": [0]})
+    sign_up_type: Optional[StrictStr] = Field(default=None, description="The sign-up type used to create the subaccount, if applicable.")
+    __properties: ClassVar[List[str]] = ["subaccount_id", "api_username", "email", "phone_number", "first_name", "last_name", "api_key", "access_smpp", "access_users", "access_billing", "access_reporting", "access_contacts", "access_settings", "access_sms", "access_email", "access_voice", "access_fax", "access_post", "access_reseller", "access_global_sending", "access_mms", "hide_pricing", "share_campaigns", "notes", "is_main", "sign_up_type"]
 
     model_config = ConfigDict(
         validate_by_name=True,
@@ -94,6 +99,11 @@ class Subaccount(BaseModel):
         if self.notes is None and "notes" in self.model_fields_set:
             _dict['notes'] = None
 
+        # set to None if sign_up_type (nullable) is None
+        # and model_fields_set contains the field
+        if self.sign_up_type is None and "sign_up_type" in self.model_fields_set:
+            _dict['sign_up_type'] = None
+
         return _dict
 
     @classmethod
@@ -113,6 +123,7 @@ class Subaccount(BaseModel):
             "first_name": obj.get("first_name"),
             "last_name": obj.get("last_name"),
             "api_key": obj.get("api_key"),
+            "access_smpp": obj.get("access_smpp"),
             "access_users": obj.get("access_users"),
             "access_billing": obj.get("access_billing"),
             "access_reporting": obj.get("access_reporting"),
@@ -124,9 +135,13 @@ class Subaccount(BaseModel):
             "access_fax": obj.get("access_fax"),
             "access_post": obj.get("access_post"),
             "access_reseller": obj.get("access_reseller"),
+            "access_global_sending": obj.get("access_global_sending"),
             "access_mms": obj.get("access_mms"),
+            "hide_pricing": obj.get("hide_pricing"),
             "share_campaigns": obj.get("share_campaigns"),
-            "notes": obj.get("notes")
+            "notes": obj.get("notes"),
+            "is_main": obj.get("is_main"),
+            "sign_up_type": obj.get("sign_up_type")
         })
         return _obj
 

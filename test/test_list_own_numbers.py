@@ -46,6 +46,7 @@ class TestListOwnNumbers(unittest.TestCase):
                         label = 'My phone number', 
                         status = 'APPROVED', 
                         verified_timestamp = '2023-08-31T12:00Z', 
+                        notified_timestamp = '', 
                         is_nearing_expiration = True, 
                         created_timestamp = '2023-08-25T08:00Z', 
                         updated_timestamp = '2023-08-25T08:30Z', )

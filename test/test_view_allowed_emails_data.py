@@ -14,10 +14,10 @@
 
 import unittest
 
-from clicksend.models.view_account_usage_data_voice_inner import ViewAccountUsageDataVoiceInner
+from clicksend.models.view_allowed_emails_data import ViewAllowedEmailsData
 
-class TestViewAccountUsageDataVoiceInner(unittest.TestCase):
-    """ViewAccountUsageDataVoiceInner unit test stubs"""
+class TestViewAllowedEmailsData(unittest.TestCase):
+    """ViewAllowedEmailsData unit test stubs"""
 
     def setUp(self):
         pass
@@ -25,28 +25,33 @@ class TestViewAccountUsageDataVoiceInner(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(self, include_optional) -> ViewAccountUsageDataVoiceInner:
-        """Test ViewAccountUsageDataVoiceInner
+    def make_instance(self, include_optional) -> ViewAllowedEmailsData:
+        """Test ViewAllowedEmailsData
             include_optional is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
-        # uncomment below to create an instance of `ViewAccountUsageDataVoiceInner`
+        # uncomment below to create an instance of `ViewAllowedEmailsData`
         """
-        model = ViewAccountUsageDataVoiceInner()
+        model = ViewAllowedEmailsData()
         if include_optional:
-            return ViewAccountUsageDataVoiceInner(
-                subaccount_id = 56,
-                username = '',
-                total_count = '',
-                total_price = ''
+            return ViewAllowedEmailsData(
+                total = 2,
+                per_page = 15,
+                current_page = 1,
+                last_page = 1,
+                next_page_url = '',
+                prev_page_url = '',
+                var_from = 1,
+                to = 2,
+                data = [{"email_address_id":84,"email_address":"my@email.com","from":"+13523944199","subaccount_id":345789,"from_fax":"","voice":"male","lang":"en-us","_subaccount_name":"my@email.com"},{"email_address_id":85,"email_address":"my@email.com","from":"+13523944199","subaccount_id":345789,"from_fax":"","voice":"male","lang":"en-us","_subaccount_name":"my@email.com"}]
             )
         else:
-            return ViewAccountUsageDataVoiceInner(
+            return ViewAllowedEmailsData(
         )
         """
 
-    def testViewAccountUsageDataVoiceInner(self):
-        """Test ViewAccountUsageDataVoiceInner"""
+    def testViewAllowedEmailsData(self):
+        """Test ViewAllowedEmailsData"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
 

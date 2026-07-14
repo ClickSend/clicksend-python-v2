@@ -31,7 +31,9 @@ class ContactList(BaseModel):
     list_name: Optional[StrictStr] = Field(default=None, description="The name of the list.", json_schema_extra={"examples": ["ListCT3QrVL4od"]})
     list_email_id: Optional[StrictStr] = Field(default=None, description="The email address id of the list.", json_schema_extra={"examples": ["KB0LHD6WXFVHZWTR"]})
     contacts_count: Optional[StrictInt] = Field(default=None, description="The number of contacts in the list.", alias="_contacts_count", json_schema_extra={"examples": [0]})
-    __properties: ClassVar[List[str]] = ["list_id", "list_name", "list_email_id", "_contacts_count"]
+    import_in_progress: Optional[StrictInt] = Field(default=None, description="Flag indicating if a contact import is currently in progress for this list.", alias="_import_in_progress", json_schema_extra={"examples": [0]})
+    optout_in_progress: Optional[StrictInt] = Field(default=None, description="Flag indicating if an opt-out removal is currently in progress for this list.", alias="_optout_in_progress", json_schema_extra={"examples": [0]})
+    __properties: ClassVar[List[str]] = ["list_id", "list_name", "list_email_id", "_contacts_count", "_import_in_progress", "_optout_in_progress"]
 
     model_config = ConfigDict(
         validate_by_name=True,
@@ -87,7 +89,9 @@ class ContactList(BaseModel):
             "list_id": obj.get("list_id"),
             "list_name": obj.get("list_name"),
             "list_email_id": obj.get("list_email_id"),
-            "_contacts_count": obj.get("_contacts_count")
+            "_contacts_count": obj.get("_contacts_count"),
+            "_import_in_progress": obj.get("_import_in_progress"),
+            "_optout_in_progress": obj.get("_optout_in_progress")
         })
         return _obj
 

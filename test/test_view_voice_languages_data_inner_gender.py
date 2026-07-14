@@ -14,10 +14,10 @@
 
 import unittest
 
-from clicksend.models.view_allowed_emails_data_inner import ViewAllowedEmailsDataInner
+from clicksend.models.view_voice_languages_data_inner_gender import ViewVoiceLanguagesDataInnerGender
 
-class TestViewAllowedEmailsDataInner(unittest.TestCase):
-    """ViewAllowedEmailsDataInner unit test stubs"""
+class TestViewVoiceLanguagesDataInnerGender(unittest.TestCase):
+    """ViewVoiceLanguagesDataInnerGender unit test stubs"""
 
     def setUp(self):
         pass
@@ -25,27 +25,24 @@ class TestViewAllowedEmailsDataInner(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(self, include_optional) -> ViewAllowedEmailsDataInner:
-        """Test ViewAllowedEmailsDataInner
+    def make_instance(self, include_optional) -> ViewVoiceLanguagesDataInnerGender:
+        """Test ViewVoiceLanguagesDataInnerGender
             include_optional is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
-        # uncomment below to create an instance of `ViewAllowedEmailsDataInner`
+        # uncomment below to create an instance of `ViewVoiceLanguagesDataInnerGender`
         """
-        model = ViewAllowedEmailsDataInner()
+        model = ViewVoiceLanguagesDataInnerGender()
         if include_optional:
-            return ViewAllowedEmailsDataInner(
-                email_address_id = 1,
-                email_address = 'my@email.com',
-                var_from = '+13523944199'
+            return ViewVoiceLanguagesDataInnerGender(
             )
         else:
-            return ViewAllowedEmailsDataInner(
+            return ViewVoiceLanguagesDataInnerGender(
         )
         """
 
-    def testViewAllowedEmailsDataInner(self):
-        """Test ViewAllowedEmailsDataInner"""
+    def testViewVoiceLanguagesDataInnerGender(self):
+        """Test ViewVoiceLanguagesDataInnerGender"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
 

@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **code** | **str** | The code of the language. | [optional] 
 **country** | **str** | The country of the language. | [optional] 
-**gender** | **str** | The gender of the language. | [optional] 
+**gender** | [**ViewVoiceLanguagesDataInnerGender**](ViewVoiceLanguagesDataInnerGender.md) |  | [optional] 
 
 ## Example
 

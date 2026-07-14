@@ -38,14 +38,7 @@ class TestViewStrippedStringRules(unittest.TestCase):
                 http_code = 200,
                 response_code = 'SUCCESS',
                 response_msg = 'New data has been saved.',
-                data = clicksend.models.view_stripped_string_rules_data.view_stripped_string_rules_data(
-                    total = 2, 
-                    per_page = 15, 
-                    current_page = 1, 
-                    last_page = 1, 
-                    next_page_url = '', 
-                    prev_page_url = '', 
-                    data = [{"rule_id":18,"strip_string":"This is a test1."},{"rule_id":19,"strip_string":"This is a test2."}], )
+                data = None
             )
         else:
             return ViewStrippedStringRules(

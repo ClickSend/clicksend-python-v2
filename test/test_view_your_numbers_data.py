@@ -43,7 +43,14 @@ class TestViewYourNumbersData(unittest.TestCase):
                 prev_page_url = '',
                 var_from = 1,
                 to = 2,
-                data = [{"dedicated_number":"+61411111111","country":"AU","price":"18.59","_country_name":"Australia","notes":null,"type":"sms","number_type":"longcode","number_category":null,"number_guid":"60744953-781E-463C-A7FF-F194228674BB","form_submission_id":null,"status":{"value":0,"label":"REGISTRATION_NOT_REQUIRED","description":"Your number is ready to go.","name":"Ready to use"}},{"dedicated_number":"+61422222222","country":"AU","price":"20.99","_country_name":"Australia","notes":"Business line","type":"mms","number_type":"longcode","number_category":null,"number_guid":"83955064-892F-574D-B8GG-G2053339785CC","form_submission_id":null,"status":{"value":1,"label":"REGISTRATION_NOT_INITIATED","description":"Your number is unregistered. You will not be able to send messages to certain countries.","name":"Unregistered"}}]
+                data = [{"dedicated_number":"+61411111111","country":"AU","price":"18.59","_country_name":"Australia","notes":null,"type":"sms","number_type":"longcode","number_category":null,"number_guid":"60744953-781E-463C-A7FF-F194228674BB","form_submission_id":null,"status":{"value":0,"label":"REGISTRATION_NOT_REQUIRED","description":"Your number is ready to go.","name":"Ready to use"}},{"dedicated_number":"+61422222222","country":"AU","price":"20.99","_country_name":"Australia","notes":"Business line","type":"mms","number_type":"longcode","number_category":null,"number_guid":"83955064-892F-574D-B8GG-G2053339785CC","form_submission_id":null,"status":{"value":1,"label":"REGISTRATION_NOT_INITIATED","description":"Your number is unregistered. You will not be able to send messages to certain countries.","name":"Unregistered"}}],
+                currency = clicksend.models.currency.currency(
+                    currency_name_short = 'AUD', 
+                    currency_prefix_d = '$', 
+                    currency_prefix_c = 'c', 
+                    currency_name_long = 'Australian Dollars', 
+                    min_recharge_amount = '20.00', 
+                    max_recharge_amount = '10000.00', )
             )
         else:
             return ViewYourNumbersData(
