@@ -6,7 +6,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **total** | [**ViewSmsStatisticsDataTotal**](ViewSmsStatisticsDataTotal.md) |  | [optional] 
-**stat** | [**List[ViewSmsStatisticsDataStatInner]**](ViewSmsStatisticsDataStatInner.md) |  | [optional] 
+**stats** | [**List[ViewSmsStatisticsDataStatsInner]**](ViewSmsStatisticsDataStatsInner.md) |  | [optional] 
 **currency** | [**Currency**](Currency.md) |  | [optional] 
 
 ## Example

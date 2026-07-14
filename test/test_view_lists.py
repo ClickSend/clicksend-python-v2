@@ -47,6 +47,16 @@ class TestViewLists(unittest.TestCase):
                     prev_page_url = 'https://api.clicksend.com/v3/lists?page=1', 
                     from = 1, 
                     to = 10, 
+                    first_page_url = 'https://rest.clicksend.com/v3/lists?page=1', 
+                    last_page_url = 'https://rest.clicksend.com/v3/lists?page=2', 
+                    path = 'https://rest.clicksend.com/v3/lists', 
+                    links = [
+                        clicksend.models.view_lists_data_links_inner.view_lists_data_links_inner(
+                            url = '', 
+                            label = '', 
+                            page = 56, 
+                            active = True, )
+                        ], 
                     data = [{"list_id":428,"list_name":"ListCT3QrVL4od","list_email_id":"KB0LHD6WXFVHZWTR","_contacts_count":0},{"list_id":429,"list_name":"ListCT3QrVL4od","list_email_id":"KB0LHD6WXFVHZWTR","_contacts_count":0}], )
             )
         else:

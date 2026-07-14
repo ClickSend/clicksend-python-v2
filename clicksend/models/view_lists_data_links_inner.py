@@ -23,9 +23,9 @@ from typing import Optional, Set
 from typing_extensions import Self
 from pydantic_core import to_jsonable_python
 
-class ViewSmsInboundAutomationsDataAllOfLinksInner(BaseModel):
+class ViewListsDataLinksInner(BaseModel):
     """
-    ViewSmsInboundAutomationsDataAllOfLinksInner
+    ViewListsDataLinksInner
     """ # noqa: E501
     url: Optional[StrictStr] = Field(default=None, description="The URL of this page link.")
     label: Optional[StrictStr] = Field(default=None, description="The display label for this page link.")
@@ -51,7 +51,7 @@ class ViewSmsInboundAutomationsDataAllOfLinksInner(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of ViewSmsInboundAutomationsDataAllOfLinksInner from a JSON string"""
+        """Create an instance of ViewListsDataLinksInner from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -86,7 +86,7 @@ class ViewSmsInboundAutomationsDataAllOfLinksInner(BaseModel):
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of ViewSmsInboundAutomationsDataAllOfLinksInner from a dict"""
+        """Create an instance of ViewListsDataLinksInner from a dict"""
         if obj is None:
             return None
 

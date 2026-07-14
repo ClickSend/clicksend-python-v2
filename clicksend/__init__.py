@@ -420,6 +420,7 @@ __all__ = [
     "ViewListContactsData",
     "ViewLists",
     "ViewListsData",
+    "ViewListsDataLinksInner",
     "ViewMasterEmailTemplate",
     "ViewMasterEmailTemplates",
     "ViewMmsCampaign",
@@ -445,12 +446,11 @@ __all__ = [
     "ViewSmsInboundAutomation",
     "ViewSmsInboundAutomations",
     "ViewSmsInboundAutomationsData",
-    "ViewSmsInboundAutomationsDataAllOfLinksInner",
     "ViewSmsReceipts",
     "ViewSmsReceiptsData",
     "ViewSmsStatistics",
     "ViewSmsStatisticsData",
-    "ViewSmsStatisticsDataStatInner",
+    "ViewSmsStatisticsDataStatsInner",
     "ViewSmsStatisticsDataTotal",
     "ViewSmsTemplates",
     "ViewSmsTemplatesData",
@@ -905,6 +905,7 @@ from clicksend.models.view_list_contacts import ViewListContacts as ViewListCont
 from clicksend.models.view_list_contacts_data import ViewListContactsData as ViewListContactsData
 from clicksend.models.view_lists import ViewLists as ViewLists
 from clicksend.models.view_lists_data import ViewListsData as ViewListsData
+from clicksend.models.view_lists_data_links_inner import ViewListsDataLinksInner as ViewListsDataLinksInner
 from clicksend.models.view_master_email_template import ViewMasterEmailTemplate as ViewMasterEmailTemplate
 from clicksend.models.view_master_email_templates import ViewMasterEmailTemplates as ViewMasterEmailTemplates
 from clicksend.models.view_mms_campaign import ViewMmsCampaign as ViewMmsCampaign
@@ -930,12 +931,11 @@ from clicksend.models.view_sms_history_data_all_of_data_inner import ViewSmsHist
 from clicksend.models.view_sms_inbound_automation import ViewSmsInboundAutomation as ViewSmsInboundAutomation
 from clicksend.models.view_sms_inbound_automations import ViewSmsInboundAutomations as ViewSmsInboundAutomations
 from clicksend.models.view_sms_inbound_automations_data import ViewSmsInboundAutomationsData as ViewSmsInboundAutomationsData
-from clicksend.models.view_sms_inbound_automations_data_all_of_links_inner import ViewSmsInboundAutomationsDataAllOfLinksInner as ViewSmsInboundAutomationsDataAllOfLinksInner
 from clicksend.models.view_sms_receipts import ViewSmsReceipts as ViewSmsReceipts
 from clicksend.models.view_sms_receipts_data import ViewSmsReceiptsData as ViewSmsReceiptsData
 from clicksend.models.view_sms_statistics import ViewSmsStatistics as ViewSmsStatistics
 from clicksend.models.view_sms_statistics_data import ViewSmsStatisticsData as ViewSmsStatisticsData
-from clicksend.models.view_sms_statistics_data_stat_inner import ViewSmsStatisticsDataStatInner as ViewSmsStatisticsDataStatInner
+from clicksend.models.view_sms_statistics_data_stats_inner import ViewSmsStatisticsDataStatsInner as ViewSmsStatisticsDataStatsInner
 from clicksend.models.view_sms_statistics_data_total import ViewSmsStatisticsDataTotal as ViewSmsStatisticsDataTotal
 from clicksend.models.view_sms_templates import ViewSmsTemplates as ViewSmsTemplates
 from clicksend.models.view_sms_templates_data import ViewSmsTemplatesData as ViewSmsTemplatesData

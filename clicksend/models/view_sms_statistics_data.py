@@ -20,7 +20,7 @@ import json
 from pydantic import BaseModel, ConfigDict, Field
 from typing import Any, ClassVar, Dict, List, Optional
 from clicksend.models.currency import Currency
-from clicksend.models.view_sms_statistics_data_stat_inner import ViewSmsStatisticsDataStatInner
+from clicksend.models.view_sms_statistics_data_stats_inner import ViewSmsStatisticsDataStatsInner
 from clicksend.models.view_sms_statistics_data_total import ViewSmsStatisticsDataTotal
 from typing import Optional, Set
 from typing_extensions import Self
@@ -31,9 +31,9 @@ class ViewSmsStatisticsData(BaseModel):
     ViewSmsStatisticsData
     """ # noqa: E501
     total: Optional[ViewSmsStatisticsDataTotal] = None
-    stat: Optional[List[ViewSmsStatisticsDataStatInner]] = None
+    stats: Optional[List[ViewSmsStatisticsDataStatsInner]] = None
     currency: Optional[Currency] = Field(default=None, alias="_currency")
-    __properties: ClassVar[List[str]] = ["total", "stat", "_currency"]
+    __properties: ClassVar[List[str]] = ["total", "stats", "_currency"]
 
     model_config = ConfigDict(
         validate_by_name=True,
@@ -77,13 +77,13 @@ class ViewSmsStatisticsData(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of total
         if self.total:
             _dict['total'] = self.total.to_dict()
-        # override the default output from pydantic by calling `to_dict()` of each item in stat (list)
+        # override the default output from pydantic by calling `to_dict()` of each item in stats (list)
         _items = []
-        if self.stat:
-            for _item_stat in self.stat:
-                if _item_stat:
-                    _items.append(_item_stat.to_dict())
-            _dict['stat'] = _items
+        if self.stats:
+            for _item_stats in self.stats:
+                if _item_stats:
+                    _items.append(_item_stats.to_dict())
+            _dict['stats'] = _items
         # override the default output from pydantic by calling `to_dict()` of currency
         if self.currency:
             _dict['_currency'] = self.currency.to_dict()
@@ -100,7 +100,7 @@ class ViewSmsStatisticsData(BaseModel):
 
         _obj = cls.model_validate({
             "total": ViewSmsStatisticsDataTotal.from_dict(obj["total"]) if obj.get("total") is not None else None,
-            "stat": [ViewSmsStatisticsDataStatInner.from_dict(_item) for _item in obj["stat"]] if obj.get("stat") is not None else None,
+            "stats": [ViewSmsStatisticsDataStatsInner.from_dict(_item) for _item in obj["stats"]] if obj.get("stats") is not None else None,
             "_currency": Currency.from_dict(obj["_currency"]) if obj.get("_currency") is not None else None
         })
         return _obj

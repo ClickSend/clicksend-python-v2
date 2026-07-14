@@ -14,10 +14,10 @@
 
 import unittest
 
-from clicksend.models.view_sms_inbound_automations_data_all_of_links_inner import ViewSmsInboundAutomationsDataAllOfLinksInner
+from clicksend.models.view_lists_data_links_inner import ViewListsDataLinksInner
 
-class TestViewSmsInboundAutomationsDataAllOfLinksInner(unittest.TestCase):
-    """ViewSmsInboundAutomationsDataAllOfLinksInner unit test stubs"""
+class TestViewListsDataLinksInner(unittest.TestCase):
+    """ViewListsDataLinksInner unit test stubs"""
 
     def setUp(self):
         pass
@@ -25,28 +25,28 @@ class TestViewSmsInboundAutomationsDataAllOfLinksInner(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(self, include_optional) -> ViewSmsInboundAutomationsDataAllOfLinksInner:
-        """Test ViewSmsInboundAutomationsDataAllOfLinksInner
+    def make_instance(self, include_optional) -> ViewListsDataLinksInner:
+        """Test ViewListsDataLinksInner
             include_optional is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
-        # uncomment below to create an instance of `ViewSmsInboundAutomationsDataAllOfLinksInner`
+        # uncomment below to create an instance of `ViewListsDataLinksInner`
         """
-        model = ViewSmsInboundAutomationsDataAllOfLinksInner()
+        model = ViewListsDataLinksInner()
         if include_optional:
-            return ViewSmsInboundAutomationsDataAllOfLinksInner(
+            return ViewListsDataLinksInner(
                 url = '',
                 label = '',
                 page = 56,
                 active = True
             )
         else:
-            return ViewSmsInboundAutomationsDataAllOfLinksInner(
+            return ViewListsDataLinksInner(
         )
         """
 
-    def testViewSmsInboundAutomationsDataAllOfLinksInner(self):
-        """Test ViewSmsInboundAutomationsDataAllOfLinksInner"""
+    def testViewListsDataLinksInner(self):
+        """Test ViewListsDataLinksInner"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
 

@@ -39,16 +39,18 @@ class TestViewVoiceStatisticsData(unittest.TestCase):
                     outbound = clicksend.models.view_voice_statistics_data_total_outbound.view_voice_statistics_data_total_outbound(
                         count = 1, 
                         price = 0, ), 
-                    bounced = clicksend.models.cancel_all_sms_data.cancel_all_sms_data(
-                        count = 2, ), ),
+                    bounced = clicksend.models.view_voice_statistics_data_total_outbound.view_voice_statistics_data_total_outbound(
+                        count = 1, 
+                        price = 0, ), ),
                 stats = [
                     clicksend.models.view_voice_statistics_data_stats_inner.view_voice_statistics_data_stats_inner(
                         date = 1441065600, 
                         outbound = clicksend.models.view_voice_statistics_data_total_outbound.view_voice_statistics_data_total_outbound(
                             count = 1, 
                             price = 0, ), 
-                        bounced = clicksend.models.cancel_all_sms_data.cancel_all_sms_data(
-                            count = 2, ), )
+                        bounced = clicksend.models.view_voice_statistics_data_total_outbound.view_voice_statistics_data_total_outbound(
+                            count = 1, 
+                            price = 0, ), )
                     ],
                 currency = clicksend.models.currency.currency(
                     currency_name_short = 'AUD', 

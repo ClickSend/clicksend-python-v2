@@ -36,7 +36,8 @@ class SmsInboundRule(BaseModel):
     action_address: Optional[StrictStr] = Field(default=None, description="The action address to be used in the inbound rule.", json_schema_extra={"examples": ["430"]})
     body: Optional[StrictStr] = Field(default=None, description="The body of the inbound rule.", json_schema_extra={"examples": ["Hello, World!"]})
     enabled: Optional[StrictInt] = Field(default=None, description="The status of the inbound rule.", json_schema_extra={"examples": [1]})
-    __properties: ClassVar[List[str]] = ["inbound_rule_id", "dedicated_number", "rule_name", "message_search_type", "message_search_term", "action", "action_address", "body", "enabled"]
+    webhook_type: Optional[StrictStr] = Field(default=None, description="The format used when calling the webhook (e.g. post, json).", json_schema_extra={"examples": ["json"]})
+    __properties: ClassVar[List[str]] = ["inbound_rule_id", "dedicated_number", "rule_name", "message_search_type", "message_search_term", "action", "action_address", "body", "enabled", "webhook_type"]
 
     model_config = ConfigDict(
         validate_by_name=True,
@@ -82,6 +83,11 @@ class SmsInboundRule(BaseModel):
         if self.body is None and "body" in self.model_fields_set:
             _dict['body'] = None
 
+        # set to None if webhook_type (nullable) is None
+        # and model_fields_set contains the field
+        if self.webhook_type is None and "webhook_type" in self.model_fields_set:
+            _dict['webhook_type'] = None
+
         return _dict
 
     @classmethod
@@ -102,7 +108,8 @@ class SmsInboundRule(BaseModel):
             "action": obj.get("action"),
             "action_address": obj.get("action_address"),
             "body": obj.get("body"),
-            "enabled": obj.get("enabled")
+            "enabled": obj.get("enabled"),
+            "webhook_type": obj.get("webhook_type")
         })
         return _obj
 

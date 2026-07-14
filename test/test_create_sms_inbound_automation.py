@@ -47,7 +47,8 @@ class TestCreateSmsInboundAutomation(unittest.TestCase):
                     action = 'CREATE_CONTACT_PLUS_EMAIL', 
                     action_address = '430', 
                     body = 'Hello, World!', 
-                    enabled = 1, )
+                    enabled = 1, 
+                    webhook_type = 'json', )
             )
         else:
             return CreateSmsInboundAutomation(

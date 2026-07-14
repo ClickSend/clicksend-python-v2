@@ -47,7 +47,7 @@ class TestViewSmsInboundAutomationsData(unittest.TestCase):
                 last_page_url = 'https://rest.clicksend.com/v3/automations/sms/inbound?page=2',
                 path = 'https://rest.clicksend.com/v3/automations/sms/inbound',
                 links = [
-                    clicksend.models.view_sms_inbound_automations_data_all_of_links_inner.view_sms_inbound_automations_data_allOf_links_inner(
+                    clicksend.models.view_lists_data_links_inner.view_lists_data_links_inner(
                         url = '', 
                         label = '', 
                         page = 56, 

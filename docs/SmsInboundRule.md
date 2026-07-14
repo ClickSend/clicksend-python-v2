@@ -14,6 +14,7 @@ Name | Type | Description | Notes
 **action_address** | **str** | The action address to be used in the inbound rule. | [optional] 
 **body** | **str** | The body of the inbound rule. | [optional] 
 **enabled** | **int** | The status of the inbound rule. | [optional] 
+**webhook_type** | **str** | The format used when calling the webhook (e.g. post, json). | [optional] 
 
 ## Example
 

@@ -19,20 +19,19 @@ import json
 
 from pydantic import BaseModel, ConfigDict, Field, StrictFloat, StrictInt
 from typing import Any, ClassVar, Dict, List, Optional, Union
-from clicksend.models.cancel_all_sms_data import CancelAllSmsData
 from clicksend.models.view_voice_statistics_data_total_outbound import ViewVoiceStatisticsDataTotalOutbound
 from typing import Optional, Set
 from typing_extensions import Self
 from pydantic_core import to_jsonable_python
 
-class ViewSmsStatisticsDataStatInner(BaseModel):
+class ViewSmsStatisticsDataStatsInner(BaseModel):
     """
-    ViewSmsStatisticsDataStatInner
+    ViewSmsStatisticsDataStatsInner
     """ # noqa: E501
     var_date: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, description="The date.", alias="date", json_schema_extra={"examples": [1436918400]})
     outbound: Optional[ViewVoiceStatisticsDataTotalOutbound] = None
-    inbound: Optional[CancelAllSmsData] = None
-    bounced: Optional[CancelAllSmsData] = None
+    inbound: Optional[ViewVoiceStatisticsDataTotalOutbound] = None
+    bounced: Optional[ViewVoiceStatisticsDataTotalOutbound] = None
     __properties: ClassVar[List[str]] = ["date", "outbound", "inbound", "bounced"]
 
     model_config = ConfigDict(
@@ -53,7 +52,7 @@ class ViewSmsStatisticsDataStatInner(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of ViewSmsStatisticsDataStatInner from a JSON string"""
+        """Create an instance of ViewSmsStatisticsDataStatsInner from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -87,7 +86,7 @@ class ViewSmsStatisticsDataStatInner(BaseModel):
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of ViewSmsStatisticsDataStatInner from a dict"""
+        """Create an instance of ViewSmsStatisticsDataStatsInner from a dict"""
         if obj is None:
             return None
 
@@ -97,8 +96,8 @@ class ViewSmsStatisticsDataStatInner(BaseModel):
         _obj = cls.model_validate({
             "date": obj.get("date"),
             "outbound": ViewVoiceStatisticsDataTotalOutbound.from_dict(obj["outbound"]) if obj.get("outbound") is not None else None,
-            "inbound": CancelAllSmsData.from_dict(obj["inbound"]) if obj.get("inbound") is not None else None,
-            "bounced": CancelAllSmsData.from_dict(obj["bounced"]) if obj.get("bounced") is not None else None
+            "inbound": ViewVoiceStatisticsDataTotalOutbound.from_dict(obj["inbound"]) if obj.get("inbound") is not None else None,
+            "bounced": ViewVoiceStatisticsDataTotalOutbound.from_dict(obj["bounced"]) if obj.get("bounced") is not None else None
         })
         return _obj
 

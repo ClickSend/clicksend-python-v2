@@ -20,6 +20,7 @@ import json
 from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from clicksend.models.contact_list import ContactList
+from clicksend.models.view_lists_data_links_inner import ViewListsDataLinksInner
 from typing import Optional, Set
 from typing_extensions import Self
 from pydantic_core import to_jsonable_python
@@ -36,8 +37,12 @@ class ViewListsData(BaseModel):
     prev_page_url: Optional[StrictStr] = Field(default=None, description="The URL of the previous page of contacts.", json_schema_extra={"examples": ["https://api.clicksend.com/v3/lists?page=1"]})
     var_from: Optional[StrictInt] = Field(default=None, description="The number of the first contact on the current page.", alias="from", json_schema_extra={"examples": [1]})
     to: Optional[StrictInt] = Field(default=None, description="The number of the last contact on the current page.", json_schema_extra={"examples": [10]})
+    first_page_url: Optional[StrictStr] = Field(default=None, description="The URL of the first page of records.", json_schema_extra={"examples": ["https://rest.clicksend.com/v3/lists?page=1"]})
+    last_page_url: Optional[StrictStr] = Field(default=None, description="The URL of the last page of records.", json_schema_extra={"examples": ["https://rest.clicksend.com/v3/lists?page=2"]})
+    path: Optional[StrictStr] = Field(default=None, description="The base URL path used to build pagination links.", json_schema_extra={"examples": ["https://rest.clicksend.com/v3/lists"]})
+    links: Optional[List[ViewListsDataLinksInner]] = Field(default=None, description="The list of pagination links.")
     data: Optional[List[ContactList]] = Field(default=None, description="The contacts in the list.", json_schema_extra={"examples": [[{"list_id": 428, "list_name": "ListCT3QrVL4od", "list_email_id": "KB0LHD6WXFVHZWTR", "_contacts_count": 0}, {"list_id": 429, "list_name": "ListCT3QrVL4od", "list_email_id": "KB0LHD6WXFVHZWTR", "_contacts_count": 0}]]})
-    __properties: ClassVar[List[str]] = ["total", "per_page", "current_page", "last_page", "next_page_url", "prev_page_url", "from", "to", "data"]
+    __properties: ClassVar[List[str]] = ["total", "per_page", "current_page", "last_page", "next_page_url", "prev_page_url", "from", "to", "first_page_url", "last_page_url", "path", "links", "data"]
 
     model_config = ConfigDict(
         validate_by_name=True,
@@ -78,6 +83,13 @@ class ViewListsData(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # override the default output from pydantic by calling `to_dict()` of each item in links (list)
+        _items = []
+        if self.links:
+            for _item_links in self.links:
+                if _item_links:
+                    _items.append(_item_links.to_dict())
+            _dict['links'] = _items
         # override the default output from pydantic by calling `to_dict()` of each item in data (list)
         _items = []
         if self.data:
@@ -85,6 +97,16 @@ class ViewListsData(BaseModel):
                 if _item_data:
                     _items.append(_item_data.to_dict())
             _dict['data'] = _items
+        # set to None if first_page_url (nullable) is None
+        # and model_fields_set contains the field
+        if self.first_page_url is None and "first_page_url" in self.model_fields_set:
+            _dict['first_page_url'] = None
+
+        # set to None if last_page_url (nullable) is None
+        # and model_fields_set contains the field
+        if self.last_page_url is None and "last_page_url" in self.model_fields_set:
+            _dict['last_page_url'] = None
+
         return _dict
 
     @classmethod
@@ -105,6 +127,10 @@ class ViewListsData(BaseModel):
             "prev_page_url": obj.get("prev_page_url"),
             "from": obj.get("from"),
             "to": obj.get("to"),
+            "first_page_url": obj.get("first_page_url"),
+            "last_page_url": obj.get("last_page_url"),
+            "path": obj.get("path"),
+            "links": [ViewListsDataLinksInner.from_dict(_item) for _item in obj["links"]] if obj.get("links") is not None else None,
             "data": [ContactList.from_dict(_item) for _item in obj["data"]] if obj.get("data") is not None else None
         })
         return _obj

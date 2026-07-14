@@ -13,6 +13,10 @@ Name | Type | Description | Notes
 **prev_page_url** | **str** | The URL of the previous page of contacts. | [optional] 
 **var_from** | **int** | The number of the first contact on the current page. | [optional] 
 **to** | **int** | The number of the last contact on the current page. | [optional] 
+**first_page_url** | **str** | The URL of the first page of records. | [optional] 
+**last_page_url** | **str** | The URL of the last page of records. | [optional] 
+**path** | **str** | The base URL path used to build pagination links. | [optional] 
+**links** | [**List[ViewListsDataLinksInner]**](ViewListsDataLinksInner.md) | The list of pagination links. | [optional] 
 **data** | [**List[ContactList]**](ContactList.md) | The contacts in the list. | [optional] 
 
 ## Example

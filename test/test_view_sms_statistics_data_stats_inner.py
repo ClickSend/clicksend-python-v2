@@ -14,10 +14,10 @@
 
 import unittest
 
-from clicksend.models.view_sms_statistics_data_stat_inner import ViewSmsStatisticsDataStatInner
+from clicksend.models.view_sms_statistics_data_stats_inner import ViewSmsStatisticsDataStatsInner
 
-class TestViewSmsStatisticsDataStatInner(unittest.TestCase):
-    """ViewSmsStatisticsDataStatInner unit test stubs"""
+class TestViewSmsStatisticsDataStatsInner(unittest.TestCase):
+    """ViewSmsStatisticsDataStatsInner unit test stubs"""
 
     def setUp(self):
         pass
@@ -25,32 +25,34 @@ class TestViewSmsStatisticsDataStatInner(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(self, include_optional) -> ViewSmsStatisticsDataStatInner:
-        """Test ViewSmsStatisticsDataStatInner
+    def make_instance(self, include_optional) -> ViewSmsStatisticsDataStatsInner:
+        """Test ViewSmsStatisticsDataStatsInner
             include_optional is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
-        # uncomment below to create an instance of `ViewSmsStatisticsDataStatInner`
+        # uncomment below to create an instance of `ViewSmsStatisticsDataStatsInner`
         """
-        model = ViewSmsStatisticsDataStatInner()
+        model = ViewSmsStatisticsDataStatsInner()
         if include_optional:
-            return ViewSmsStatisticsDataStatInner(
+            return ViewSmsStatisticsDataStatsInner(
                 var_date = 1436918400,
                 outbound = clicksend.models.view_voice_statistics_data_total_outbound.view_voice_statistics_data_total_outbound(
                     count = 1, 
                     price = 0, ),
-                inbound = clicksend.models.cancel_all_sms_data.cancel_all_sms_data(
-                    count = 2, ),
-                bounced = clicksend.models.cancel_all_sms_data.cancel_all_sms_data(
-                    count = 2, )
+                inbound = clicksend.models.view_voice_statistics_data_total_outbound.view_voice_statistics_data_total_outbound(
+                    count = 1, 
+                    price = 0, ),
+                bounced = clicksend.models.view_voice_statistics_data_total_outbound.view_voice_statistics_data_total_outbound(
+                    count = 1, 
+                    price = 0, )
             )
         else:
-            return ViewSmsStatisticsDataStatInner(
+            return ViewSmsStatisticsDataStatsInner(
         )
         """
 
-    def testViewSmsStatisticsDataStatInner(self):
-        """Test ViewSmsStatisticsDataStatInner"""
+    def testViewSmsStatisticsDataStatsInner(self):
+        """Test ViewSmsStatisticsDataStatsInner"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
 

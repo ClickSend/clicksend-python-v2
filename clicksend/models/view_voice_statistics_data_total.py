@@ -19,7 +19,6 @@ import json
 
 from pydantic import BaseModel, ConfigDict
 from typing import Any, ClassVar, Dict, List, Optional
-from clicksend.models.cancel_all_sms_data import CancelAllSmsData
 from clicksend.models.view_voice_statistics_data_total_outbound import ViewVoiceStatisticsDataTotalOutbound
 from typing import Optional, Set
 from typing_extensions import Self
@@ -30,7 +29,7 @@ class ViewVoiceStatisticsDataTotal(BaseModel):
     ViewVoiceStatisticsDataTotal
     """ # noqa: E501
     outbound: Optional[ViewVoiceStatisticsDataTotalOutbound] = None
-    bounced: Optional[CancelAllSmsData] = None
+    bounced: Optional[ViewVoiceStatisticsDataTotalOutbound] = None
     __properties: ClassVar[List[str]] = ["outbound", "bounced"]
 
     model_config = ConfigDict(
@@ -91,7 +90,7 @@ class ViewVoiceStatisticsDataTotal(BaseModel):
 
         _obj = cls.model_validate({
             "outbound": ViewVoiceStatisticsDataTotalOutbound.from_dict(obj["outbound"]) if obj.get("outbound") is not None else None,
-            "bounced": CancelAllSmsData.from_dict(obj["bounced"]) if obj.get("bounced") is not None else None
+            "bounced": ViewVoiceStatisticsDataTotalOutbound.from_dict(obj["bounced"]) if obj.get("bounced") is not None else None
         })
         return _obj
 

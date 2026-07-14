@@ -20,7 +20,7 @@ import json
 from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from clicksend.models.sms_inbound_rule import SmsInboundRule
-from clicksend.models.view_sms_inbound_automations_data_all_of_links_inner import ViewSmsInboundAutomationsDataAllOfLinksInner
+from clicksend.models.view_lists_data_links_inner import ViewListsDataLinksInner
 from typing import Optional, Set
 from typing_extensions import Self
 from pydantic_core import to_jsonable_python
@@ -40,7 +40,7 @@ class ViewSmsInboundAutomationsData(BaseModel):
     first_page_url: Optional[StrictStr] = Field(default=None, description="The URL of the first page of records.", json_schema_extra={"examples": ["https://rest.clicksend.com/v3/automations/sms/inbound?page=1"]})
     last_page_url: Optional[StrictStr] = Field(default=None, description="The URL of the last page of records.", json_schema_extra={"examples": ["https://rest.clicksend.com/v3/automations/sms/inbound?page=2"]})
     path: Optional[StrictStr] = Field(default=None, description="The base URL path used to build pagination links.", json_schema_extra={"examples": ["https://rest.clicksend.com/v3/automations/sms/inbound"]})
-    links: Optional[List[ViewSmsInboundAutomationsDataAllOfLinksInner]] = Field(default=None, description="The list of pagination links.")
+    links: Optional[List[ViewListsDataLinksInner]] = Field(default=None, description="The list of pagination links.")
     data: Optional[List[SmsInboundRule]] = Field(default=None, json_schema_extra={"examples": [[{"sms_inbound_rule_id": 1, "dedicated_number": "+61298441484", "rule_name": "My Rule 10", "message_search_type": 3, "message_search_term": "My Search Term", "action": "CREATE_CONTACT_PLUS_EMAIL", "action_address": "430", "body": "test@test.com", "enabled": 1}, {"sms_inbound_rule_id": 9, "dedicated_number": "+61298441484", "rule_name": "My Rule 9", "message_search_type": 3, "message_search_term": "My Search Term", "action": "CREATE_CONTACT", "action_address": "john@doe.com", "enabled": 1}]]})
     __properties: ClassVar[List[str]] = ["total", "per_page", "current_page", "last_page", "next_page_url", "prev_page_url", "from", "to", "first_page_url", "last_page_url", "path", "links", "data"]
 
@@ -140,7 +140,7 @@ class ViewSmsInboundAutomationsData(BaseModel):
             "first_page_url": obj.get("first_page_url"),
             "last_page_url": obj.get("last_page_url"),
             "path": obj.get("path"),
-            "links": [ViewSmsInboundAutomationsDataAllOfLinksInner.from_dict(_item) for _item in obj["links"]] if obj.get("links") is not None else None,
+            "links": [ViewListsDataLinksInner.from_dict(_item) for _item in obj["links"]] if obj.get("links") is not None else None,
             "data": [SmsInboundRule.from_dict(_item) for _item in obj["data"]] if obj.get("data") is not None else None
         })
         return _obj
