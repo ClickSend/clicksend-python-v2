@@ -57,7 +57,7 @@ class TestViewSmsHistoryData(unittest.TestCase):
                         error_code = '', 
                         error_text = '', 
                         message_id = '4E90F4C3-43A3-489D-9AB8-DA1F4332A0C3', 
-                        message_parts = '1.00', 
+                        message_parts = 1, 
                         message_price = '0.070000', 
                         from_email = '', 
                         list_id = '', 

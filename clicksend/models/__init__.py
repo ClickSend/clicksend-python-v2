@@ -326,10 +326,7 @@ from clicksend.models.view_account_details import ViewAccountDetails
 from clicksend.models.view_account_usage import ViewAccountUsage
 from clicksend.models.view_account_usage_data import ViewAccountUsageData
 from clicksend.models.view_account_usage_data_email_inner import ViewAccountUsageDataEmailInner
-from clicksend.models.view_account_usage_data_email_total import ViewAccountUsageDataEmailTotal
-from clicksend.models.view_account_usage_data_mms_inner import ViewAccountUsageDataMmsInner
 from clicksend.models.view_account_usage_data_sms_inner import ViewAccountUsageDataSmsInner
-from clicksend.models.view_account_usage_data_sms_total import ViewAccountUsageDataSmsTotal
 from clicksend.models.view_all_email_campaigns import ViewAllEmailCampaigns
 from clicksend.models.view_all_email_campaigns_data import ViewAllEmailCampaignsData
 from clicksend.models.view_all_mms_campaigns import ViewAllMmsCampaigns
@@ -452,5 +449,6 @@ from clicksend.models.view_your_return_addresses import ViewYourReturnAddresses
 from clicksend.models.view_your_return_addresses_data import ViewYourReturnAddressesData
 from clicksend.models.voice_delivery_receipt_rule import VoiceDeliveryReceiptRule
 from clicksend.models.voice_message import VoiceMessage
+from clicksend.models.voice_message_schedule import VoiceMessageSchedule
 from clicksend.models.voice_receipt import VoiceReceipt
 

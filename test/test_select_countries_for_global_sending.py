@@ -44,7 +44,7 @@ class TestSelectCountriesForGlobalSending(unittest.TestCase):
                         name = 'Australia', 
                         code = 'AU', 
                         region = 'Oceania', 
-                        agreed_at = '', 
+                        agreed_at = 56, 
                         registration_entity = clicksend.models.account__referrer_chosen.account__referrer_chosen(
                             id = 8, 
                             name = 'Other', ), 

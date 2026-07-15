@@ -37,7 +37,7 @@ class TestCalculateSmsCampaignPriceDataData(unittest.TestCase):
             return CalculateSmsCampaignPriceDataData(
                 var_from = '+61353787448',
                 body = 'John, this is your new campaign message.',
-                schedule = '1444381346'
+                schedule = 1444381346
             )
         else:
             return CalculateSmsCampaignPriceDataData(

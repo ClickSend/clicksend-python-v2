@@ -41,7 +41,7 @@ class TestViewMasterEmailTemplate(unittest.TestCase):
                 data = clicksend.models.master_email_template.master_email_template(
                     template_id_master = 57, 
                     template_name = 'Welcome Email', 
-                    date_added = '1436157486', 
+                    date_added = 1436157486, 
                     body = '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" ...
                      </tr>
                   </tbody>

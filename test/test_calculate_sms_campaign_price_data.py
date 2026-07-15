@@ -36,11 +36,11 @@ class TestCalculateSmsCampaignPriceData(unittest.TestCase):
         if include_optional:
             return CalculateSmsCampaignPriceData(
                 total_count = 1,
-                total_price = 0.035,
+                total_price = '0.035',
                 data = clicksend.models.calculate_sms_campaign_price_data_data.calculate_sms_campaign_price_data_data(
                     from = '+61353787448', 
                     body = 'John, this is your new campaign message.', 
-                    schedule = '1444381346', ),
+                    schedule = 1444381346, ),
                 currency = clicksend.models.currency.currency(
                     currency_name_short = 'AUD', 
                     currency_prefix_d = '$', 

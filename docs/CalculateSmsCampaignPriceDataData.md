@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **var_from** | **str** | The sender. | [optional] 
 **body** | **str** | The message body. | [optional] 
-**schedule** | **str** | The schedule timestamp. | [optional] 
+**schedule** | **int** | The schedule timestamp. | [optional] 
 
 ## Example
 

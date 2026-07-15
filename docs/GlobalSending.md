@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **name** | **str** | The name of the country. | [optional] 
 **code** | **str** | The country code. | [optional] 
 **region** | **str** | The region of the country. | [optional] 
-**agreed_at** | **str** | The date when the country was agreed upon. | [optional] 
+**agreed_at** | **int** | The date when the country was agreed upon. | [optional] 
 **registration_entity** | [**AccountReferrerChosen**](AccountReferrerChosen.md) |  | [optional] 
 **registration_status** | [**GlobalSendingRegistrationStatus**](GlobalSendingRegistrationStatus.md) |  | [optional] 
 **jotform_id** | **str** | The ID of the country in JotForm. | [optional] 

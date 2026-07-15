@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **subaccount_id** | **int** | The subaccount identifier. | [optional] 
 **username** | **str** | The username associated with the subaccount. | [optional] 
 **total_count** | **int** | The total count of emails. | [optional] 
-**total_price** | **str** |  | [optional] 
+**total_price** | **float** |  | [optional] 
 **notes** | **str** | Optional notes. | [optional] 
 
 ## Example

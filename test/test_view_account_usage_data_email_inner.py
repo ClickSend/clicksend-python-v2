@@ -38,7 +38,7 @@ class TestViewAccountUsageDataEmailInner(unittest.TestCase):
                 subaccount_id = 56,
                 username = '',
                 total_count = 56,
-                total_price = '',
+                total_price = 1.337,
                 notes = ''
             )
         else:

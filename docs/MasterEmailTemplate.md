@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **template_id_master** | **int** | The unique identifier for the template. | [optional] 
 **template_name** | **str** | The name of the template. | [optional] 
-**date_added** | **str** | The date the template was added. | [optional] 
+**date_added** | **int** | The date the template was added. | [optional] 
 **body** | **str** | The body of the template. | [optional] 
 **thumbnail** | [**MasterEmailTemplateThumbnail**](MasterEmailTemplateThumbnail.md) |  | [optional] 
 

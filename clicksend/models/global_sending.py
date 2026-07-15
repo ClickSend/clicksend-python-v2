@@ -33,7 +33,7 @@ class GlobalSending(BaseModel):
     name: Optional[StrictStr] = Field(default=None, description="The name of the country.", json_schema_extra={"examples": ["Australia"]})
     code: Optional[StrictStr] = Field(default=None, description="The country code.", json_schema_extra={"examples": ["AU"]})
     region: Optional[StrictStr] = Field(default=None, description="The region of the country.", json_schema_extra={"examples": ["Oceania"]})
-    agreed_at: Optional[StrictStr] = Field(default=None, description="The date when the country was agreed upon.")
+    agreed_at: Optional[StrictInt] = Field(default=None, description="The date when the country was agreed upon.")
     registration_entity: Optional[AccountReferrerChosen] = None
     registration_status: Optional[GlobalSendingRegistrationStatus] = None
     jotform_id: Optional[StrictStr] = Field(default=None, description="The ID of the country in JotForm.", json_schema_extra={"examples": ["12345"]})

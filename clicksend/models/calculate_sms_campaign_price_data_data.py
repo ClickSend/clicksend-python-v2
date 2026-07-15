@@ -17,7 +17,7 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, StrictStr
+from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from typing import Optional, Set
 from typing_extensions import Self
@@ -29,7 +29,7 @@ class CalculateSmsCampaignPriceDataData(BaseModel):
     """ # noqa: E501
     var_from: Optional[StrictStr] = Field(default=None, description="The sender.", alias="from", json_schema_extra={"examples": ["+61353787448"]})
     body: Optional[StrictStr] = Field(default=None, description="The message body.", json_schema_extra={"examples": ["John, this is your new campaign message."]})
-    schedule: Optional[StrictStr] = Field(default=None, description="The schedule timestamp.", json_schema_extra={"examples": ["1444381346"]})
+    schedule: Optional[StrictInt] = Field(default=None, description="The schedule timestamp.", json_schema_extra={"examples": [1444381346]})
     __properties: ClassVar[List[str]] = ["from", "body", "schedule"]
 
     model_config = ConfigDict(

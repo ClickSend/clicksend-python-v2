@@ -14,10 +14,10 @@
 
 import unittest
 
-from clicksend.models.view_account_usage_data_email_total import ViewAccountUsageDataEmailTotal
+from clicksend.models.voice_message_schedule import VoiceMessageSchedule
 
-class TestViewAccountUsageDataEmailTotal(unittest.TestCase):
-    """ViewAccountUsageDataEmailTotal unit test stubs"""
+class TestVoiceMessageSchedule(unittest.TestCase):
+    """VoiceMessageSchedule unit test stubs"""
 
     def setUp(self):
         pass
@@ -25,26 +25,24 @@ class TestViewAccountUsageDataEmailTotal(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(self, include_optional) -> ViewAccountUsageDataEmailTotal:
-        """Test ViewAccountUsageDataEmailTotal
+    def make_instance(self, include_optional) -> VoiceMessageSchedule:
+        """Test VoiceMessageSchedule
             include_optional is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
-        # uncomment below to create an instance of `ViewAccountUsageDataEmailTotal`
+        # uncomment below to create an instance of `VoiceMessageSchedule`
         """
-        model = ViewAccountUsageDataEmailTotal()
+        model = VoiceMessageSchedule()
         if include_optional:
-            return ViewAccountUsageDataEmailTotal(
-                count = 56,
-                price = ''
+            return VoiceMessageSchedule(
             )
         else:
-            return ViewAccountUsageDataEmailTotal(
+            return VoiceMessageSchedule(
         )
         """
 
-    def testViewAccountUsageDataEmailTotal(self):
-        """Test ViewAccountUsageDataEmailTotal"""
+    def testVoiceMessageSchedule(self):
+        """Test VoiceMessageSchedule"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
 

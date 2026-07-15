@@ -30,7 +30,7 @@ class MasterEmailTemplate(BaseModel):
     """ # noqa: E501
     template_id_master: Optional[StrictInt] = Field(default=None, description="The unique identifier for the template.", json_schema_extra={"examples": [57]})
     template_name: Optional[StrictStr] = Field(default=None, description="The name of the template.", json_schema_extra={"examples": ["Welcome Email"]})
-    date_added: Optional[StrictStr] = Field(default=None, description="The date the template was added.", json_schema_extra={"examples": ["1436157486"]})
+    date_added: Optional[StrictInt] = Field(default=None, description="The date the template was added.", json_schema_extra={"examples": [1436157486]})
     body: Optional[StrictStr] = Field(default=None, description="The body of the template.", json_schema_extra={"examples": ["<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Transitional//EN\" ...\n                     </tr>\n                  </tbody>\n               </table>\n            </td>\n         </tr>\n      </tbody>\n   </table>\n</body>\n</html>"]})
     thumbnail: Optional[MasterEmailTemplateThumbnail] = None
     __properties: ClassVar[List[str]] = ["template_id_master", "template_name", "date_added", "body", "thumbnail"]

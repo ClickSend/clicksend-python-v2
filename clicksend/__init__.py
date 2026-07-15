@@ -369,10 +369,7 @@ __all__ = [
     "ViewAccountUsage",
     "ViewAccountUsageData",
     "ViewAccountUsageDataEmailInner",
-    "ViewAccountUsageDataEmailTotal",
-    "ViewAccountUsageDataMmsInner",
     "ViewAccountUsageDataSmsInner",
-    "ViewAccountUsageDataSmsTotal",
     "ViewAllEmailCampaigns",
     "ViewAllEmailCampaignsData",
     "ViewAllMmsCampaigns",
@@ -495,6 +492,7 @@ __all__ = [
     "ViewYourReturnAddressesData",
     "VoiceDeliveryReceiptRule",
     "VoiceMessage",
+    "VoiceMessageSchedule",
     "VoiceReceipt",
 ]
 
@@ -854,10 +852,7 @@ from clicksend.models.view_account_details import ViewAccountDetails as ViewAcco
 from clicksend.models.view_account_usage import ViewAccountUsage as ViewAccountUsage
 from clicksend.models.view_account_usage_data import ViewAccountUsageData as ViewAccountUsageData
 from clicksend.models.view_account_usage_data_email_inner import ViewAccountUsageDataEmailInner as ViewAccountUsageDataEmailInner
-from clicksend.models.view_account_usage_data_email_total import ViewAccountUsageDataEmailTotal as ViewAccountUsageDataEmailTotal
-from clicksend.models.view_account_usage_data_mms_inner import ViewAccountUsageDataMmsInner as ViewAccountUsageDataMmsInner
 from clicksend.models.view_account_usage_data_sms_inner import ViewAccountUsageDataSmsInner as ViewAccountUsageDataSmsInner
-from clicksend.models.view_account_usage_data_sms_total import ViewAccountUsageDataSmsTotal as ViewAccountUsageDataSmsTotal
 from clicksend.models.view_all_email_campaigns import ViewAllEmailCampaigns as ViewAllEmailCampaigns
 from clicksend.models.view_all_email_campaigns_data import ViewAllEmailCampaignsData as ViewAllEmailCampaignsData
 from clicksend.models.view_all_mms_campaigns import ViewAllMmsCampaigns as ViewAllMmsCampaigns
@@ -980,5 +975,6 @@ from clicksend.models.view_your_return_addresses import ViewYourReturnAddresses 
 from clicksend.models.view_your_return_addresses_data import ViewYourReturnAddressesData as ViewYourReturnAddressesData
 from clicksend.models.voice_delivery_receipt_rule import VoiceDeliveryReceiptRule as VoiceDeliveryReceiptRule
 from clicksend.models.voice_message import VoiceMessage as VoiceMessage
+from clicksend.models.voice_message_schedule import VoiceMessageSchedule as VoiceMessageSchedule
 from clicksend.models.voice_receipt import VoiceReceipt as VoiceReceipt
 
