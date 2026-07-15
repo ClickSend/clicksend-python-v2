@@ -46,7 +46,7 @@ class TestVoiceMessage(unittest.TestCase):
                 voice = 'female',
                 schedule = 1436874701,
                 message_id = 'BF7AD270-0DE2-418B-B606-71D527D9C1AE',
-                message_parts = 1,
+                message_parts = 1436874701,
                 message_price = '0.07',
                 custom_string = 'this is a test',
                 user_id = 1,

@@ -39,7 +39,7 @@ class VoiceMessage(BaseModel):
     voice: Optional[StrictStr] = Field(default=None, description="The voice of the message.", json_schema_extra={"examples": ["female"]})
     schedule: Optional[VoiceMessageSchedule] = None
     message_id: Optional[StrictStr] = Field(default=None, description="The ID of the message.", json_schema_extra={"examples": ["BF7AD270-0DE2-418B-B606-71D527D9C1AE"]})
-    message_parts: Optional[StrictInt] = Field(default=None, description="The number of parts in the message.", json_schema_extra={"examples": [1]})
+    message_parts: Optional[VoiceMessageSchedule] = None
     message_price: Optional[StrictStr] = Field(default=None, description="The price of the message.", json_schema_extra={"examples": ["0.07"]})
     custom_string: Optional[StrictStr] = Field(default=None, description="The custom string of the message.", json_schema_extra={"examples": ["this is a test"]})
     user_id: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, description="The ID of the user.", json_schema_extra={"examples": [1]})
@@ -98,6 +98,9 @@ class VoiceMessage(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of schedule
         if self.schedule:
             _dict['schedule'] = self.schedule.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of message_parts
+        if self.message_parts:
+            _dict['message_parts'] = self.message_parts.to_dict()
         # set to None if var_date (nullable) is None
         # and model_fields_set contains the field
         if self.var_date is None and "var_date" in self.model_fields_set:
@@ -161,7 +164,7 @@ class VoiceMessage(BaseModel):
             "voice": obj.get("voice"),
             "schedule": VoiceMessageSchedule.from_dict(obj["schedule"]) if obj.get("schedule") is not None else None,
             "message_id": obj.get("message_id"),
-            "message_parts": obj.get("message_parts"),
+            "message_parts": VoiceMessageSchedule.from_dict(obj["message_parts"]) if obj.get("message_parts") is not None else None,
             "message_price": obj.get("message_price"),
             "custom_string": obj.get("custom_string"),
             "user_id": obj.get("user_id"),
