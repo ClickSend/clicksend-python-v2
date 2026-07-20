@@ -27,8 +27,8 @@ with clicksend.ApiClient(configuration) as api_client:
     sms_api = clicksend.SmsApi(api_client)
 
     try:
-        response = sms_api.sms_send_post(
-            sms_message_collection={
+        response = sms_api.send_sms(
+            send_sms_request={
                 "messages": [
                     {"source": "sdk", "body": "Hello from ClickSend!", "to": "+61411111111"}
                 ]
@@ -36,7 +36,48 @@ with clicksend.ApiClient(configuration) as api_client:
         )
         print(response)
     except ApiException as e:
-        print(f"Exception when calling SmsApi->sms_send_post: {e}")
+        print(f"Exception when calling SmsApi->send_sms: {e}")
+```
+
+## More Examples
+
+### View account details
+
+```python
+with clicksend.ApiClient(configuration) as api_client:
+    management_api = clicksend.ManagementApi(api_client)
+
+    try:
+        account = management_api.view_account_details()
+        print(account)
+    except ApiException as e:
+        print(f"Exception when calling ManagementApi->view_account_details: {e}")
+```
+
+### Send an MMS
+
+```python
+with clicksend.ApiClient(configuration) as api_client:
+    mms_api = clicksend.MmsApi(api_client)
+
+    try:
+        response = mms_api.send_mms(
+            send_mms_request={
+                "media_file": "https://clicksend.com/logo.png",
+                "messages": [
+                    {
+                        "to": "+61411111111",
+                        "from": "sdk",
+                        "subject": "Hello",
+                        "body": "Hello from ClickSend!",
+                        "source": "sdk",
+                    }
+                ],
+            }
+        )
+        print(response)
+    except ApiException as e:
+        print(f"Exception when calling MmsApi->send_mms: {e}")
 ```
 
 ## Authentication
