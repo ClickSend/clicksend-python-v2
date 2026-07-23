@@ -48,7 +48,7 @@ class TestSendSmsRequest(unittest.TestCase):
                         body = '', 
                         to = '', 
                         from = '', 
-                        source = '', 
+                        source = 'sdk', 
                         schedule = 56, 
                         custom_string = '', 
                         list_id = '', 

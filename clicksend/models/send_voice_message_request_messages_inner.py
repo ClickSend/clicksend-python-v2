@@ -27,7 +27,7 @@ class SendVoiceMessageRequestMessagesInner(BaseModel):
     """
     SendVoiceMessageRequestMessagesInner
     """ # noqa: E501
-    source: Optional[StrictStr] = None
+    source: Optional[StrictStr] = 'sdk'
     body: Optional[StrictStr] = None
     to: Optional[StrictStr] = None
     voice: Optional[StrictStr] = None
@@ -86,7 +86,7 @@ class SendVoiceMessageRequestMessagesInner(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "source": obj.get("source"),
+            "source": obj.get("source") if obj.get("source") is not None else 'sdk',
             "body": obj.get("body"),
             "to": obj.get("to"),
             "voice": obj.get("voice"),

@@ -5,7 +5,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**source** | **str** |  | [optional] 
+**source** | **str** |  | [optional] [default to 'sdk']
 **to** | **str** |  | [optional] 
 **var_from** | **str** |  | [optional] 
 **subject** | **str** |  | [optional] 

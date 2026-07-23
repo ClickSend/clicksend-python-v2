@@ -35,7 +35,7 @@ class TestSendMmsRequestMessagesInner(unittest.TestCase):
         model = SendMmsRequestMessagesInner()
         if include_optional:
             return SendMmsRequestMessagesInner(
-                source = '',
+                source = 'sdk',
                 to = '',
                 var_from = '',
                 subject = '',
