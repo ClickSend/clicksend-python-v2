@@ -35,7 +35,7 @@ class TestSendVoiceMessageRequestMessagesInner(unittest.TestCase):
         model = SendVoiceMessageRequestMessagesInner()
         if include_optional:
             return SendVoiceMessageRequestMessagesInner(
-                source = 'sdk',
+                source = '',
                 body = '',
                 to = '',
                 voice = '',

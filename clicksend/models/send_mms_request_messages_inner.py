@@ -27,7 +27,7 @@ class SendMmsRequestMessagesInner(BaseModel):
     """
     SendMmsRequestMessagesInner
     """ # noqa: E501
-    source: Optional[StrictStr] = 'sdk'
+    source: Optional[StrictStr] = 'sdk-python'
     to: Optional[StrictStr] = None
     var_from: Optional[StrictStr] = Field(default=None, alias="from")
     subject: Optional[StrictStr] = None
@@ -86,7 +86,7 @@ class SendMmsRequestMessagesInner(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "source": obj.get("source") if obj.get("source") is not None else 'sdk',
+            "source": obj.get("source") if obj.get("source") is not None else 'sdk-python',
             "to": obj.get("to"),
             "from": obj.get("from"),
             "subject": obj.get("subject"),

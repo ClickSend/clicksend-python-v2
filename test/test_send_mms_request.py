@@ -38,7 +38,7 @@ class TestSendMmsRequest(unittest.TestCase):
                 media_file = '',
                 messages = [
                     clicksend.models.send_mms_request_messages_inner.send_mms_request_messages_inner(
-                        source = 'sdk', 
+                        source = '', 
                         to = '', 
                         from = '', 
                         subject = '', 

@@ -37,7 +37,7 @@ class TestSendVoiceMessageRequest(unittest.TestCase):
             return SendVoiceMessageRequest(
                 messages = [
                     clicksend.models.send_voice_message_request_messages_inner.send_voice_message_request_messages_inner(
-                        source = 'sdk', 
+                        source = '', 
                         body = '', 
                         to = '', 
                         voice = '', 
