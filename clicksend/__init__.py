@@ -24,9 +24,7 @@ __all__ = [
     "DefaultSendersApi",
     "EmailApi",
     "EmailToSmsApi",
-    "FaxApi",
     "InternationalMessagingApi",
-    "LettersApi",
     "ListsApi",
     "ManagementApi",
     "MessageDeliveryApi",
@@ -34,7 +32,6 @@ __all__ = [
     "MmsCampaignsApi",
     "NumbersApi",
     "OwnNumbersApi",
-    "PostcardsApi",
     "ReferralsApi",
     "ResellerApi",
     "SmsApi",
@@ -73,19 +70,12 @@ __all__ = [
     "CalculateEmailPrice",
     "CalculateEmailPriceData",
     "CalculateEmailPriceRequest",
-    "CalculateFaxPrice",
-    "CalculateFaxPriceRequest",
-    "CalculateFaxPriceRequestMessagesInner",
-    "CalculateLetterPrice",
-    "CalculateLetterPriceData",
-    "CalculateLetterPriceRequest",
     "CalculateMmsCampaignPrice",
     "CalculateMmsCampaignPriceData",
     "CalculateMmsCampaignPriceDataData",
     "CalculateMmsPrice",
     "CalculateMmsPriceRequest",
     "CalculateMmsPriceRequestMessagesInner",
-    "CalculatePostcardPrice",
     "CalculateSmsCampaignPrice",
     "CalculateSmsCampaignPriceData",
     "CalculateSmsCampaignPriceDataData",
@@ -109,8 +99,6 @@ __all__ = [
     "CancelEmailCampaign",
     "CancelEmailCampaignRequest",
     "CancelMmsCampaign",
-    "CancelScheduledLetter",
-    "CancelScheduledPostcard",
     "CancelSms",
     "CancelSmsCampaign",
     "CancelVoiceMessage",
@@ -129,10 +117,6 @@ __all__ = [
     "CreateEmailDeliveryReceiptRule",
     "CreateEmailTemplate",
     "CreateEmailTemplateRequest",
-    "CreateFaxDeliveryReceiptRule",
-    "CreateFaxDeliveryReceiptRuleRequest",
-    "CreateFaxInboundRule",
-    "CreateFaxInboundRuleRequest",
     "CreateList",
     "CreateListRequest",
     "CreateNewContact",
@@ -169,8 +153,6 @@ __all__ = [
     "DeleteContact",
     "DeleteEmailDeliveryReceiptRule",
     "DeleteEmailTemplate",
-    "DeleteFaxDeliveryReceiptRule",
-    "DeleteFaxInboundRule",
     "DeleteList",
     "DeleteReturnAddress",
     "DeleteSmsDeliveryReceiptRule",
@@ -180,22 +162,15 @@ __all__ = [
     "DeleteSubaccount",
     "DeleteVoiceDeliveryReceiptRule",
     "DeliveryIssue",
-    "DetectAddress",
-    "DetectAddressData",
     "EmailAddress",
     "EmailCampaign",
     "EmailCampaignHistory",
     "EmailDeliveryReceiptRule",
     "ExportEmailHistory",
-    "ExportLetterHistory",
     "ExportMmsHistory",
-    "ExportPostcardHistory",
     "ExportSmsHistory",
     "ExportSmsHistoryData",
     "ExportVoiceHistory",
-    "Fax",
-    "FaxDeliveryReceiptRule",
-    "FaxReceipt",
     "ForgotPassword",
     "ForgotPasswordRequest",
     "ForgotUsername",
@@ -224,7 +199,6 @@ __all__ = [
     "ImportContacts",
     "ImportContactsData",
     "ImportContactsRequest",
-    "InboundFaxRule",
     "InboundSms",
     "InboundSmsTest",
     "ListAlphaTags",
@@ -250,13 +224,10 @@ __all__ = [
     "OwnNumber",
     "Pagination",
     "PostReturnAddress",
-    "PostcardRecipient",
-    "PostcardRecipientReturnAddress",
     "PurchaseDedicatedNumber",
     "PurchaseDedicatedNumberData",
     "PurchaseRechargePackage",
     "PurchaseRechargePackageData",
-    "Recipient",
     "RegisterNumbers",
     "RegisterNumbersRequest",
     "RemoveDuplicateContacts",
@@ -288,23 +259,12 @@ __all__ = [
     "SendEmailVerificationTokenRequest",
     "SendEmailVerificationTokenRequestFrom",
     "SendEmailVerificationTokenRequestToInner",
-    "SendFax",
-    "SendFaxData",
-    "SendFaxRequest",
-    "SendFaxRequestMessagesInner",
-    "SendLetter",
-    "SendLetterData",
-    "SendLetterRequest",
     "SendMms",
     "SendMmsCampaign",
     "SendMmsCampaignRequest",
     "SendMmsData",
     "SendMmsRequest",
     "SendMmsRequestMessagesInner",
-    "SendPostcard",
-    "SendPostcardData",
-    "SendPostcardRequest",
-    "SendPostcardRequestRecipientsInner",
     "SendSms",
     "SendSmsCampaign",
     "SendSmsCampaignRequest",
@@ -338,9 +298,6 @@ __all__ = [
     "UpdateEmailDeliveryReceiptRule",
     "UpdateEmailTemplate",
     "UpdateEmailTemplateRequest",
-    "UpdateFaxDeliveryReceiptRule",
-    "UpdateFaxDeliveryReceiptRuleRequest",
-    "UpdateFaxInboundRule",
     "UpdateList",
     "UpdateMmsCampaign",
     "UpdatePaymentInfo",
@@ -399,20 +356,8 @@ __all__ = [
     "ViewEmailTemplates",
     "ViewEmailTemplatesData",
     "ViewEmailTemplatesDataDataInner",
-    "ViewFaxDeliveryReceiptRule",
-    "ViewFaxDeliveryReceiptRules",
-    "ViewFaxDeliveryReceiptRulesData",
-    "ViewFaxHistory",
-    "ViewFaxHistoryData",
-    "ViewFaxInboundRule",
-    "ViewFaxInboundRules",
-    "ViewFaxInboundRulesData",
-    "ViewFaxReceipts",
-    "ViewFaxReceiptsData",
     "ViewInboundSms",
     "ViewInboundSmsData",
-    "ViewLetterHistory",
-    "ViewLetterHistoryData",
     "ViewListContacts",
     "ViewListContactsData",
     "ViewLists",
@@ -424,8 +369,6 @@ __all__ = [
     "ViewMmsHistory",
     "ViewMmsHistoryData",
     "ViewMmsHistoryDataAllOfDataInner",
-    "ViewPostcardHistory",
-    "ViewPostcardHistoryData",
     "ViewRechargePackages",
     "ViewRechargePackagesData",
     "ViewRechargePackagesDataPackagesInner",
@@ -452,7 +395,6 @@ __all__ = [
     "ViewSmsTemplates",
     "ViewSmsTemplatesData",
     "ViewSpecificClientAccount",
-    "ViewSpecificFaxReceipt",
     "ViewSpecificList",
     "ViewSpecificReturnAddress",
     "ViewSpecificSmsCampaign",
@@ -503,9 +445,7 @@ from clicksend.api.contacts_api import ContactsApi as ContactsApi
 from clicksend.api.default_senders_api import DefaultSendersApi as DefaultSendersApi
 from clicksend.api.email_api import EmailApi as EmailApi
 from clicksend.api.email_to_sms_api import EmailToSmsApi as EmailToSmsApi
-from clicksend.api.fax_api import FaxApi as FaxApi
 from clicksend.api.international_messaging_api import InternationalMessagingApi as InternationalMessagingApi
-from clicksend.api.letters_api import LettersApi as LettersApi
 from clicksend.api.lists_api import ListsApi as ListsApi
 from clicksend.api.management_api import ManagementApi as ManagementApi
 from clicksend.api.message_delivery_api import MessageDeliveryApi as MessageDeliveryApi
@@ -513,7 +453,6 @@ from clicksend.api.mms_api import MmsApi as MmsApi
 from clicksend.api.mms_campaigns_api import MmsCampaignsApi as MmsCampaignsApi
 from clicksend.api.numbers_api import NumbersApi as NumbersApi
 from clicksend.api.own_numbers_api import OwnNumbersApi as OwnNumbersApi
-from clicksend.api.postcards_api import PostcardsApi as PostcardsApi
 from clicksend.api.referrals_api import ReferralsApi as ReferralsApi
 from clicksend.api.reseller_api import ResellerApi as ResellerApi
 from clicksend.api.sms_api import SmsApi as SmsApi
@@ -556,19 +495,12 @@ from clicksend.models.calculate_email_campaign_price_request import CalculateEma
 from clicksend.models.calculate_email_price import CalculateEmailPrice as CalculateEmailPrice
 from clicksend.models.calculate_email_price_data import CalculateEmailPriceData as CalculateEmailPriceData
 from clicksend.models.calculate_email_price_request import CalculateEmailPriceRequest as CalculateEmailPriceRequest
-from clicksend.models.calculate_fax_price import CalculateFaxPrice as CalculateFaxPrice
-from clicksend.models.calculate_fax_price_request import CalculateFaxPriceRequest as CalculateFaxPriceRequest
-from clicksend.models.calculate_fax_price_request_messages_inner import CalculateFaxPriceRequestMessagesInner as CalculateFaxPriceRequestMessagesInner
-from clicksend.models.calculate_letter_price import CalculateLetterPrice as CalculateLetterPrice
-from clicksend.models.calculate_letter_price_data import CalculateLetterPriceData as CalculateLetterPriceData
-from clicksend.models.calculate_letter_price_request import CalculateLetterPriceRequest as CalculateLetterPriceRequest
 from clicksend.models.calculate_mms_campaign_price import CalculateMmsCampaignPrice as CalculateMmsCampaignPrice
 from clicksend.models.calculate_mms_campaign_price_data import CalculateMmsCampaignPriceData as CalculateMmsCampaignPriceData
 from clicksend.models.calculate_mms_campaign_price_data_data import CalculateMmsCampaignPriceDataData as CalculateMmsCampaignPriceDataData
 from clicksend.models.calculate_mms_price import CalculateMmsPrice as CalculateMmsPrice
 from clicksend.models.calculate_mms_price_request import CalculateMmsPriceRequest as CalculateMmsPriceRequest
 from clicksend.models.calculate_mms_price_request_messages_inner import CalculateMmsPriceRequestMessagesInner as CalculateMmsPriceRequestMessagesInner
-from clicksend.models.calculate_postcard_price import CalculatePostcardPrice as CalculatePostcardPrice
 from clicksend.models.calculate_sms_campaign_price import CalculateSmsCampaignPrice as CalculateSmsCampaignPrice
 from clicksend.models.calculate_sms_campaign_price_data import CalculateSmsCampaignPriceData as CalculateSmsCampaignPriceData
 from clicksend.models.calculate_sms_campaign_price_data_data import CalculateSmsCampaignPriceDataData as CalculateSmsCampaignPriceDataData
@@ -592,8 +524,6 @@ from clicksend.models.cancel_all_voice_messages import CancelAllVoiceMessages as
 from clicksend.models.cancel_email_campaign import CancelEmailCampaign as CancelEmailCampaign
 from clicksend.models.cancel_email_campaign_request import CancelEmailCampaignRequest as CancelEmailCampaignRequest
 from clicksend.models.cancel_mms_campaign import CancelMmsCampaign as CancelMmsCampaign
-from clicksend.models.cancel_scheduled_letter import CancelScheduledLetter as CancelScheduledLetter
-from clicksend.models.cancel_scheduled_postcard import CancelScheduledPostcard as CancelScheduledPostcard
 from clicksend.models.cancel_sms import CancelSms as CancelSms
 from clicksend.models.cancel_sms_campaign import CancelSmsCampaign as CancelSmsCampaign
 from clicksend.models.cancel_voice_message import CancelVoiceMessage as CancelVoiceMessage
@@ -612,10 +542,6 @@ from clicksend.models.create_delivery_issue_request import CreateDeliveryIssueRe
 from clicksend.models.create_email_delivery_receipt_rule import CreateEmailDeliveryReceiptRule as CreateEmailDeliveryReceiptRule
 from clicksend.models.create_email_template import CreateEmailTemplate as CreateEmailTemplate
 from clicksend.models.create_email_template_request import CreateEmailTemplateRequest as CreateEmailTemplateRequest
-from clicksend.models.create_fax_delivery_receipt_rule import CreateFaxDeliveryReceiptRule as CreateFaxDeliveryReceiptRule
-from clicksend.models.create_fax_delivery_receipt_rule_request import CreateFaxDeliveryReceiptRuleRequest as CreateFaxDeliveryReceiptRuleRequest
-from clicksend.models.create_fax_inbound_rule import CreateFaxInboundRule as CreateFaxInboundRule
-from clicksend.models.create_fax_inbound_rule_request import CreateFaxInboundRuleRequest as CreateFaxInboundRuleRequest
 from clicksend.models.create_list import CreateList as CreateList
 from clicksend.models.create_list_request import CreateListRequest as CreateListRequest
 from clicksend.models.create_new_contact import CreateNewContact as CreateNewContact
@@ -652,8 +578,6 @@ from clicksend.models.delete_allowed_email_address import DeleteAllowedEmailAddr
 from clicksend.models.delete_contact import DeleteContact as DeleteContact
 from clicksend.models.delete_email_delivery_receipt_rule import DeleteEmailDeliveryReceiptRule as DeleteEmailDeliveryReceiptRule
 from clicksend.models.delete_email_template import DeleteEmailTemplate as DeleteEmailTemplate
-from clicksend.models.delete_fax_delivery_receipt_rule import DeleteFaxDeliveryReceiptRule as DeleteFaxDeliveryReceiptRule
-from clicksend.models.delete_fax_inbound_rule import DeleteFaxInboundRule as DeleteFaxInboundRule
 from clicksend.models.delete_list import DeleteList as DeleteList
 from clicksend.models.delete_return_address import DeleteReturnAddress as DeleteReturnAddress
 from clicksend.models.delete_sms_delivery_receipt_rule import DeleteSmsDeliveryReceiptRule as DeleteSmsDeliveryReceiptRule
@@ -663,22 +587,15 @@ from clicksend.models.delete_stripped_string_rule import DeleteStrippedStringRul
 from clicksend.models.delete_subaccount import DeleteSubaccount as DeleteSubaccount
 from clicksend.models.delete_voice_delivery_receipt_rule import DeleteVoiceDeliveryReceiptRule as DeleteVoiceDeliveryReceiptRule
 from clicksend.models.delivery_issue import DeliveryIssue as DeliveryIssue
-from clicksend.models.detect_address import DetectAddress as DetectAddress
-from clicksend.models.detect_address_data import DetectAddressData as DetectAddressData
 from clicksend.models.email_address import EmailAddress as EmailAddress
 from clicksend.models.email_campaign import EmailCampaign as EmailCampaign
 from clicksend.models.email_campaign_history import EmailCampaignHistory as EmailCampaignHistory
 from clicksend.models.email_delivery_receipt_rule import EmailDeliveryReceiptRule as EmailDeliveryReceiptRule
 from clicksend.models.export_email_history import ExportEmailHistory as ExportEmailHistory
-from clicksend.models.export_letter_history import ExportLetterHistory as ExportLetterHistory
 from clicksend.models.export_mms_history import ExportMmsHistory as ExportMmsHistory
-from clicksend.models.export_postcard_history import ExportPostcardHistory as ExportPostcardHistory
 from clicksend.models.export_sms_history import ExportSmsHistory as ExportSmsHistory
 from clicksend.models.export_sms_history_data import ExportSmsHistoryData as ExportSmsHistoryData
 from clicksend.models.export_voice_history import ExportVoiceHistory as ExportVoiceHistory
-from clicksend.models.fax import Fax as Fax
-from clicksend.models.fax_delivery_receipt_rule import FaxDeliveryReceiptRule as FaxDeliveryReceiptRule
-from clicksend.models.fax_receipt import FaxReceipt as FaxReceipt
 from clicksend.models.forgot_password import ForgotPassword as ForgotPassword
 from clicksend.models.forgot_password_request import ForgotPasswordRequest as ForgotPasswordRequest
 from clicksend.models.forgot_username import ForgotUsername as ForgotUsername
@@ -707,7 +624,6 @@ from clicksend.models.global_sending_registration_status import GlobalSendingReg
 from clicksend.models.import_contacts import ImportContacts as ImportContacts
 from clicksend.models.import_contacts_data import ImportContactsData as ImportContactsData
 from clicksend.models.import_contacts_request import ImportContactsRequest as ImportContactsRequest
-from clicksend.models.inbound_fax_rule import InboundFaxRule as InboundFaxRule
 from clicksend.models.inbound_sms import InboundSms as InboundSms
 from clicksend.models.inbound_sms_test import InboundSmsTest as InboundSmsTest
 from clicksend.models.list_alpha_tags import ListAlphaTags as ListAlphaTags
@@ -733,13 +649,10 @@ from clicksend.models.model400_error import Model400Error as Model400Error
 from clicksend.models.own_number import OwnNumber as OwnNumber
 from clicksend.models.pagination import Pagination as Pagination
 from clicksend.models.post_return_address import PostReturnAddress as PostReturnAddress
-from clicksend.models.postcard_recipient import PostcardRecipient as PostcardRecipient
-from clicksend.models.postcard_recipient_return_address import PostcardRecipientReturnAddress as PostcardRecipientReturnAddress
 from clicksend.models.purchase_dedicated_number import PurchaseDedicatedNumber as PurchaseDedicatedNumber
 from clicksend.models.purchase_dedicated_number_data import PurchaseDedicatedNumberData as PurchaseDedicatedNumberData
 from clicksend.models.purchase_recharge_package import PurchaseRechargePackage as PurchaseRechargePackage
 from clicksend.models.purchase_recharge_package_data import PurchaseRechargePackageData as PurchaseRechargePackageData
-from clicksend.models.recipient import Recipient as Recipient
 from clicksend.models.register_numbers import RegisterNumbers as RegisterNumbers
 from clicksend.models.register_numbers_request import RegisterNumbersRequest as RegisterNumbersRequest
 from clicksend.models.remove_duplicate_contacts import RemoveDuplicateContacts as RemoveDuplicateContacts
@@ -771,23 +684,12 @@ from clicksend.models.send_email_verification_token import SendEmailVerification
 from clicksend.models.send_email_verification_token_request import SendEmailVerificationTokenRequest as SendEmailVerificationTokenRequest
 from clicksend.models.send_email_verification_token_request_from import SendEmailVerificationTokenRequestFrom as SendEmailVerificationTokenRequestFrom
 from clicksend.models.send_email_verification_token_request_to_inner import SendEmailVerificationTokenRequestToInner as SendEmailVerificationTokenRequestToInner
-from clicksend.models.send_fax import SendFax as SendFax
-from clicksend.models.send_fax_data import SendFaxData as SendFaxData
-from clicksend.models.send_fax_request import SendFaxRequest as SendFaxRequest
-from clicksend.models.send_fax_request_messages_inner import SendFaxRequestMessagesInner as SendFaxRequestMessagesInner
-from clicksend.models.send_letter import SendLetter as SendLetter
-from clicksend.models.send_letter_data import SendLetterData as SendLetterData
-from clicksend.models.send_letter_request import SendLetterRequest as SendLetterRequest
 from clicksend.models.send_mms import SendMms as SendMms
 from clicksend.models.send_mms_campaign import SendMmsCampaign as SendMmsCampaign
 from clicksend.models.send_mms_campaign_request import SendMmsCampaignRequest as SendMmsCampaignRequest
 from clicksend.models.send_mms_data import SendMmsData as SendMmsData
 from clicksend.models.send_mms_request import SendMmsRequest as SendMmsRequest
 from clicksend.models.send_mms_request_messages_inner import SendMmsRequestMessagesInner as SendMmsRequestMessagesInner
-from clicksend.models.send_postcard import SendPostcard as SendPostcard
-from clicksend.models.send_postcard_data import SendPostcardData as SendPostcardData
-from clicksend.models.send_postcard_request import SendPostcardRequest as SendPostcardRequest
-from clicksend.models.send_postcard_request_recipients_inner import SendPostcardRequestRecipientsInner as SendPostcardRequestRecipientsInner
 from clicksend.models.send_sms import SendSms as SendSms
 from clicksend.models.send_sms_campaign import SendSmsCampaign as SendSmsCampaign
 from clicksend.models.send_sms_campaign_request import SendSmsCampaignRequest as SendSmsCampaignRequest
@@ -821,9 +723,6 @@ from clicksend.models.update_email_campaign_request import UpdateEmailCampaignRe
 from clicksend.models.update_email_delivery_receipt_rule import UpdateEmailDeliveryReceiptRule as UpdateEmailDeliveryReceiptRule
 from clicksend.models.update_email_template import UpdateEmailTemplate as UpdateEmailTemplate
 from clicksend.models.update_email_template_request import UpdateEmailTemplateRequest as UpdateEmailTemplateRequest
-from clicksend.models.update_fax_delivery_receipt_rule import UpdateFaxDeliveryReceiptRule as UpdateFaxDeliveryReceiptRule
-from clicksend.models.update_fax_delivery_receipt_rule_request import UpdateFaxDeliveryReceiptRuleRequest as UpdateFaxDeliveryReceiptRuleRequest
-from clicksend.models.update_fax_inbound_rule import UpdateFaxInboundRule as UpdateFaxInboundRule
 from clicksend.models.update_list import UpdateList as UpdateList
 from clicksend.models.update_mms_campaign import UpdateMmsCampaign as UpdateMmsCampaign
 from clicksend.models.update_payment_info import UpdatePaymentInfo as UpdatePaymentInfo
@@ -882,20 +781,8 @@ from clicksend.models.view_email_template import ViewEmailTemplate as ViewEmailT
 from clicksend.models.view_email_templates import ViewEmailTemplates as ViewEmailTemplates
 from clicksend.models.view_email_templates_data import ViewEmailTemplatesData as ViewEmailTemplatesData
 from clicksend.models.view_email_templates_data_data_inner import ViewEmailTemplatesDataDataInner as ViewEmailTemplatesDataDataInner
-from clicksend.models.view_fax_delivery_receipt_rule import ViewFaxDeliveryReceiptRule as ViewFaxDeliveryReceiptRule
-from clicksend.models.view_fax_delivery_receipt_rules import ViewFaxDeliveryReceiptRules as ViewFaxDeliveryReceiptRules
-from clicksend.models.view_fax_delivery_receipt_rules_data import ViewFaxDeliveryReceiptRulesData as ViewFaxDeliveryReceiptRulesData
-from clicksend.models.view_fax_history import ViewFaxHistory as ViewFaxHistory
-from clicksend.models.view_fax_history_data import ViewFaxHistoryData as ViewFaxHistoryData
-from clicksend.models.view_fax_inbound_rule import ViewFaxInboundRule as ViewFaxInboundRule
-from clicksend.models.view_fax_inbound_rules import ViewFaxInboundRules as ViewFaxInboundRules
-from clicksend.models.view_fax_inbound_rules_data import ViewFaxInboundRulesData as ViewFaxInboundRulesData
-from clicksend.models.view_fax_receipts import ViewFaxReceipts as ViewFaxReceipts
-from clicksend.models.view_fax_receipts_data import ViewFaxReceiptsData as ViewFaxReceiptsData
 from clicksend.models.view_inbound_sms import ViewInboundSms as ViewInboundSms
 from clicksend.models.view_inbound_sms_data import ViewInboundSmsData as ViewInboundSmsData
-from clicksend.models.view_letter_history import ViewLetterHistory as ViewLetterHistory
-from clicksend.models.view_letter_history_data import ViewLetterHistoryData as ViewLetterHistoryData
 from clicksend.models.view_list_contacts import ViewListContacts as ViewListContacts
 from clicksend.models.view_list_contacts_data import ViewListContactsData as ViewListContactsData
 from clicksend.models.view_lists import ViewLists as ViewLists
@@ -907,8 +794,6 @@ from clicksend.models.view_mms_campaign import ViewMmsCampaign as ViewMmsCampaig
 from clicksend.models.view_mms_history import ViewMmsHistory as ViewMmsHistory
 from clicksend.models.view_mms_history_data import ViewMmsHistoryData as ViewMmsHistoryData
 from clicksend.models.view_mms_history_data_all_of_data_inner import ViewMmsHistoryDataAllOfDataInner as ViewMmsHistoryDataAllOfDataInner
-from clicksend.models.view_postcard_history import ViewPostcardHistory as ViewPostcardHistory
-from clicksend.models.view_postcard_history_data import ViewPostcardHistoryData as ViewPostcardHistoryData
 from clicksend.models.view_recharge_packages import ViewRechargePackages as ViewRechargePackages
 from clicksend.models.view_recharge_packages_data import ViewRechargePackagesData as ViewRechargePackagesData
 from clicksend.models.view_recharge_packages_data_packages_inner import ViewRechargePackagesDataPackagesInner as ViewRechargePackagesDataPackagesInner
@@ -935,7 +820,6 @@ from clicksend.models.view_sms_statistics_data_total import ViewSmsStatisticsDat
 from clicksend.models.view_sms_templates import ViewSmsTemplates as ViewSmsTemplates
 from clicksend.models.view_sms_templates_data import ViewSmsTemplatesData as ViewSmsTemplatesData
 from clicksend.models.view_specific_client_account import ViewSpecificClientAccount as ViewSpecificClientAccount
-from clicksend.models.view_specific_fax_receipt import ViewSpecificFaxReceipt as ViewSpecificFaxReceipt
 from clicksend.models.view_specific_list import ViewSpecificList as ViewSpecificList
 from clicksend.models.view_specific_return_address import ViewSpecificReturnAddress as ViewSpecificReturnAddress
 from clicksend.models.view_specific_sms_campaign import ViewSpecificSmsCampaign as ViewSpecificSmsCampaign
