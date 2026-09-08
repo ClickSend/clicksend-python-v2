@@ -1,12 +1,12 @@
 [project]
 name = "clicksend"
-version = "6.0.0"
-description = "SMS"
+version = "6.0.1"
+description = "Official ClickSend SDK for Python - send SMS, MMS, voice and email messages, run SMS and MMS campaigns, and manage numbers, contacts, subaccounts and reporting through the ClickSend REST API."
 authors = [
-  {name = "OpenAPI Generator Community",email = "team@openapitools.org"},
+  {name = "ClickSend",email = "support@clicksend.com"},
 ]
 readme = "README.md"
-keywords = ["OpenAPI", "OpenAPI-Generator", "SMS"]
+keywords = ["clicksend", "sms", "sms api", "send sms", "bulk sms", "text message", "texting", "mms", "mms api", "voice", "voice call", "text to speech", "tts", "ivr", "email to sms", "sms campaign", "mms campaign", "url shortening", "number verification", "messaging", "notifications", "otp", "2fa", "transactional sms", "marketing sms", "appointment reminders", "alerts", "rest api", "python"]
 requires-python = ">=3.9"
 
 dependencies = [
@@ -17,7 +17,7 @@ dependencies = [
 ]
 
 [project.urls]
-Repository = "https://github.com/GIT_USER_ID/GIT_REPO_ID"
+Repository = "https://github.com/ClickSend/clicksend-python-v2"
 
 [tool.poetry]
 requires-poetry = ">=2.0"
