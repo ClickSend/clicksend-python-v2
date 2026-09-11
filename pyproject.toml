@@ -1,6 +1,6 @@
 [project]
 name = "clicksend"
-version = "6.0.1"
+version = "6.0.2"
 description = "Official ClickSend SDK for Python - send SMS, MMS, voice and email messages, run SMS and MMS campaigns, and manage numbers, contacts, subaccounts and reporting through the ClickSend REST API."
 authors = [
   {name = "ClickSend",email = "support@clicksend.com"},
