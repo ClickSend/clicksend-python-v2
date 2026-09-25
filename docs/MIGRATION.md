@@ -1,6 +1,6 @@
-# Migration Guide: clicksend-client (legacy) → clicksend-python (v2)
+# Migration Guide: clicksend-client v5 (legacy) → clicksend-client v6 (v2)
 
-This guide helps you migrate from the legacy ClickSend Python SDK (`pip install clicksend-client`, `import clicksend_client`) to the current v2 SDK (`pip install clicksend-python`, `import clicksend`). The two SDKs are **not drop-in compatible** — the import name, method names, request/response shapes, the exception module, and a few internals have all changed. Read this guide fully before upgrading, then use the class/method mapping tables to update your code.
+This guide helps you migrate from the legacy ClickSend Python SDK (`pip install clicksend-client`, `import clicksend_client`) to the current v2 SDK (`pip install --upgrade clicksend-client`, `import clicksend`). The two SDKs are **not drop-in compatible** — the import name, method names, request/response shapes, the exception module, and a few internals have all changed. Read this guide fully before upgrading, then use the class/method mapping tables to update your code.
 
 ## Contents
 
@@ -40,7 +40,7 @@ None of this changes the underlying REST API — it's the same ClickSend v3 API 
 
 | | Legacy | v2 |
 |---|---|---|
-| Distribution name | `clicksend-client` | `clicksend-python` |
+| Distribution name | `clicksend-client` | `clicksend-client` (unchanged) |
 | Version at time of writing | `5.0.91` | `6.0.2` |
 | **Import name** | `import clicksend_client` | `import clicksend` |
 | Python supported | 2.7 and 3.4+ | **3.10+** |
@@ -48,14 +48,11 @@ None of this changes the underlying REST API — it's the same ClickSend v3 API 
 | Response validation | none (`str`) | `pydantic` v2 models |
 
 ```bash
-# Uninstall the legacy package
-pip uninstall clicksend-client
-
-# Install the current package
-pip install clicksend-python
+# Upgrade in place — v2 is the next major version of the same package
+pip install --upgrade clicksend-client
 ```
 
-> v2 publishes under a different distribution name (`clicksend-python` instead of `clicksend-client`), so pip resolves them as separate packages. The **import name** stays `clicksend` either way — only `pip install`/`requirements.txt` need the new name.
+> v2 publishes under the **same distribution name** as the legacy SDK (`clicksend-client`), as a new major version (6.x). Upgrading replaces the legacy package, so the two can't be installed side by side. If your `requirements.txt` pins `clicksend-client<6` (or `==5.x`), bump it to `>=6,<7`. The **import name** does change (`clicksend_client` → `clicksend`), so existing imports fail loudly after the upgrade until you update them.
 
 Every symbol you used to import from `clicksend_client` now comes from `clicksend`:
 
@@ -667,7 +664,7 @@ No legacy counterpart at all — nothing to migrate, but worth knowing they exis
 
 ## 15. Step-by-step migration checklist
 
-1. **Swap the dependency**: `pip uninstall clicksend-client`, then `pip install clicksend-python` ([§2](#2-installation--imports)).
+1. **Upgrade the dependency**: `pip install --upgrade clicksend-client` and bump any `<6` pin to `>=6,<7` ([§2](#2-installation--imports)).
 2. **Rename the import**: `clicksend_client` → `clicksend` everywhere, including `clicksend_client.rest` → `clicksend.rest` for `ApiException`.
 3. **Update client setup**: `Configuration(username=..., password=...)`, wrap usage in `with clicksend.ApiClient(configuration) as api_client:`, and rename API classes to their new casing (`SMSApi` → `SmsApi`, `MMSApi` → `MmsApi`, …). **Pay special attention to `VoiceApi` → `VoiceMessagingApi`** ([§12](#12-the-voice-naming-trap-read-this-before-touching-voice-code)).
 4. **Rebuild every request payload** with the matching `*Request` model (or a plain dict) instead of the old domain model, and pass it as a **keyword argument** (`send_sms_request=...`) so it doesn't land in the leading `content_type` slot ([§6](#6-request-payloads-request-models-replace-reusable-domain-models)). Watch the sender field: `_from` → `var_from` / `{"from": ...}`.

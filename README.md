@@ -34,7 +34,7 @@ This library is generated from ClickSend's official OpenAPI v3 specification and
 ## Installation
 
 ```sh
-pip install clicksend-python
+pip install clicksend-client
 ```
 
 ## Authentication

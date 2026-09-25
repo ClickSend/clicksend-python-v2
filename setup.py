@@ -18,7 +18,7 @@ from setuptools import setup, find_packages  # noqa: H301
 #
 # prerequisite: setuptools
 # http://pypi.python.org/pypi/setuptools
-NAME = "clicksend-python"
+NAME = "clicksend-client"
 VERSION = "6.0.2"
 PYTHON_REQUIRES = ">= 3.10"
 REQUIRES = [
